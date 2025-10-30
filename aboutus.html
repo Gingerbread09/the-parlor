@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Parlor — About Us</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Montserrat+Alternates:wght@200;400;600&family=Lily+Script+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="navbar.css" />
+  <!-- Page CSS (embedded so you have one file) -->
+  <style>
+    /* =========================
+       Root variables (pink / pastel theme)
+       ========================= */
+    :root{
+      --bg:#fffafc;
+      --pink-100:#fff0f6;
+      --pink-200:#ffd6e8;
+      --pink-300:#ffb6d5;
+      --pink-500:#e06bdc;
+      --muted:#6b5a5f;
+      --text:#0b0b0b;
+      --card-radius:16px;
+      --shadow-soft: 0 10px 30px rgba(224,107,220,0.08);
+      --ease: cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* =========================
+       HERO (heading video) - responsive cover
+       ========================= */
+       .hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* fills the entire viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--pink-100), transparent 50%);
+}
+
+
+    /* A wrapper so text/card sits centered and constrained */
+    .hero-inner{
+      position:relative;
+      z-index:5;
+      width:min(1100px, 92%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      text-align:center;
+      padding:36px;
+    }
+
+/* Make sure both fill the hero container properly */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* =========================
+   Responsive Video Switching
+   ========================= */
+   .desktop-video {
+  display: block;
+}
+
+.mobile-video {
+  display: none;
+}
+
+/* Hide desktop version, show mobile version on smaller screens */
+@media (max-width: 768px) {
+  .desktop-video {
+    display: none;
+  }
+
+  .mobile-video {
+    display: block;
+  }
+}
+    
+.hero-title {
+  font-family: 'Lily Script One', 'Montserrat Alternates', cursive;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  z-index: 6;
+  color: #fff;
+  text-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+  font-size: clamp(32px, 6vw, 72px);
+  font-weight: 300;
+
+  /* Gradient animation setup */
+  background: linear-gradient(90deg, #dd790d, #e01257, #ff0134, #5cd70f);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-glaze 8s ease-in-out infinite;
+
+  /* Move it upward */
+  position: relative;
+  top: -160px; /* Adjust this to your liking (try -40px to -100px) */
+}
+
+/* Smaller screen adjustment */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(24px, 9vw, 36px);
+    top: -200px; /* Slightly less lift for small screens */
+  }
+}
+  .hero-video {
+    object-position: center top; /* ensures subject stays visible if cropped */
+  }
+
+
+/* Shimmering text gradient animation */
+@keyframes text-glaze {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+    .hero-sub{
+      font-family: "Montserrat Alternates";
+      color:#000000;
+      font-size:clamp(14px, 1.8vw, 18px);
+      z-index:6;
+        /* Move it upward */
+      position: relative;
+      top: -200px;
+      max-width:900px;
+      backdrop-filter: blur(4px);
+      opacity:0.95;
+    }
+
+  @media (max-width: 1024px){
+    .hero-title { position: relative; top:-210px}
+    .hero-sub {position: relative; top: -220px}
+    .hero-actions {position: relative; top: -600px}
+   }
+
+    /* CTA group */
+    .hero-actions{ display:flex; gap:14px; z-index:6; margin-top:6px; flex-wrap:wrap; justify-content:center;position:relative ; top: -222px }
+    /* ensure links act like buttons on keyboard */
+    .hero-actions a, .hero-actions button{ text-decoration:none; }
+
+   @media (max-width: 480px){
+     .hero-actions {position: relative; top: -250px}
+   }
+
+   /* === Fix hero clipping on small phones (375–430px) === */
+@media (max-width: 430px) {
+  .hero-title {
+    top: -110px !important; /* overrides earlier negative offsets */
+    font-size: clamp(40px, 7vw, 50px);
+    line-height: 1.1;
+  }
+
+  .hero-sub {
+    top: -140px !important;
+    font-size: small;
+  }
+
+  .hero-actions {
+    top: 10px !important;
+  }
+
+  .hero-video {
+    object-position: center top; /* keeps subject visible on narrow screens */
+  }
+}
+
+
+    /* =========================
+       Bubble button (pink baby theme)
+       Reusable - use .btn-drip everywhere
+       ========================= */
+    .btn-drip{
+      --drip-base: #ffd6e8;
+      --drip-accent: #ffb6d8;
+      --drip-highlight: rgba(255,255,255,0.9);
+
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: clamp(8px, 1.8vw, 14px) clamp(14px, 3.2vw, 28px);
+      border-radius: 999px;
+      border: none;
+      cursor:pointer;
+      font-weight:500;
+      font-family:'Montserrat Alternates', sans-serif;
+      color:#2b0b17;
+      background: linear-gradient(135deg, var(--drip-base), var(--drip-accent));
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 8px 28px rgba(224,107,220,0.12);
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+      text-decoration:none;
+    }
+
+    /* remove default underline behavior for <a> */
+    .btn-drip:link, .btn-drip:visited { text-decoration:none; }
+
+    /* floating bubbles background (animated) */
+    .btn-drip::before{
+      content:"";
+      position:absolute; inset:0;
+      background-image:
+        radial-gradient(circle at 10% 30%, rgba(255,255,255,0.6) 6px, transparent 10px),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.55) 8px, transparent 12px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.5) 5px, transparent 9px);
+      background-size:200% 200%;
+      opacity:0.55;
+      filter: blur(.6px);
+      z-index:0;
+      animation: bubbleShift 8s linear infinite;
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+
+    .btn-drip span { position:relative; z-index:1; } /* ensure label sits above bubbles */
+
+    .btn-drip::after{
+      content:"";
+      position:absolute;
+      bottom:-8px; left:50%;
+      width:70%; height:18px;
+      transform:translateX(-50%) scaleY(0);
+      background: radial-gradient(circle at 50% 0, var(--drip-accent) 0%, transparent 70%);
+      transform-origin: top;
+      transition: transform .36s ease;
+      z-index:0;
+      opacity:0.95;
+    }
+
+    @keyframes bubbleShift {
+      0%{ background-position:0% 100% }
+      50%{ background-position:100% 0% }
+      100%{ background-position:0% 100% }
+    }
+
+    /* small / large variants */
+    .btn-drip.sm { padding:8px 14px; font-size:14px; }
+    .btn-drip.lg { padding:14px 36px; font-size:18px; }
+/* =========================
+   MODERNIZED OUR MISSION SECTION — FLIP CARD EDITION
+   ========================= */
+   .mission-section {
+  background: linear-gradient(180deg, #fff6fa, #fde9f1, #fff);
+  padding: 100px 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mission-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* LEFT SIDE - Text Focus */
+.mission-text {
+  position: relative;
+  text-align: left;
+  z-index: 2;
+  animation: scoopUp 1.2s ease-out;
+}
+
+.mission-heading {
+  font-family: 'Lily Script One', cursive;
+  font-size: clamp(40px, 6vw, 70px);
+  background: linear-gradient(90deg, #ff8fb1, #ffa6c9, #bde0fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  animation: text-glaze 8s ease-in-out infinite;
+}
+
+.mission-body {
+  font-size: 1.2rem;
+  color: #4a2d35;
+  line-height: 1.7;
+  font-family: 'Montserrat Alternates', sans-serif;
+  max-width: 500px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 3;
+
+  /* default for desktop */
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* 📱 Center only on mobile & tablet */
+@media (max-width: 992px) {
+  .mission-body {
+    text-align: center;
+    margin: 0 auto 28px auto;
+  }
+}
+
+
+/* Blob background */
+.blob {
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at 30% 30%, #ffd6e8 0%, #ffeaf5 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+  opacity: 0.6;
+  animation: floatBlob 10s ease-in-out infinite alternate;
+}
+
+/* RIGHT SIDE - Flavors Grid */
+.mission-flavors {
+  text-align: center;
+}
+
+.flavors-heading {
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: #a43c64;
+  font-weight: 600;
+  margin-bottom: 30px;
+  font-size: 1.6rem;
+}
+
+/* Flip Cards */
+.flavor-grid {
+  display: grid;
+  gap: 30px;
+}
+
+.flavor-card {
+  perspective: 1000px;
+}
+.flavor-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  display: block;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+  transition: transform 0.3s ease;
+}
+.taro .flavor-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin: 0 auto 8px;
+  display: block;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
+}
+.taro .flavor-icon:hover {
+  transform: scale(1.1);
+}
+
+
+.flavor-card:hover .flavor-icon {
+  transform: scale(1.15) rotate(-4deg);
+}
+
+.flavor-inner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(255, 182, 193, 0.25);
+}
+
+.flavor-card:hover .flavor-inner {
+  transform: rotateY(180deg);
+}
+
+.flavor-front,
+.flavor-back {
+  position: absolute;
+  font-family: "Montserrat Alternates";
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 22px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.flavor-front {
+  color: #333;
+}
+
+.flavor-back {
+  transform: rotateY(180deg);
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.matcha .flavor-back img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #f7ffef; /* optional soft backdrop */
+}
+
+.flavor-front:hover .flavor-icon {
+  transform: rotate(-10deg) scale(1.2);
+}
+
+/* Flavor-specific colors */
+.matcha .flavor-front {
+  background: linear-gradient(135deg, #e6f8d4, #d5f2a1);
+}
+.taro .flavor-front {
+  background: linear-gradient(135deg, #f0d8ff, #d8b4f8);
+}
+.mango .flavor-front {
+  background: linear-gradient(135deg, #fffccd, #fff3a6);
+}
+.mango .flavor-back img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #fffbd4cb; /* optional soft backdrop */
+}
+.taro .flavor-back img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #e3d8ffcb; /* optional soft backdrop */
+}
+
+/* Animations */
+@keyframes text-glaze {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scoopUp {
+  0% { transform: translateY(60px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mission-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .mission-text { text-align: center; }
+  .blob { left: 50%; transform: translateX(-50%); }
+}
+
+
+    /* =========================
+       KCRA feature (responsive embed)
+       ========================= */
+    /* Load the Lily Script One font */
+@import url('https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap');
+
+/* KCRA Section */
+.kcra {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Responsive, animated, gradient heading */
+.kcra-heading {
+  font-family: 'Lily Script One', cursive;
+  font-size: clamp(2.2rem, 6vw, 4.5rem); /* Smooth scaling */
+  background: linear-gradient(90deg, #ff8fb1, #ffa6c9, #bde0fe, #ffb3c6);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+  animation: text-glaze 8s ease-in-out infinite;
+  line-height: 1.2;
+}
+
+/* Soft shimmer animation */
+@keyframes text-glaze {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Responsive video frame */
+.kcra .frame {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.kcra .frame iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+}
+
+    /* Reviews Section */
+.reviews {
+  position: absolute;
+  top: 2933px;
+  left: 0;
+  width: 100%;
+  max-width: 1440px;
+  height: 518px;
+  background: #FFFFFF;
+  padding: 112px 64px;
+  display: flex;
+  justify-content: center;
+}
+.reviews-container {
+  width: 1280px;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+.reviews-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 768px;
+  max-width: 768px;
+}
+.yelp-logo {
+  width: 128px;
+  height: 81px;
+  object-fit: contain;
+}
+.reviews-heading {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 300;
+  font-size: 32px;
+  color: #000;
+  text-align: center;
+}
+.reviews-box {
+  width: 1057px;
+  height: 227px;
+  border: 0.5px solid #000;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+.reviews-box .yelp-review {
+  margin: 0;
+}
+
+
+/* =========================
+   REVIEWS (Elfsight widget responsive)
+   ========================= */
+   .reviews-section {
+  width: 100%;
+  background: #fff;
+  padding: 100px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 80px auto 0; /* adds space from previous section */
+}
+
+.reviews-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.reviews-section h3 {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 32px);
+  text-align: center;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.reviews-section p {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.6;
+  margin: 0 auto 24px;
+}
+
+/* Elfsight widget responsive handling */
+.reviews-container .elfsight-app {
+  width: 100%;
+  max-width: 1000px;
+}
+/* -------------------------
+        FOOTER
+        ------------------------- */
+        .site-footer {background: linear-gradient(180deg, #ffe3f2 50%, #f0b5cb 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
+     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
+     .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
+     .footer-column { min-width:160px; }
+     .footer-logo { width:88px; height:auto; display:block; }
+     
+     @media (max-width: 640px) {
+       .footer-container { flex-direction:column; align-items:center; text-align:center; }
+     }
+     
+     @media (max-width: 480px) {
+       .footer-columns { flex-direction:column; gap:12px; align-items:center; }
+       .footer-column { min-width: unset; text-align:center; }
+       .footer-logo { margin-bottom: 12px; }
+     }
+     
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: 60px 20px;
+    margin-top: 60px;
+  }
+  .reviews-container {
+    gap: 40px;
+  }
+}
+
+
+    /* =========================
+       Responsive: stack on small screens
+       ========================= */
+    @media (max-width:900px){
+      .mission{ grid-template-columns: 1fr; padding:20px }
+      .hero-inner{ padding:20px }
+      .navbar{ padding:10px 14px }
+      .navbar-logo img{ height:48px }
+    }
+
+    @media (max-width:480px){
+      .hero{ min-height:56vh }
+      .hero-sub{ font-size:14px; top:-230px; }
+      .btn-drip{ padding:10px 16px }
+    }
+
+    /* Accessibility focus */
+    a:focus, button:focus { outline:3px solid rgba(224,107,220,0.18); outline-offset:3px; border-radius:8px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+    <nav class="navbar">
+      <!-- Left side (mobile only) -->
+      <div class="left-icons">
+        <div class="location-icon" id="locationBtn"></div>
+        <div class="time-icon" id="timeBtn"></div>
+        <div class="info-content" id="locationContent">
+          <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
+        </div>
+        <div class="info-content" id="timeContent">
+           <strong>Hours:</strong><br>
+        Thursday: 1–9:30 PM<br>
+        Friday: 1–10 PM<br>
+        Saturday: 1–10 PM<br>
+        Sunday: 1–9:30 PM<br>
+        Monday (Labor Day): 1–9:30 PM<br>
+        Tuesday: 1–9:30 PM<br>
+        Wednesday: 1–9:30 PM
+        </div>
+      </div>
+    
+      <!-- Logo (always centered) -->
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img src="Parlor_logo.png" alt="The Parlor Logo" />
+        </a>
+      </div>
+    
+      <div class="right-links">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html" class="highlight">Menu</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="catering.html">Catering</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+        </ul>
+      
+        <a href="menu.html" class="menu-toggle" id="menuToggle"></a>
+      
+        <!-- Scroll button for mobile -->
+        <div class="scroll-button" id="scrollBtn"></div>
+      
+        <!-- Scroll dropdown menu -->
+        <div class="scroll-menu" id="scrollMenu">
+          <a class="scroll-link" href="index.html">HOME</a>
+          <a class="scroll-link" href="aboutus.html">ABOUT US</a>
+          <a class="scroll-link" href="contact.html">CONTACT US</a>
+          <a class="scroll-link" href="catering.html">CATERING</a>
+          <a class="scroll-link" href="jobs.html">JOBS</a>
+        </div>
+      </div>
+    
+      <!-- Mobile dropdown -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="catering.html">Catering</a>
+        <a href="jobs.html">Jobs</a>
+      </div>
+      <script>
+        // Location & Time dropdowns
+        const locationBtn = document.getElementById('locationBtn');
+        const timeBtn = document.getElementById('timeBtn');
+        const locationContent = document.getElementById('locationContent');
+        const timeContent = document.getElementById('timeContent');
+    
+        locationBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          locationContent.classList.toggle('show');
+          timeContent.classList.remove('show');
+        });
+    
+        timeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          timeContent.classList.toggle('show');
+          locationContent.classList.remove('show');
+        });
+    
+        // Scroll dropdown
+        const scrollBtn = document.getElementById('scrollBtn');
+        const scrollMenu = document.getElementById('scrollMenu');
+    
+        scrollBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          scrollMenu.classList.toggle('show');
+        });
+    
+        // Close all dropdowns when clicking outside
+        document.addEventListener('click', () => {
+          locationContent.classList.remove('show');
+          timeContent.classList.remove('show');
+          scrollMenu.classList.remove('show');
+        });
+
+      </script>
+    </nav>    
+  </header>
+
+  <!-- HERO / HEADING VIDEO -->
+  <main>
+<!-- HERO / HEADING VIDEO -->
+<section class="hero" role="region" aria-label="About — hero">
+  <!-- Desktop Video -->
+  <video class="hero-video desktop-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="videos/about.mp4" type="video/mp4">
+  </video>
+
+  <!-- Mobile Video -->
+  <video class="hero-video mobile-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="videos/about.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <h1 class="hero-title">Scoop, Smile, Repeat</h1>
+    <p class="hero-sub">
+      We craft small-batch ice cream and daily-baked doughnuts — born in Sacramento with flavor-first obsession.
+      Follow our Instagram for the latest updates, weekly deals and seasonal flavors.
+    </p>
+
+    <div class="hero-actions" role="group" aria-label="Hero actions">
+      <a class="btn-drip" href="#mission"><span>Our Mission</span></a>
+      <a class="btn-drip sm" href="#kcra"><span>Watch our Features</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="mission-section" id="mission">
+  <div class="mission-container">
+    <!-- LEFT: Core Mission Statement -->
+    <div class="mission-text">
+      <h2 class="mission-heading">Our Mission</h2>
+      <p class="mission-body">
+        At <strong>The Parlor</strong>, we believe that dessert is more than a craving, it’s a connection.  
+        It’s laughter shared between friends over melting scoops, and the sparkle in a child’s eyes at their first bite of something magical.  
+        From our fluffy <strong>Signature Ice Cream Puffs</strong> to our refreshing <strong>Non-Dairy scoops</strong>, we create treats that welcome everyone to the table.  
+        Whether you crave something bold and indulgent or light and simple, each flavor is crafted to capture joy, nostalgia, and a little bit of wonder.  
+        Because no matter your age, your story, or your sweet tooth, there’s always a place for you at <strong>The Parlor</strong>.
+      </p>
+      
+      <a href="menu.html" class="btn-drip lg"><span>Explore the Menu</span></a>
+      <div class="blob"></div>
+    </div>
+
+    <!-- RIGHT: Flavor Story Cards -->
+    <div class="mission-flavors">
+      <h3 class="flavors-heading">Each Flavor Tells a Story</h3>
+      <div class="flavor-grid">
+<!-- MATCHA CARD -->
+<div class="flavor-card matcha">
+  <div class="flavor-inner">
+    <div class="flavor-front">
+      <img class="flavor-icon" src="icons/matcha-tea.png" alt="Matcha Tea Icon">
+      <h4>Green With Envy</h4>
+      <p>Green Tea with Vanilla. Earthy, calm, and balanced, inspired by quiet mornings and cozy rituals.</p>
+    </div>
+    <div class="flavor-back">
+      <img src="images/matcha.jpg" alt="Matcha dessert" />
+      <p><strong>Fun Fact:</strong> Our matcha is stone-ground from Japanese green tea leaves, giving it that smooth, Umami kick. </p>
+    </div>
+  </div>
+</div>
+
+<!-- TARO CARD -->
+<div class="flavor-card taro">
+  <div class="flavor-inner">
+    <div class="flavor-front">
+      <img class="flavor-icon" src="icons/taro.png" alt="Taro Icon">
+      <h4>Halo Kalo</h4>
+      <p>Taro & Coconut with Condensed Milk. A swirl of purple joy with smoooth and creamy condensed milk. An absolute One-of-a-kind.</p>
+    </div>
+    <div class="flavor-back">
+      <img src="images/taro.jpg" alt="Taro ice cream" />
+      <p><strong>Fun Fact:</strong> Taro’s natural lilac hue comes from real roots, not coloring. A fan-favorite in halo-halo! </p>
+    </div>
+  </div>
+</div>
+
+<!-- BISCOFF CARD -->
+<div class="flavor-card mango">
+  <div class="flavor-inner">
+    <div class="flavor-front">
+      <img class="flavor-icon" src="icons/mango.png" alt="Mango Icon">
+      <h4>Main-Go</h4>
+      <p>A Non-Dairy Option from our Menu, our juicy Mango sorbet.</p>
+    </div>
+    <div class="flavor-back">
+      <img src="images/mango.jpg" alt="Mango dessert" />
+      <p><strong>Fun Fact:</strong> Mangoes belong to the same family as cashews and pistachios. </p>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+
+<!-- KCRA Feature -->
+<section id="kcra" class="kcra" aria-labelledby="kcra-heading">
+  <h3 id="kcra-heading" class="kcra-heading">As Featured On KCRA</h3>
+  <div class="frame" role="region" aria-label="KCRA feature video">
+    <iframe 
+      src="https://www.youtube.com/embed/7e42q0l7iIg" 
+      title="KCRA feature" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+
+    <section class="reviews-section">
+      <div class="reviews-container">
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-56c8dded-f192-47b5-bcc1-8d1aaa2fdffe" data-elfsight-app-lazy></div>
+      </div>
+    </section>
+    
+
+  </main>
+<!-- FOOTER (kept visually same — content preserved) -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="parlor_logo.png" alt="The Parlor Logo" class="footer-logo">
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Explore More |</h4>
+        <a href="contact.html">Contact Us |</a>
+        <a href="menu.html">Explore the Menu </a>
+        <a href="catering.html">Catering Info |</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Instagram</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Stay Updated</h4>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <p>© 2025 The Parlor. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  <!-- Small JS: mobile menu + reveal on scroll -->
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // basic menu toggle (if you want to expand later)
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if(menuToggle){
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        if(navLinks.classList.contains('open')){
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '72px';
+          navLinks.style.right = '16px';
+          navLinks.style.background = '#fff';
+          navLinks.style.padding = '12px';
+          navLinks.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+          navLinks.style.borderRadius = '10px';
+        } else {
+          navLinks.style.display = '';
+          navLinks.style.flexDirection = '';
+          navLinks.style.position = '';
+          navLinks.style.top = '';
+          navLinks.style.right = '';
+          navLinks.style.background = '';
+          navLinks.style.padding = '';
+          navLinks.style.boxShadow = '';
+          navLinks.style.borderRadius = '';
+        }
+      });
+    }
+
+    // Simple reveal on scroll
+    const reveals = document.querySelectorAll('.mission, .kcra, .reviews, .hero-inner');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.12});
+    reveals.forEach(r=>io.observe(r));
+  </script>
+</body>
+</html>

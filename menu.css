@@ -1,0 +1,823 @@
+/* ==========================================================================
+   menu.css — The Parlor (complete, comprehensive)
+   - Preserves your hero & menu-button styles exactly where requested.
+   - Adds polished flip-card system, responsive layout, animations, and
+     fallback styles.
+   - Keep this file as the authoritative source for menu page styling.
+   ========================================================================== */
+
+  /* ---- GLOBAL RESET: remove all unwanted page margins ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ---- REMOVE ANY ACCIDENTAL SPACE FROM NAV OR CANVAS ---- */
+nav, #canvas {
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+#canvas {
+  display: none; /* if it’s empty and causes space */
+}
+
+/* Optional: if nav is fixed, ensure body padding doesn’t create white band */
+body {
+  scroll-behavior: smooth;
+}
+
+  
+
+/* ---------------------------
+   DESIGN TOKENS / VARIABLES
+   --------------------------- */
+   :root{
+    /* colors */
+    --lavender-50: #f6e9ff;
+    --lavender-100: #e8d4ff;
+    --lavender-300: #b99bff;
+    --lavender-500: #a05eff;
+    --accent-dark: #3a0e5a;
+    --muted-ink: #5a4b6f;
+    --black-900: #060A0A;
+    --white: #ffffff;
+    --cream-100: #fff8f2;
+    --sky-100: #f7fbff;
+    --border-100: rgba(6,10,10,0.08);
+    --shadow-soft: 0 8px 20px rgba(6,10,10,0.08);
+    --shadow-strong: 0 18px 40px rgba(6,10,10,0.12);
+  
+    /* spacing */
+    --gutter: 24px;
+    --radius-lg: 20px;
+    --ease: cubic-bezier(.2,.9,.15,1);
+  
+    /* typography */
+    --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    --font-alt: "Montserrat Alternates", var(--font-sans);
+  }
+  
+  /* --------------------------------------------------------------
+     Reset + base
+     -------------------------------------------------------------- */
+  * { box-sizing: border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  html, body { margin:0; padding:0; height:100%; width:100%; }
+  body { font-family: var(--font-sans); color: var(--black-900); background: #fff; line-height:1.45; overflow-x:hidden; }
+
+  
+/* ---------- HERO VIDEO (unchanged layout, no white space) ---------- */
+.menu-video-container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-video {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* =============== LAVENDER DREAM DRIP + BUBBLY BUTTON =============== */
+.btn-lavender {
+  --drip-base: #e6d6ff; /* light lavender */
+  --drip-accent: #d4bfff; /* pastel lilac */
+  --drip-highlight: rgba(255, 255, 255, 0.8);
+
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 300;
+  display: inline-block;
+  text-decoration: none;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 36px);
+  border-radius: 40px;
+  border: none;
+  color: #3c1f57; /* deep purple text for contrast */
+  cursor: pointer;
+  border: 0.5px solid rgba(60, 31, 87, 0.3);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--drip-base), var(--drip-accent));
+  box-shadow: 0 6px 15px rgba(100, 60, 150, 0.25);
+  font-size: clamp(14px, 1.8vw, 18px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  isolation: isolate;
+  width: auto;
+  align-self: center;
+  margin-top: 20px;
+}
+
+/* Remove underline on links */
+.btn-lavender:link,
+.btn-lavender:visited {
+  text-decoration: none;
+}
+
+/* FLOATING BUBBLES */
+.btn-lavender::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(236, 220, 255, 0.7) 8px, transparent 12px),
+    radial-gradient(circle at 35% 75%, rgba(240, 225, 255, 0.7) 10px, transparent 14px),
+    radial-gradient(circle at 75% 35%, rgba(225, 205, 255, 0.6) 12px, transparent 16px),
+    radial-gradient(circle at 90% 60%, rgba(255, 230, 255, 0.6) 9px, transparent 12px),
+    radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.4) 6px, transparent 9px),
+    radial-gradient(circle at 20% 60%, rgba(230, 210, 255, 0.5) 8px, transparent 11px),
+    radial-gradient(circle at 80% 80%, rgba(240, 225, 255, 0.6) 10px, transparent 13px),
+    radial-gradient(circle at 40% 20%, rgba(250, 240, 255, 0.7) 11px, transparent 15px),
+    radial-gradient(circle at 65% 50%, rgba(255, 250, 255, 0.5) 7px, transparent 10px),
+    radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.4) 6px, transparent 9px);
+  background-size: 300% 300%;
+  animation: bubbles 12s infinite ease-in-out;
+  opacity: 0.8;
+  z-index: 0;
+  filter: blur(1px);
+}
+
+/* DRIP EFFECT */
+.btn-lavender::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(0);
+  width: 70%;
+  height: 22px;
+  background: radial-gradient(circle at 50% 0, var(--drip-accent) 0%, transparent 70%);
+  transition: transform 0.4s ease;
+  transform-origin: top;
+  z-index: 1;
+}
+
+/* HOVER ANIMATIONS */
+.btn-lavender:hover::after {
+  transform: translateX(-50%) scaleY(1);
+}
+
+.btn-lavender:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(90, 40, 140, 0.35);
+}
+
+/* BUBBLE MOTION */
+@keyframes bubbles {
+  0% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 50% 80%;
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(25deg);
+  }
+  75% {
+    background-position: 50% 20%;
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* RESPONSIVE / MOBILE */
+@media (max-width: 767px) {
+  .form-button,
+  .btn-lavender {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (hover: none) {
+  .btn-lavender:active {
+    transform: scale(0.96);
+  }
+}
+  
+/* Explore Button Container */
+.explore-button-container {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Optional: soft fade-in animation */
+.explore-button-container {
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   MENU FLIP CARD (same as About page)
+   ========================= */
+.menu-card {
+  perspective: 1000px;
+}
+
+.menu-inner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(255, 182, 193, 0.25);
+}
+
+.menu-card:hover .menu-inner {
+  transform: rotateY(180deg);
+}
+
+.menu-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover .menu-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+ 
+  /* ================================================================
+   FLIP CARDS — 3D Door-Style Animation for Menu Items
+================================================================ */
+.menu-card {
+  perspective: 1200px;
+  height: 360px;
+  min-height: 320px;
+}
+
+.menu-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s var(--ease);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--white) 0%, rgba(255,255,255,0.96) 100%);
+}
+
+ .menu-card-inner {
+  transform: rotateY(-180deg);
+}
+/* Back face */
+.menu-card-back {
+  transform: rotateY(180deg);
+  background: none; /* remove gradient since the image will fill it */
+  overflow: hidden;
+  padding: 0;
+}
+
+.menu-card-back img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 32px;
+  transform: scale(1.05);
+  transition: transform 0.6s ease;
+}
+
+.menu-card.is-flipped .menu-card-back img {
+  transform: scale(1);
+}
+/* Ice Cream Puff */
+.menu-card.card1 .menu-card-back img {
+  object-position: center top; /* show top of image */
+  transform: scale(1.1);
+}
+
+
+.menu-card-front,
+.menu-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 22px;
+  background-color: white;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.menu-card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.menu-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, rgba(230,220,255,0.6), rgba(245,240,255,0.85));
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Back slideshow layers */
+.menu-card-back .back-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.menu-card-back .back-slide.is-visible {
+  opacity: 1;
+}
+
+/* Icon + text front styling */
+.menu-card-front img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(110,66,150,0.12));
+}
+
+.menu-card-front h4 {
+  margin: 10px 0 8px;
+  font-weight: 500;
+  color: var(--accent-dark);
+  text-align: center;
+}
+
+.menu-card-front p {
+  color: var(--muted-ink);
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+  
+  /* --------------------------------------------------------------------
+     FLAVOR GRID (preserve all flavor cards & positions)
+     We'll provide a responsive replacement that preserves each item
+     visually while eliminating absolute-position chaos.
+     -------------------------------------------------------------------- */
+  .flavors-section {
+    position: relative;
+    width: 100%;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+    background: transparent;
+  }
+  
+  /* Title + Subtitle (responsive; we override any absolute)
+     Keep big visual scale but responsive using clamp */
+  .flavors-title {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 6rem);
+    color: #000;
+    text-align:center;
+    margin: 0 auto 0.5rem auto;
+    text-shadow: 0px 4px 20px #FFC6E5;
+  }
+  .flavors-subtitle {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 2.2vw, 1.9rem);
+    text-align:center;
+    margin: 1rem auto 2rem auto;
+    max-width:980px;
+  }
+  
+  /* capsule and background */
+  .flavors-bg {
+    display: block;
+    width: min(1200px, 90%);
+    height: 120px;
+    margin: 1rem auto 2rem auto;
+    background: #FFF5F5;
+    border-radius: 120px;
+    z-index: 0;
+  }
+  
+/* ------------------------------
+   FLAVOR GRID — Hover or Tap Descriptions
+   ------------------------------ */
+
+  /* =============================
+   FLAVOR GRID — Lavender Theme
+   ============================= */
+
+.flavor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 26px;
+  justify-items: center;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* Ensure the flavor card is the containing block for absolute children */
+.flavor-item {
+  position: relative;
+  overflow: visible; /* allow badge to sit partly outside if needed */
+}
+
+/* Responsive dairy-free badge */
+.flavor-item .diet-badge {
+  position: absolute;
+  /* slight offset from the corner using rem so it scales with root font-size */
+  top: 0.6rem;
+  left: 0.6rem;
+
+  /* responsive size: min 40px, preferred based on viewport, max 72px */
+  width: clamp(20px, 6.5vw, 72px);
+  height: clamp(20px, 6.5vw, 72px);
+
+  display: inline-grid;
+  place-items: center;               /* center the inner icon */
+  padding: clamp(4px, 0.7vw, 8px);   /* inner padding adapts */
+
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(6,10,10,0.08);
+  z-index: 999;
+  pointer-events: none;              /* doesn't interfere with clicks */
+  transform: translateZ(0);          /* promote to its own layer for crispness */
+  will-change: transform, opacity;
+  transition: transform .15s ease, opacity .15s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Icon inside the badge — fill the badge cleanly */
+.flavor-item .diet-badge img,
+.flavor-item .diet-badge svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* Optional: slightly bigger badge on hover (tasteful emphasis) */
+.flavor-item:hover .diet-badge,
+.flavor-item:focus-within .diet-badge {
+  transform: translateZ(0) scale(1.06);
+}
+
+/* Ensure exact positioning on very small screens (extra safety) */
+@media (max-width: 420px) {
+  .flavor-item .diet-badge {
+    top: 0.45rem;
+    left: 0.45rem;
+    width: clamp(31px, 9vw, 60px);
+    height: clamp(31px, 9vw, 60px);
+    padding: 4px;
+  }
+}
+
+/* Desktop version: stable, elegant badge */
+@media (min-width: 1024px) {
+  .flavor-item .diet-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 38px;
+    height: 38px;
+    padding: 5px;
+
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    box-shadow: 0 6px 14px rgba(160, 94, 255, 0.15); /* soft lavender glow */
+    border: 1px solid rgba(160, 94, 255, 0.25);
+    object-fit: contain;
+
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .flavor-item:hover .diet-badge {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(160, 94, 255, 0.25);
+  }
+
+  /* Icon inside badge */
+  .flavor-item .diet-badge img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+  }
+}
+/* iPad & similar tablets: slightly larger ice cream images */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .flavor-item img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+
+/* 🌿 Default (non-hover) look for dairy-free card */
+.flavor-item.dairy-free {
+  background: linear-gradient(180deg, rgba(230, 255, 230, 0.95), rgba(210, 250, 210, 0.9));
+  border: 2px solid rgba(140, 220, 140, 0.5);
+  box-shadow: 0 6px 14px rgba(80, 160, 100, 0.12);
+}
+
+/* Keep dairy-free hover cohesive with green tones */
+.flavor-item.dairy-free:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(80, 160, 100, 0.22);
+}
+
+/* Hover overlay itself turns greener */
+.flavor-item.dairy-free .flavor-hover {
+  background: rgba(210, 255, 210, 0.96);
+  color: #174b2b;
+  border-radius: 16px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.flavor-item.dairy-free:hover .flavor-hover {
+  background: linear-gradient(180deg, rgba(190, 250, 190, 0.95), rgba(220, 255, 220, 0.9));
+  box-shadow: 0 8px 20px rgba(100, 220, 130, 0.25);
+}
+
+/* Flavor Item */
+.flavor-item {
+  position: relative;
+  width: 100%;
+  max-width: 210px; /* reduced size for desktop */
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(180deg, #f6e9ff 0%, #fff8ff 100%);
+  border: 1.5px solid #d6c2f5;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(160, 94, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Ice Cream Image */
+.flavor-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 6px 14px rgba(110, 66, 150, 0.08));
+}
+
+/* Desktop: Make flavor images larger */
+@media (min-width: 1367px) {
+  .flavor-item img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+/* Flavor Name */
+.flavor-item p {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #4a2d6f;
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover Description Layer */
+.flavor-hover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(246, 233, 255, 0.95) 0%, rgba(255, 245, 255, 1) 100%);
+  color: #3a0e5a;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 1.2rem;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover Animations */
+.flavor-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(160, 94, 255, 0.18);
+}
+
+.flavor-item:hover .flavor-hover {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.flavor-item:hover p {
+  opacity: 0;
+}
+
+/* ---------- Responsive Layout ---------- */
+
+/* Mobile: 2 per row — works across all small devices */
+@media (max-width: 768px) {
+  .flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* ensures equal split */
+    justify-items: center; /* centers cards in grid */
+    align-items: start;
+    gap: 16px;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .flavor-item {
+    width: 100%;
+    max-width: 160px; /* keeps boxes contained */
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+
+
+  .flavor-item p {
+    font-size: 0.65rem;
+  }
+}
+
+
+  /* ====================================================================
+     ACCESSIBILITY + INTERACTION ENHANCEMENTS
+     - Focus states, reduced motion, keyboard friendly interactions
+     ==================================================================== */
+  a:focus, button:focus, .menu-column:focus { outline: 3px solid rgba(160,94,255,0.18); outline-offset: 3px; }
+
+  /* ====================================================================
+     OPTIONAL: small utilities
+     ==================================================================== */
+  .container { max-width:1200px; margin:0 auto; padding: 0 16px; }
+  .center { display:flex; align-items:center; justify-content:center; }
+  
+  /* ====================================================================
+     DEBUG helpers (comment out in production)
+     ==================================================================== */
+  /* .menu-column { outline: 1px dashed rgba(0,0,0,0.04); } */
+  
+  /* ====================================================================
+     LEGACY RULES RETAINED (non-destructive)
+     - If you still load legacy CSS that set absolute card positions,
+       the new approach neutralizes them by making those classes relative.
+     ==================================================================== */
+  .card1, .card2, .card3, .card4, .card5, .card6, .card7, .card8, .card9, .card10, .card11, .card12 {
+    /* kept relative to avoid breaking layout if old styles exist */
+    left: auto !important;
+    top: auto !important;
+    position: relative !important;
+  }
+  
+  /* ====================================================================
+     FURTHER FINISHES
+     - Gentle entrance animations for cards (subtle)
+     ==================================================================== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .menu-column { animation: fadeInUp 0.6s var(--ease) both; }
+  
+  /* staggered effect for nice polish (supports up to 12 cards) */
+  .menu-column:nth-child(1)  { animation-delay: 0.04s; }
+  .menu-column:nth-child(2)  { animation-delay: 0.08s; }
+  .menu-column:nth-child(3)  { animation-delay: 0.12s; }
+  .menu-column:nth-child(4)  { animation-delay: 0.16s; }
+  .menu-column:nth-child(5)  { animation-delay: 0.20s; }
+  .menu-column:nth-child(6)  { animation-delay: 0.24s; }
+  .menu-column:nth-child(7)  { animation-delay: 0.28s; }
+  .menu-column:nth-child(8)  { animation-delay: 0.32s; }
+  .menu-column:nth-child(9)  { animation-delay: 0.36s; }
+  .menu-column:nth-child(10) { animation-delay: 0.40s; }
+  .menu-column:nth-child(11) { animation-delay: 0.44s; }
+  .menu-column:nth-child(12) { animation-delay: 0.48s; }
+
+/* --------- Footer cleanup (prevent big gap) --------- */
+.site-footer {background: linear-gradient(180deg, #eee6f9 0%, #cdb2e9 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
+.footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
+.footer-columns { display:flex; gap:24px; flex:1; justify-content:flex-end; }
+.footer-column { min-width:160px; }
+.footer-logo { width:88px; height:auto; display:block; }
+
+/* --------- Small screen adjustments --------- */
+@media (max-width: 640px) {
+  .footer-container { flex-direction:column; align-items:center; text-align:center; }
+}
+/* --------- Mobile Footer Optimization (Phones) --------- */
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 30px 16px;
+    text-align: center;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .footer-logo {
+    width: 65px;
+    margin-bottom: 10px;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .footer-column {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .footer-heading {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-link {
+    font-size: 0.85rem;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    margin-top: 18px;
+    line-height: 1.4;
+  }
+
+  .footer-legal-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.75rem;
+  }
+
+  .footer-legal-links a {
+    text-decoration: none;
+  }
+}
+

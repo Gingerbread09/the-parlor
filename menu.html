@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Parlor — Menu</title>
+
+  <!-- Shared Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS (kept external as you requested) -->
+
+  <link rel="stylesheet" href="menu.css" />
+  <link rel="stylesheet" href="navbar.css" />
+
+  <!-- Small page-specific styles for layout & flip cards that are safe to include inline.
+       You can move these into menu.css later if you prefer. -->
+  <style>
+    /* --- Layout safety / reset for this page only --- */
+    html,body { margin:0; padding:0; font-family: 'Montserrat', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    #canvas { padding-top: 90px; } /* matches your previous offset */
+
+    /* ---- KEEP HERO SECTION LAYOUT UNCHANGED (you asked to leave it untouched) ---- */
+    /* no CSS changes for hero/video/menu-button here to respect your request */
+
+    /* ==== Pastel Luxe: Menu area visual theme ==== */
+    :root{
+      --pastel-1: #f6e8ff;   /* very light lavender */
+      --pastel-2: #efe9ff;   /* soft lilac */
+      --accent: #6f3aa6;     /* muted purple accent */
+      --muted: #5a4b6f;
+      --card-bg: #fff;
+      --glass: rgba(255,255,255,0.6);
+      --shadow-soft: 0 10px 30px rgba(110,66,150,0.08);
+      --shadow-strong: 0 20px 50px rgba(110,66,150,0.12);
+      --ease: cubic-bezier(.2,.9,.3,1);
+    }
+
+    /* ---- Menu Section wrapper (modernized) ---- */
+    .menu-section {
+      background: linear-gradient(180deg, rgba(246,232,255,0.6) 0%, rgba(244,240,255,0.9) 40%);
+      padding: 72px 24px;
+      box-sizing: border-box;
+    }
+
+    .menu-section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-section-title {
+  max-width: 720px;
+  margin: 0 auto;           /* centers the block horizontally */
+  text-align: center;       /* centers text inside */
+  font-family: 'Lily Script One';
+  font-size: clamp(32px, 5vw, 64px);
+  color: var(--accent-dark);
+  line-height: 1.2;
+}
+
+
+    .menu-section-title h2 {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-weight: 300;
+      color: var(--accent);
+      font-size: clamp(28px, 4vw, 40px);
+      margin: 0 0 8px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .menu-section-title p {
+      margin: 0 0 28px 0;
+      color: var(--muted);
+      font-size: clamp(14px, 1.2vw, 16px);
+      line-height: 1.6;
+      max-width: 880px;
+    }
+
+    /* ---- Grid of flip cards ---- */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    /* Make sure 2 columns on tablet and 1 on mobile */
+    @media (max-width: 960px) {
+      .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    }
+    @media (max-width: 620px) {
+      .menu-grid { grid-template-columns: 1fr; gap: 14px; padding: 0 8px; }
+    }
+
+
+
+    /* Keep the original absolute-positioned script layers intact but ensure they don't break flow:
+       We'll place them inside a wrapper with safe z-index and pointer-events disabled so they won't interfere. */
+    .script-background {
+      position: relative; /* flow with document */
+      width: 100%;
+      box-sizing: border-box;
+      padding: 40px 24px 120px;
+      overflow: visible;
+      background: transparent;
+    }
+
+    /* Small utility */
+    .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+  </style>
+</head>
+<body>
+  <!-- ==========================
+       NAV + HERO (LEFT EXACTLY AS-IS)
+       ========================== -->
+       <nav class="navbar">
+        <!-- Left side (mobile only) -->
+        <div class="left-icons">
+          <div class="location-icon" id="locationBtn"></div>
+          <div class="time-icon" id="timeBtn"></div>
+          <div class="info-content" id="locationContent">
+            <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
+          </div>
+          <div class="info-content" id="timeContent">
+             <strong>Hours:</strong><br>
+          Thursday: 1–9:30 PM<br>
+          Friday: 1–10 PM<br>
+          Saturday: 1–10 PM<br>
+          Sunday: 1–9:30 PM<br>
+          Monday (Labor Day): 1–9:30 PM<br>
+          Tuesday: 1–9:30 PM<br>
+          Wednesday: 1–9:30 PM
+          </div>
+        </div>
+      
+        <!-- Logo (always centered) -->
+        <div class="navbar-logo">
+          <a href="index.html">
+            <img src="Parlor_logo.png" alt="The Parlor Logo" />
+          </a>
+        </div>
+      
+        <div class="right-links">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="highlight">Menu</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="catering.html">Catering</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+          </ul>
+        
+          <a href="menu.html" class="menu-toggle" id="menuToggle"></a>
+        
+          <!-- Scroll button for mobile -->
+          <div class="scroll-button" id="scrollBtn"></div>
+        
+          <!-- Scroll dropdown menu -->
+          <div class="scroll-menu" id="scrollMenu">
+            <a class="scroll-link" href="index.html">HOME</a>
+            <a class="scroll-link" href="aboutus.html">ABOUT US</a>
+            <a class="scroll-link" href="contact.html">CONTACT US</a>
+            <a class="scroll-link" href="catering.html">CATERING</a>
+            <a class="scroll-link" href="jobs.html">JOBS</a>
+          </div>
+        </div>
+      
+        <!-- Mobile dropdown -->
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="aboutus.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="catering.html">Catering</a>
+          <a href="jobs.html">Jobs</a>
+        </div>
+        <script>
+          // Location & Time dropdowns
+          const locationBtn = document.getElementById('locationBtn');
+          const timeBtn = document.getElementById('timeBtn');
+          const locationContent = document.getElementById('locationContent');
+          const timeContent = document.getElementById('timeContent');
+      
+          locationBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            locationContent.classList.toggle('show');
+            timeContent.classList.remove('show');
+          });
+      
+          timeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            timeContent.classList.toggle('show');
+            locationContent.classList.remove('show');
+          });
+      
+          // Scroll dropdown
+          const scrollBtn = document.getElementById('scrollBtn');
+          const scrollMenu = document.getElementById('scrollMenu');
+      
+          scrollBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            scrollMenu.classList.toggle('show');
+          });
+      
+          // Close all dropdowns when clicking outside
+          document.addEventListener('click', () => {
+            locationContent.classList.remove('show');
+            timeContent.classList.remove('show');
+            scrollMenu.classList.remove('show');
+          });
+  
+        </script>
+      </nav>    
+
+  <div id="canvas"> </div>
+
+ <!-- Heroine Video Block (left exactly as you gave it — untouched) -->
+<div class="menu-video-container">
+  <video autoplay muted loop playsinline class="menu-video">
+    <source src="videos/heroine.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<!-- Explore Button Section -->
+<div class="explore-button-container">
+  <a href="#flavors" class="btn-lavender">Explore Our Flavors</a>
+</div>
+
+  <!-- ==========================
+       MODERNIZED MENU SECTION — Pastel Luxe
+       ========================== -->
+  <section class="menu-section" aria-labelledby="menuHeading">
+    <div class="menu-section-container">
+      <div class="menu-section-header">
+        <div class="menu-section-title" id="menuHeading">
+          <h2>Our Menu</h2>
+          <p>
+            Pick your favorite ice cream flavors, mix and match, and enjoy them just like our signature creations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid of six horizontal-flip (door-like) cards.
+           Each card flips along the Y axis — front has icon/title/desc,
+           back shows full-bleed image. -->
+      <div class="menu-grid" aria-live="polite">
+        <!-- Card 1 -->
+       <article class="menu-card" tabindex="0" aria-labelledby="m1-title">
+<!-- MENU CARD -->
+<div class="menu-card puff">
+  <div class="menu-inner">
+    <!-- FRONT -->
+    <div class="menu-card-front">
+      <img class="menu_icon" src="icons/sweet.png" alt="Ice Cream Icon">
+      <h4>ICE CREAM PUFF</h4>
+      <p>Crispy, golden donut - glazed or unglazed, filled with your choice of two premium ice creams, hot-pressed into pure handheld bliss oozing with joy.</p>
+    </div>
+
+    <!-- BACK -->
+    <div class="menu-card-back">
+      <img src="images/img1.jpg" alt="puff" />
+    </div>
+  </div>
+</div>
+</article>
+
+        <!-- Card 2 -->
+        <div class="menu-card milkshake">
+          <div class="menu-inner">
+            <!-- FRONT 2 -->
+            <div class="menu-card-front">
+              <img class="menu_icon" src="icons/scoop.png" alt="Shake Icon">
+              <h4>MILKSHAKE</h4>
+              <p>Indulgently creamy shakes made using three scoops of your favorite ice cream spun with milk, topped with whipped cream.</p>
+            </div>
+        
+            <!-- BACK 2 -->
+            <div class="menu-card-back">
+              <img src="images/shake.jpg" alt="SHAKE" />
+            </div>
+          </div>
+        </div>
+        </article>
+
+        <!-- Card 3 -->
+        <div class="menu-card works">
+          <div class="menu-inner">
+            <!-- FRONT 3 -->
+            <div class="menu-card-front">
+              <img class="menu_icon" src="icons/milk-shake.png" alt="Works Icon">
+              <h4>THE WORKS</h4>
+              <p>Dive into our The Works where a Nutella-filled donut meets a luscious ice cream shake. It's a dessert experience that will leave you craving more! </p>
+            </div>
+        
+            <!-- BACK 3 -->
+            <div class="menu-card-back">
+              <img src="images/works1.jpg" alt="works" />
+            </div>
+          </div>
+        </div>
+        <!-- CARD 4 -->
+               <div class="menu-card churro">
+                <div class="menu-inner">
+                <!-- FRONT 4 -->
+                <div class="menu-card-front">
+                 <img class="menu_icon" src="icons/churros.png" alt="Ice Cream churro">
+                <h4>CHURRO & ICE CREAM</h4>
+                   <p>Crunchy warm churros dunked into rich creamy ice cream - salty, sweet, and texturally perfect.</p>
+                </div>
+        
+                <!-- BACK 4 -->
+               <div class="menu-card-back">
+               <img src="images/churro.jpg" alt="churro" />
+            </div>
+          </div>
+        </div>
+
+         <!-- CARD 5 -->
+         <div class="menu-card sundae">
+          <div class="menu-inner">
+          <!-- FRONT 5 -->
+          <div class="menu-card-front">
+           <img class="menu_icon" src="icons/ice-cream.png" alt="Ice Cream sundae">
+          <h4>CLASSIC SCOOPS</h4>
+             <p>Our Ice Cream Scoops come in Kids, Single, and Double scoop sizes. Each one is a perfect blend of creamy ice cream and delightful toppings.</p>
+          </div>
+  
+          <!-- BACK 5 -->
+         <div class="menu-card-back">
+         <img src="images/photo9.jpg" alt="puff" />
+      </div>
+    </div>
+  </div>
+   
+   <!-- CARD 6 -->
+   <div class="menu-card dunk">
+    <div class="menu-inner">
+    <!-- FRONT 6 -->
+    <div class="menu-card-front">
+     <img class="menu_icon" src="icons/churros (1).png" alt="Ice Cream dunk">
+    <h4>CHURRO WORKS</h4>
+       <p>Two churros dunked in our creamy Ice Cream Shake - the crunchy + creamy fusion you didn’t know you needed.</p>
+    </div>
+
+    <!-- BACK 6 -->
+   <div class="menu-card-back">
+   <img src="images/CW.jpg" alt="puff" />
+</div>
+</div>
+</div>
+
+  </section>
+
+  <!-- ==========================
+       FLAVORS — Keep all flavor items (modernized grid)
+       ========================== -->
+  <section id="flavors" class="flavors-section" aria-labelledby="flavorsHeading">
+    <h2 id="flavorsHeading" class="flavors-title">ALL FLAVORS</h2>
+    <p class="flavors-subtitle">Explore every scoop, swirl, and surprise we’ve got waiting for you.</p>
+
+    <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
+
+    <!-- Modern responsive flavor grid (keeps all original flavor cards / names & image paths) -->
+    <div class="flavor-grid" id="flavor-grid">
+      <div class="flavor-item">
+        <img src="menu/M1.png" alt="">
+        <p>BLACK RASPBERRY CHIP</p>
+        <div class="flavor-hover">Tangy Black Raspberries swirled with rich Dark Chocolate Chips.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M2.png" alt="">
+        <p>CAKE BATTER</p>
+        <div class="flavor-hover">Sweet and buttery, just like licking the spoon of Birthday Cake Batter.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M3.png" alt="">
+        <p>COCOA BUTTER KISSES</p>
+        <div class="flavor-hover">Silky Chocolate Cookie Butter with Graham Cracker.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M5.png" alt="">
+        <p>ELMO'S REVENGE</p>
+        <div class="flavor-hover">Vanilla Ice Cream with Oreo, Cookie Dough and Chocolate Chips.</div>
+      </div>
+          
+      <div class="flavor-item">
+        <img src="menu/M4.png" alt="">
+        <p>FIFTY SHADES OF GREY</p>
+        <div class="flavor-hover">Black Tea with notes of Bergamot and soft Vanilla undertones.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M6.png" alt="">
+        <p>GREEN WITH ENVY</p>
+        <div class="flavor-hover">Creamy Matcha Green Tea sweetened with Vanilla.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M7.png" alt="">
+        <p>HELLO KALO</p>
+        <div class="flavor-hover">Taro Coconut Ice Cream with Condensed Milk.</div>
+      </div>
+    
+      <div class="flavor-item dairy-free">
+        <img src="icons/dairy.png" alt="Dairy Free" class="diet-badge">
+        <img src="menu/M8.png" alt="">
+        <p>MAIN-GO</p>
+        <div class="flavor-hover">
+          Our only Dairy-Free Option. Juicy Mango Sorbet.
+        </div>
+      </div>    
+
+      <div class="flavor-item">
+        <img src="menu/M9.png" alt="">
+        <p>MIDNIGHT IN PARIS</p>
+        <div class="flavor-hover">Hazelnut Dark Chocolate with Espresso.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M10.png" alt="">
+        <p>PECAN PRALINE</p>
+        <div class="flavor-hover">Toasted Pecans wrapped in ribbons of Buttery Caramel Goodness.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M11.png" alt="">
+        <p>ROCKY ROAD</p>
+        <div class="flavor-hover">Chocolate, Marshmallows, and Almonds for a classic adventure.</div>
+      </div>
+    
+      <div class="flavor-item">
+        <img src="menu/M12.png" alt="">
+        <p>WENDELL</p>
+        <div class="flavor-hover">Vanilla Sweet cream Ice Cream with ribbons of Cinnamon Swirls.</div>
+      </div>
+    </div>
+    
+  </section>
+
+<!-- ==========================
+     TOPPINGS — Modern Grid
+     ========================== -->
+     <section id="toppings" class="flavors-section" aria-labelledby="toppingsHeading">
+      <h2 id="toppingsHeading" class="flavors-title">ALL TOPPINGS</h2>
+      <p class="flavors-subtitle">Pick your favorite toppings to crown your perfect scoop.</p>
+    
+      <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
+    
+      <div class="flavor-grid" id="topping-grid">
+        <!-- Example topping items — replace with real images -->
+        <div class="flavor-item">
+          <img src="toppings/T1.png" alt="Almonds">
+          <p>ALMONDS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T3.png" alt="Cereal">
+          <p>CEREAL</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T5.png" alt="Cinnamon">
+          <p>CINNAMON TOAST CRUNCH</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T4.png" alt="Dark Chocolate Chips">
+          <p>DARK CHOCOLATE CHIPS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T6.png" alt="Fruit pebbles">
+          <p>FRUITY PEBBLES</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T6_2.png" alt="graham">
+          <p>GRAHAM CRACKER</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T6_1.png" alt="Gummy">
+          <p>GUMMY BEARS</p>
+        </div>
+
+        <div class="flavor-item">
+          <img src="toppings/T7.png" alt="Marshmallow">
+          <p>MARSHMALLOWS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T8.png" alt="m&m">
+          <p>M&MS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T9.png" alt="Milk chocolate chips">
+          <p>MILK CHOCOLATE CHIPS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T10.png" alt="Oreo Cookies">
+          <p>OREO COOKIES</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T2.png" alt="Butter">
+          <p>PEANUTBUTTER CHIPS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T11.png" alt="Pretzels">
+          <p>PRETZELS</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T12.png" alt="Shredded Coconut">
+          <p>SHREDDED COCONUT</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/T13.png" alt="Sprinkles">
+          <p>SPRINKLES</p>
+        </div>
+
+      </div>
+    </section>
+    
+    <!-- ==========================
+         SAUCES — Modern Grid
+         ========================== -->
+    <section id="sauces" class="flavors-section" aria-labelledby="saucesHeading">
+      <h2 id="saucesHeading" class="flavors-title">SAUCES</h2>
+      <p class="flavors-subtitle">Drizzle your dessert with something extra sweet.</p>
+    
+      <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
+    
+      <div class="flavor-grid" id="sauce-grid">
+        <div class="flavor-item">
+          <img src="toppings/S1.png" alt="Caramel Sauce">
+          <p>CARAMEL SAUCE</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/S2.png" alt="Chocolate Sauce">
+          <p>CHOCOLATE SAUCE</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/CM.png" alt="Condensed Milk">
+          <p>CONDENSED MILK</p>
+        </div>          
+        <div class="flavor-item">
+          <img src="toppings/hon.png" alt="Honey">
+          <p>Honey</p>
+        </div>        
+        <div class="flavor-item">
+          <img src="toppings/S2.0.png" alt="Marshmallow Fluff">
+          <p>MARSHMALLOW FLUFF</p>
+        </div>        
+        <div class="flavor-item">
+          <img src="toppings/S2.1.png" alt="PB Sauce">
+          <p>PEANUT BUTTER</p>
+        </div>        
+        <div class="flavor-item">
+          <img src="toppings/S3.png" alt="Strawberry Sauce">
+          <p>STRAWBERRY SAUCE</p>
+        </div>
+      </div>
+    </section>
+<!-- ==========================
+     CONES — Modern Grid
+     ========================== -->
+     <section id="cones" class="flavors-section" aria-labelledby="conesHeading">
+      <h2 id="conesHeading" class="flavors-title">CONES</h2>
+      <p class="flavors-subtitle">Choose your favorite base for the perfect scoop.</p>
+    
+      <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
+    
+      <div class="flavor-grid" id="cones-grid">
+        <div class="flavor-item">
+          <img src="toppings/C1.png" alt="Cake Cone">
+          <p>CAKE CONE</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/C3.png" alt="Sugar Cone">
+          <p>SUGAR CONE</p>
+        </div>
+        <div class="flavor-item">
+          <img src="toppings/C2.png" alt="Waffle Cone">
+          <p>WAFFLE CONE</p>
+        </div>
+      </div>
+    </section>
+    
+    
+<!-- FOOTER (kept visually same — content preserved) -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="parlor_logo.png" alt="The Parlor Logo" class="footer-logo">
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Explore More</h4>
+        <a href="contact.html">Contact Us |</a>
+        <a href="menu.html">Explore the Menu |</a>
+        <a href="catering.html">Catering Info |</a>
+        <a href="index.html#gallery">Gallery |</a>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Instagram</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Stay Updated</h4>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <p>© 2025 The Parlor. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+ <!-- ======= Minimal flip script for menu cards ======= -->
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".menu-card");
+  
+    cards.forEach(card => {
+      // Flip on click/tap
+      card.addEventListener("click", () => {
+        card.classList.toggle("is-flipped");
+      });
+  
+      // Keyboard accessibility (Enter or Space flips, Escape resets)
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          card.classList.toggle("is-flipped");
+        } else if (e.key === "Escape") {
+          card.classList.remove("is-flipped");
+          card.blur();
+        }
+      });
+    });
+  });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,540 @@
+/* ===================================================
+   CONTACT PAGE — MODERN RESPONSIVE REDESIGN (2025)
+   Author: The Parlor Revamp
+   =================================================== */
+
+/* =========================
+   BASE & VARIABLES
+========================= */
+/* THEME VARIABLES — paste at top of contact.css */
+:root{
+  --brand-pastel: #f3fff4;    /* soft matcha pastel used in hero background */
+  --card-bg: #f3f4e4;         /* card background for phone/email */
+  --form-bg: #ffffff;         /* slightly warm neutral for the form area */
+  --muted: #79c864;           /* darker accent for text when needed */
+  --accent: #b9e6ad;          /* primary accent color */
+  --radius: 16px;
+  --shadow: 0 8px 22px rgba(16, 24, 32, 0.08);
+}
+
+/* Make hero continue to look green but allow other sections to contrast */
+.contact-header { background-color: var(--brand-pastel); }
+.contact-block { background: var(--card-bg); }
+.contact-section { background: var(--form-bg); }
+.contact-text h3, .contact-heading { color: var(--muted); }
+.contact-text a, .form-button { color: var(--accent); }
+
+  
+  body {
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+    background: #fff;
+    overflow-x: hidden;
+  }
+
+  .form-button {
+    background: linear-gradient(90deg, #4f8a49, #6dbf6a);
+    color: #fff;
+  }
+  
+  
+  /* =========================
+     CONTACT HEADER / HERO
+  ========================= */
+  .contact-header {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .contact-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  .contact-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+  }
+  
+  .contact-header-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 0 20px;
+    max-width: 700px;
+  }
+/* Animated gradient text for contact header */
+.contact-title {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 100;
+  background: linear-gradient(90deg, hwb(92 29% 5%), #fdf5ba, #adfb90);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  animation: text-glaze 6s linear infinite;
+  font-family: 'Lily Script One', cursive;
+  text-align: center;
+  z-index: 3;
+  position: relative;
+}
+
+/* Keep the subtle shimmer moving left → right → left */
+@keyframes text-glaze {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Optional: make sure the containing header doesn’t mask the gradient */
+.contact-header-content {
+  position: relative;
+  z-index: 3;
+}
+.contact-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* soft overlay for video contrast */
+  z-index: 1;
+}
+
+  
+  .contact-subtext {
+    font-size: 1.1rem;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 20px;
+  }
+  
+/* =============== TRENDSETTER DRIP + BUBBLY BUTTON =============== */
+.btn-drip {
+  --drip-base: #c8ffd0;
+  --drip-accent: #e0ffb3;
+  --drip-highlight: rgba(255,255,255,0.8);
+
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 300;
+  display: inline-block;
+  text-decoration: none;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 36px);
+  border-radius: 40px;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--drip-base), var(--drip-accent));
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  font-size: clamp(14px, 1.8vw, 18px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  isolation: isolate;
+}
+.btn-drip {
+  width: auto;
+  align-self: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  .form-button,
+  .btn-drip {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Remove underline on links */
+.btn-drip:link,
+.btn-drip:visited {
+  text-decoration: none;
+}
+
+/*  FLOATING BUBBLES */
+.btn-drip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(198, 255, 204, 0.6) 8px, transparent 12px),
+    radial-gradient(circle at 35% 75%, rgba(255, 255, 204, 0.7) 10px, transparent 14px),
+    radial-gradient(circle at 75% 35%, rgba(204, 255, 255, 0.6) 12px, transparent 16px),
+    radial-gradient(circle at 90% 60%, rgba(255, 214, 255, 0.6) 9px, transparent 12px),
+    radial-gradient(circle at 50% 90%, rgba(255, 255, 255, 0.4) 6px, transparent 9px),
+    radial-gradient(circle at 20% 60%, rgba(255, 255, 230, 0.5) 8px, transparent 11px),
+    radial-gradient(circle at 80% 80%, rgba(204, 255, 230, 0.6) 10px, transparent 13px),
+    radial-gradient(circle at 40% 20%, rgba(230, 255, 255, 0.7) 11px, transparent 15px),
+    radial-gradient(circle at 65% 50%, rgba(255, 240, 255, 0.5) 7px, transparent 10px),
+    radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.4) 6px, transparent 9px);
+  background-size: 300% 300%;
+  animation: bubbles 12s infinite ease-in-out;
+  opacity: 0.75;
+  z-index: 0;
+  filter: blur(1px);
+}
+
+/*  DRIP EFFECT */
+.btn-drip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(0);
+  width: 70%;
+  height: 22px;
+  background: radial-gradient(circle at 50% 0, var(--drip-accent) 0%, transparent 70%);
+  transition: transform 0.4s ease;
+  transform-origin: top;
+  z-index: 1;
+}
+
+/* HOVER ANIMATIONS */
+.btn-drip:hover::after {
+  transform: translateX(-50%) scaleY(1);
+}
+
+.btn-drip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* BUBBLE MOTION */
+@keyframes bubbles {
+  0% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 50% 80%;
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(25deg);
+  }
+  75% {
+    background-position: 50% 20%;
+  }
+  100% {
+    background-position: 0% 100%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* RESPONSIVE / MOBILE */
+@media (hover: none) {
+  .btn-drip:active {
+    transform: scale(0.96);
+  }
+}
+  
+  /* =========================
+     SECTION TITLE
+  ========================= */
+  .section-title-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 90px;
+  }
+  
+  .section-title h2 {
+    font-family: 'Montserrat Alternates' ,sans-serif; 
+    font-weight: 375; 
+    font-size: 68px; 
+    line-height: 120%; 
+    font-size: 2rem;
+    color:#6dbf6a;
+    margin-bottom: 10px;
+  }
+  
+  .section-title p {
+    color: var(--text-light);
+    font-size: 1rem;
+  }
+  
+  /* =========================
+     CONTACT INFO BLOCKS
+  ========================= */
+  .contact-info-blocks {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 60px 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-block {
+    background: #f5ffeeeb !important;
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    flex: 1 1 350px;
+    text-align: center;
+    padding: 30px 25px;
+    transition: var(--transition);
+  }
+  
+  .contact-block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(14, 121, 12, 0.12);
+  }
+  
+  .contact-icon {
+    width: 45px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto 20px;
+  }
+  
+  .contact-text h3 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-family: 'Montserrat Alternates' ,sans-serif; 
+    font-weight: 375; 
+    font-size: 68px; 
+    line-height: 120%; 
+    color: #6dbf6a;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+  }
+  
+  .contact-text p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+  
+  .contact-text a {
+    color: black;
+    text-decoration: none;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-family: 'Montserrat Alternates' ,sans-serif; 
+    font-weight: 375; 
+    font-size: 16px; 
+    line-height: 120%; 
+    
+    transition: var(--transition);
+  }
+  
+  .contact-text a:hover {
+    text-decoration: underline;
+  }
+  
+  /* =========================
+     LOCATION MAP
+  ========================= */
+  .location-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 60px auto 120px;
+  }
+  
+  .location-map iframe {
+    width: 90%;
+    max-width: 800px;
+    height: 450px;
+    border: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+  }
+  
+/* ======================== */
+/* CONTACT FORM SECTION */
+/* ======================== */
+
+:root {
+  --brand-pastel: #128920;
+  --card-bg: #ffffff;
+  --form-bg: #0f5417;
+  --muted: #79c864;
+  --accent: #aadc9c;
+}
+
+.contact-section {
+  position: relative;
+  padding: 6rem 2rem;
+  background: #f5ffeeeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  max-width: 600px;
+  width: 100%;
+  background: rgb(255, 255, 255); 
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+}
+
+
+.contact-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(126, 226, 98, 0.15);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.contact-heading {
+  font-family: "Lily Script One", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--muted), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.contact-subtext {
+  font-size: 1rem;
+  color: #f1ffec;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* FORM FIELDS */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+input, textarea {
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  color: #333;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(170, 220, 156, 0.3);
+  background: #fff;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+  
+/* --------- Footer cleanup (prevent big gap) --------- */
+.site-footer {background: linear-gradient(180deg, #e0ffe4 0%, #fdffe1 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
+.footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
+.footer-columns { display:flex; gap:24px; flex:1; justify-content:flex-end; }
+.footer-column { min-width:160px; }
+.footer-logo { width:88px; height:auto; display:block; }
+
+/* --------- Small screen adjustments --------- */
+@media (max-width: 640px) {
+  .footer-container { flex-direction:column; align-items:center; text-align:center; }
+}
+/* --------- Mobile Footer Optimization (Phones) --------- */
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 30px 16px;
+    text-align: center;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .footer-logo {
+    width: 65px;
+    margin-bottom: 10px;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .footer-column {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .footer-heading {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-link {
+    font-size: 0.85rem;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    margin-top: 18px;
+    line-height: 1.4;
+  }
+
+  .footer-legal-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.75rem;
+  }
+
+  .footer-legal-links a {
+    text-decoration: none;
+  }
+}

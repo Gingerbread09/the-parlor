@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Navbar — The Parlor</title>
+
+  <!-- Shared Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="navbar.css"/>
+</head>
+<body>
+  <div id="canvas">
+
+    <nav class="navbar">
+      <!-- Left side (mobile only) -->
+      <div class="left-icons">
+        <div class="location-icon" id="locationBtn"></div>
+        <div class="time-icon" id="timeBtn"></div>
+        <div class="info-content" id="locationContent">
+          <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
+        </div>
+        <div class="info-content" id="timeContent">
+           <strong>Hours:</strong><br>
+        Thursday: 1–9:30 PM<br>
+        Friday: 1–10 PM<br>
+        Saturday: 1–10 PM<br>
+        Sunday: 1–9:30 PM<br>
+        Monday (Labor Day): 1–9:30 PM<br>
+        Tuesday: 1–9:30 PM<br>
+        Wednesday: 1–9:30 PM
+        </div>
+      </div>
+    
+      <!-- Logo (always centered) -->
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img src="Parlor_logo.png" alt="The Parlor Logo" />
+        </a>
+      </div>
+    
+      <div class="right-links">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html" class="highlight">Menu</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="catering.html">Catering</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+        </ul>
+      
+        <a href="menu.html" class="menu-toggle" id="menuToggle"></a>
+      
+        <!-- Scroll button for mobile -->
+        <div class="scroll-button" id="scrollBtn"></div>
+      
+        <!-- Scroll dropdown menu -->
+        <div class="scroll-menu" id="scrollMenu">
+          <a class="scroll-link" href="index.html">HOME</a>
+          <a class="scroll-link" href="aboutus.html">ABOUT US</a>
+          <a class="scroll-link" href="contact.html">CONTACT US</a>
+          <a class="scroll-link" href="catering.html">CATERING</a>
+          <a class="scroll-link" href="jobs.html">JOBS</a>
+        </div>
+      </div>
+    
+      <!-- Mobile dropdown -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="catering.html">Catering</a>
+        <a href="jobs.html">Jobs</a>
+      </div>
+      <script>
+        // Location & Time dropdowns
+        const locationBtn = document.getElementById('locationBtn');
+        const timeBtn = document.getElementById('timeBtn');
+        const locationContent = document.getElementById('locationContent');
+        const timeContent = document.getElementById('timeContent');
+    
+        locationBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          locationContent.classList.toggle('show');
+          timeContent.classList.remove('show');
+        });
+    
+        timeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          timeContent.classList.toggle('show');
+          locationContent.classList.remove('show');
+        });
+    
+        // Scroll dropdown
+        const scrollBtn = document.getElementById('scrollBtn');
+        const scrollMenu = document.getElementById('scrollMenu');
+    
+        scrollBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          scrollMenu.classList.toggle('show');
+        });
+    
+        // Close all dropdowns when clicking outside
+        document.addEventListener('click', () => {
+          locationContent.classList.remove('show');
+          timeContent.classList.remove('show');
+          scrollMenu.classList.remove('show');
+        });
+
+      </script>
+    </nav>    
+</html>

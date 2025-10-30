@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "the-parlor-website",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "the-parlor-website"
+	}
+}

@@ -1,0 +1,716 @@
+/* Force navbar to stay pinned and remove top gap */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999; /* ensures it stays above the video */
+  background-color: #fff; /* or whatever your navbar bg is */
+}
+
+/* Add padding-top to your first section so content isn’t hidden under the navbar */
+header,
+.hero {
+  padding-top: 80px; /* adjust depending on navbar height */
+}
+/* General styles */
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid #ddd;
+  padding: 0 20px;
+  height: 90px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+/* Icon above link text */
+.nav-links li a .nav-icon,
+.mobile-menu a .nav-icon {
+  display: block;        /* Makes it appear above the text */
+  font-size: 18px;      /* Adjust size as needed */
+  margin-bottom: 1px;    /* Space between icon and text */
+  text-align: center;    /* Center above text */
+}
+
+.navbar-logo img {
+  height: 90px;
+}
+
+/* Desktop links */
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 20px;    /* keep size */
+  font-weight: 100;   /* lighter */
+  color: #000;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+transition: color 0.3s ease, font-weight 0.3s ease;
+
+}
+
+/* Left icons (mobile only) */
+.left-icons {
+  display: none;
+  position: relative;
+  gap: 8px;
+}
+
+.location-icon,
+.time-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.location-icon { background-image: url('icons/location.png');width: 38px;
+  height: 38px; }
+.time-icon { background-image: url('icons/time.png');width: 28px;
+  height: 28px; position: absolute; top: 5px; left: 45px;}
+
+.info-content {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: #fff;
+  border: 0.5px solid #000;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.info-content.show { display: block; }
+
+/* Mobile toggle */
+.menu-toggle {
+  display: none;
+  width: 28px;
+  height: 28px;
+  background: url('icons/menu.png') no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+/* Mobile dropdown */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mobile-menu a {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 14px;
+}
+
+.mobile-menu a:hover { background: #f2f2f2; }
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .left-icons { display: flex; }
+  .menu-toggle { display: block; }
+}
+
+.scroll-button {
+  width: 28px;
+  height: 28px;
+  background: url('icons/scroll.png') no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+/* Scroll button - mobile only */
+.scroll-button {
+  width: 28px;
+  height: 28px;
+  background: url('icons/scroll.png') no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  display: none; /* hidden by default */
+}
+
+/* Scroll dropdown menu */
+.scroll-menu {
+  position: absolute;
+  top: 500px; /* adjust if needed */
+  right: 206px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.scroll-menu.show {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-link {
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.scroll-link:hover {
+  background: #f2f2f2;
+}
+
+/* Show scroll button only on mobile */
+@media (max-width: 1024px) {
+  .scroll-button {
+    display: block;
+  }
+  .nav-links {
+    display: none; /* hide desktop links on mobile */
+  }
+}
+@media (max-width: 1024px) {
+  .right-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-links {
+    display: none; /* hide desktop links on mobile */
+  }
+}
+.scroll-menu {
+  position: absolute;
+  top: 50px; /* adjust based on navbar height */
+  right: 0;
+  /* ...other styles... */
+}
+/* ==============================
+   PREMIUM MODERN NAVBAR HOVER
+   ============================== */
+
+/* ---------- Desktop nav-links ---------- */
+@media (min-width: 1001px) {
+  .nav-links li a {
+    position: relative;
+    text-decoration: none; /* remove underline */
+    color: #000;
+    font-weight: 250;
+    padding: 4px 0;
+    transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+  }
+
+  /* Gradient underline / glow effect */
+  .nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #e06bdc, #6fd9e1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+    border-radius: 2px;
+  }
+
+  /* Hover effect */
+  .nav-links li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 0.5;
+  }
+
+  .nav-links li a:hover {
+    color: #333;
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(58, 176, 240, 0.4), 0 0 6px rgba(134, 90, 255, 0.3);
+  }
+}
+
+/* ---------- Mobile menu & scroll links ---------- */
+@media (max-width: 1024px) {
+  .mobile-menu a,
+  .scroll-link {
+    position: relative;
+    text-decoration: none; /* remove underline */
+    color: #000;
+    font-family: "montserrat alternates";
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+  }
+.nav-left, .nav-right {
+  flex: 1;            /* take equal width */
+  display: flex;
+  justify-content: center; /* or flex-end/start depending on design */
+}
+
+.navbar-logo {
+  margin: 0 auto;      /* always center */
+}
+
+  .mobile-menu a::after,
+  .scroll-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #cf4daa, #8648dd);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+    border-radius: 2px;
+  }
+
+  .mobile-menu a:hover::after,
+  .scroll-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+
+  .mobile-menu a:hover,
+  .scroll-link:hover {
+    color: #d7d0d0;
+    transform: translateX(5px);
+    text-shadow: 0 0 8px rgba(195, 169, 222, 0.4), 0 0 6px rgbargba(64, 8, 70, 0.3)
+  }
+}
+
+/* ---------- Icons hover (menu & scroll) ---------- */
+.menu-toggle:hover,
+.scroll-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 2px 6px rgba(232, 227, 227, 0.2));
+}
+
+.menu-toggle:active,
+.scroll-button:active {
+  transform: translateY(0) scale(1);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+}
+
+/* ---------- Logo hover tooltip deluxe ---------- */
+.navbar-logo {
+  position: relative; /* needed for pseudo-element */
+  display: inline-block;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.navbar-logo::after {
+  content: "The Parlor ICE CREAM PUFFS"; /* text */
+  position: absolute;
+  bottom: 0;       /* start at bottom of logo */
+  left: 50%;
+  transform: translateX(-50%) translateY(20px); /* start hidden below */
+  background: linear-gradient(90deg, #f3b0e6, #cbaff3);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "montserrat alternates";
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  text-shadow: 0 0 6px rgba(0,0,0,0.2);
+  transition: 
+    transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), 
+    opacity 0.35s ease, 
+    box-shadow 0.35s ease;
+}
+
+/* Hover effect: lift + glow + fade in */
+.navbar-logo:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px); /* slide up */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+/* ===============================
+     MOBILE FLEX STRUCTURE
+     =============================== */
+     @media (max-width: 1000px) {
+      .mobile-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        height: 70px;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+    
+      .left-icons,
+      .parlor-logo,
+      .right-icons {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+    
+      .left-icons {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+    
+      .parlor-logo {
+        justify-content: center; /* ✅ ensures logo dead center */
+      }
+    
+      .right-icons {
+        justify-content: flex-end;
+        gap: 12px;
+      }
+    }
+    
+    /* ===============================
+       ICONS
+       =============================== */
+    .location-icon,
+    .time-icon,
+    .menu-icon,
+    .scroll-button {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    
+    .location-icon {
+      background-image: url('icons/location.png');
+      width: 38px;
+      height: 38px;
+    }
+    
+    .time-icon {
+      background-image: url('icons/time.png');
+      width: 28px;
+      height: 28px;
+    }
+    
+    .menu-icon,
+    .menu-toggle {
+      background-image: url('icons/menu.png');
+      width: 32px;
+      height: 32px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      cursor: pointer;
+    }
+    
+    .scroll-button {
+      background-image: url('icons/scroll.png');
+      width: 28px;
+      height: 28px;
+    }
+    
+    /* Info content (location/time hover) */
+    .info-content {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background: #fff;
+      border: 0.5px solid #000;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      z-index: 10;
+    }
+    .info-content.show { display: block; }
+    
+    /* ===============================
+       MOBILE DROPDOWNS
+       =============================== */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: #fff;
+      border: 1px solid #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .mobile-menu a {
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #000;
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: 14px;
+    }
+    .mobile-menu a:hover { background: #f2f2f2; }
+    
+    /* Scroll dropdown */
+    .scroll-menu {
+      position: absolute;
+      top: 50px; /* align with navbar */
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    .scroll-menu.show {
+      max-height: 400px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scroll-link {
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+    .scroll-link:hover { background: #f2f2f2; }
+    
+    /* ===============================
+       RESPONSIVE BEHAVIOR
+       =============================== */
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .scroll-button { display: block; }
+      .right-links { display: flex; align-items: center; gap: 12px; }
+    }
+    
+    /* ===============================
+       HOVER EFFECTS (DESKTOP)
+       =============================== */
+    @media (min-width: 1001px) {
+      .nav-links li a {
+        position: relative;
+        color: #000;
+        font-weight: 250;
+        padding: 4px 0;
+        transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+      }
+      .nav-links li a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, #e06bdc, #6fd9e1);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0.7;
+        border-radius: 2px;
+      }
+      .nav-links li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+        opacity: 0.5;
+      }
+      .nav-links li a:hover {
+        color: #333;
+        transform: translateY(-2px);
+        text-shadow: 0 0 8px rgba(58, 176, 240, 0.4),
+                     0 0 6px rgba(134, 90, 255, 0.3);
+      }
+    }
+    
+    /* ===============================
+       HOVER EFFECTS (MOBILE LINKS)
+       =============================== */
+    @media (max-width: 1024px) {
+      .mobile-menu a,
+      .scroll-link {
+        position: relative;
+        color: #000;
+        font-family: "montserrat alternates";
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+      }
+      .mobile-menu a::after,
+      .scroll-link::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, #cf4daa, #8648dd);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0.7;
+        border-radius: 2px;
+      }
+      .mobile-menu a:hover::after,
+      .scroll-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+        opacity: 1;
+      }
+      .mobile-menu a:hover,
+      .scroll-link:hover {
+        color: #363333;
+        transform: translateX(5px);
+        text-shadow: 0 0 8px rgba(46, 8, 84, 0.4),
+                     0 0 6px rgba(64, 8, 70, 0.3);
+      }
+    }
+    
+    /* ===============================
+       ICONS HOVER
+       =============================== */
+    .menu-toggle:hover,
+    .scroll-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      transition: transform 0.2s ease, filter 0.2s ease;
+      filter: drop-shadow(0 2px 6px rgba(91, 88, 88, 0.2));
+    }
+    .menu-toggle:active,
+    .scroll-button:active {
+      transform: translateY(0) scale(1);
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+    }
+    
+    /* ===============================
+       LOGO HOVER TOOLTIP
+       =============================== */
+    .navbar-logo {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      overflow: visible;
+    }
+    .navbar-logo::after {
+      content: "The Parlor ICE CREAM PUFFS";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: linear-gradient(90deg, #f3b0e6, #cbaff3);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: "montserrat alternates";
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      text-shadow: 0 0 6px rgba(0,0,0,0.2);
+      transition: 
+        transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), 
+        opacity 0.35s ease, 
+        box-shadow 0.35s ease;
+    }
+    .navbar-logo:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    /* ===========================
+     MOBILE NAVBAR (≤800px)
+     =========================== */
+  @media (max-width: 1000px) {
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+      position: sticky;
+    }
+  
+    /* Left icons grouped */
+    .left-icons {
+      display: flex;
+      gap: 12px; /* space between icons */
+      flex: 1;   /* take equal space like right-links */
+      justify-content: flex-start;
+      align-items: center;
+    }
+  
+    /* Center logo */
+    .navbar-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+  
+    .navbar-logo img {
+      max-height: 50px; /* keep it responsive */
+    }
+  
+    /* Right links or buttons */
+    .right-links {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 1;   /* balances left side */
+    }
+  
+    /* Hide full nav links on mobile */
+    .nav-links {
+      display: none;
+    }
+  }
+

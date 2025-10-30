@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Parlor — Catering</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Montserrat+Alternates:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
+
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="catering.css" />
+  <link rel="stylesheet" href="navbar.css" />
+</head>
+<body>
+
+  <!-- ===== INLINE NAVBAR (single instance) =====
+       This is the navbar version you said worked.
+       Keep only this navbar in the page to avoid duplicates.
+  -->
+  <nav class="navbar">
+    <div class="left-icons">
+      <div class="location-icon" id="locationBtn"></div>
+      <div class="time-icon" id="timeBtn"></div>
+
+      <div class="info-content" id="locationContent" aria-hidden="true">
+        <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
+      </div>
+      <div class="info-content" id="timeContent" aria-hidden="true">
+        <strong>Hours:</strong><br>
+        Thursday: 1–9:30 PM<br>
+        Friday: 1–10 PM<br>
+        Saturday: 1–10 PM<br>
+        Sunday: 1–9:30 PM<br>
+        Monday (Labor Day): 1–9:30 PM<br>
+        Tuesday: 1–9:30 PM<br>
+        Wednesday: 1–9:30 PM
+      </div>
+    </div>
+
+    <div class="navbar-logo">
+      <a href="index.html">
+        <img src="Parlor_logo.png" alt="The Parlor Logo" />
+      </a>
+    </div>
+
+    <div class="right-links">
+      <ul class="nav-links">
+        <li><a class="nav-link home" href="index.html">Home</a></li>
+        <li><a class="nav-link menu" href="menu.html">Menu</a></li>
+        <li><a class="nav-link about" href="aboutus.html">About Us</a></li>
+        <li><a class="nav-link contact" href="contact.html">Contact Us</a></li>
+        <li><a class="nav-link catering" href="catering.html">Catering</a></li>
+        <li><a class="nav-link jobs" href="jobs.html">Jobs</a></li>
+      </ul>
+
+      <a href="menu.html" class="menu-toggle" id="menuToggle" aria-label="Open menu"></a>
+
+      <div class="scroll-button" id="scrollBtn" aria-hidden="true"></div>
+
+      <div class="scroll-menu" id="scrollMenu" aria-hidden="true">
+        <a class="scroll-link" href="index.html">HOME</a>
+        <a class="scroll-link" href="aboutus.html">ABOUT US</a>
+        <a class="scroll-link" href="contact.html">CONTACT US</a>
+        <a class="scroll-link" href="catering.html">CATERING</a>
+        <a class="scroll-link" href="jobs.html">JOBS</a>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="catering.html">Catering</a>
+      <a href="jobs.html">Jobs</a>
+    </div>
+  </nav>
+
+  <!-- ---------------- HERO SECTION ---------------- -->
+  <header class="hero hero--sky">
+    <video class="hero-video hero-videoo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="videos/catering-preview.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-topline">Catering • Temporarily Closed • Reopens 2026</div>
+
+      <h1 class="hero-title">Catering for Sweet Moments!</h1>
+      <p class="hero-sub">
+        We craft premium ice creams for weddings, birthdays, and events. Follow us on Instagram for the latest updates and launch news.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact-form" class="cat-btn-drip">Find Out More</a>
+        <a href="#faq" class="hollow">View FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ---------------- CONTENT SECTION ---------------- -->
+    <section class="content">
+      <div class="content-column">
+        <div class="content-text">
+          <h2>Transform Your Event</h2>
+          <p>
+            At The Parlor, we believe desserts are not just food; they’re memories. Our ice cream puffs, catering packages, and premium flavors bring elegance and excitement to weddings, birthdays, and corporate events.
+          </p>
+        </div>
+
+        <div class="button-group">
+          <a href="#contact-form" class="cat-btn-drip">Get a Quote</a>
+          <a href="menu.html" class="hollow">View Menu</a>
+        </div>
+      </div>
+
+      <div class="media-section">
+        <video class="media-clip" autoplay muted loop playsinline>
+          <source src="videos/choc.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="features-section reveal">
+      <div class="features-inner">
+        <h2 class="features-heading">Customizable Menu Options for Every Occasion</h2>
+
+        <div class="features-grid" role="list">
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background-image: url('icons/note.png');"></div>
+            <h3>Custom Flavors</h3>
+            <p>Choose from our premium dairy and non-dairy flavors. We tailor portions and flavors to match your event theme.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background-image: url('icons/stack.png');"></div>
+            <h3>Ready-to-Serve Packages</h3>
+            <p>Packages include setup, serving, and cleanup; stress-free catering for you and your guests.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background-image: url('icons/truck.png');"></div>
+            <h3>Perfect for Events</h3>
+            <p>Delight your guests with our unique ice cream puffs and presentation styles for weddings, birthdays, and corporate events.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section reveal">
+      <div class="landing-inner">
+        <div class="landing-copy">
+          <h2>Stay Updated on our Catering Launch</h2>
+          <p>Follow our Instagram page for launch updates and special offers!</p>
+          <div class="landing-actions">
+            <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener" class="cat-btn-drip">Follow</a>
+          </div>
+        </div>
+
+        <div class="landing-image" aria-hidden="true">
+          <img src="images/cater.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form" class="contact-section reveal">
+      <div class="contact-inner">
+        <h2 class="contact-heading">Get in Touch</h2>
+    
+        <form class="contact-form" id="contactForm" aria-label="Catering contact form">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="from_name"
+              type="text"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+    
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="reply_to"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+    
+          <!--  Added Subject Field -->
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="Enter a subject (e.g., Wedding Catering Inquiry)"
+              required
+            />
+          </div>
+    
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us about your event..."
+              required
+            ></textarea>
+          </div>
+    
+          <div class="form-actions">
+            <button type="submit" class="cat-btn-drip"><span>Send</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+    
+
+    <section id="faq" class="faq reveal">
+      <div class="faq-inner">
+        <h2>FAQ</h2>
+        <p class="muted">Everything you need to know about our catering services</p>
+
+        <div class="accordion-item" id="faq-flavors">
+          <button class="accordion-q">What flavors are available?<span class="acc-icon">+</span></button>
+          <div class="accordion-a">
+            <p>We offer a variety of dairy and non-dairy flavors, including seasonal specials and custom options.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-q">Do you provide setup and cleanup?<span class="acc-icon">+</span></button>
+          <div class="accordion-a"><p>Yes, our packages include setup, serving, and cleanup so you can enjoy your event.</p></div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-q">How far in advance should I book?<span class="acc-icon">+</span></button>
+          <div class="accordion-a"><p>We recommend 2–3 weeks for standard events, earlier for larger or custom orders.</p></div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-q">Can I customize the presentation?<span class="acc-icon">+</span></button>
+          <div class="accordion-a"><p>Absolutely, color themes, display styles, and signage can be customized per event.</p></div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-q">What is your cancellation policy?<span class="acc-icon">+</span></button>
+          <div class="accordion-a"><p>We require at least 72 hours notice for cancellations. For large events, special terms may apply.</p></div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-q">Do you have non-dairy options?<span class="acc-icon">+</span></button>
+          <div class="accordion-a"><p>Yes, we offer non-dairy sorbets and vegan-friendly options. We offer Mango and Strawberry flavors which are Sorbet blends.</p></div>
+        </div>
+
+        <div class="faq-extra">
+          <h3>Still have questions?</h3>
+          <p>Reach out to us directly and we’ll be happy to help.</p>
+          <a class="cat-btn-drip" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left"><img src="parlor_logo.png" alt="The Parlor Logo" class="footer-logo"></div>
+
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h4>Explore More</h4>
+          <a href="contact.html">Contact Us</a>
+          <a href="menu.html">Explore the Menu</a>
+          <a href="catering.html">Catering Info</a>
+          <a href="index.html#gallery">Gallery</a>
+          <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Instagram</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Stay Updated</h4>
+          <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Follow on Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <p>© 2025 The Parlor. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Navbar small interactions: location/time/scroll toggles (IDs used above)
+    const locationBtn = document.getElementById('locationBtn');
+    const timeBtn = document.getElementById('timeBtn');
+    const locationContent = document.getElementById('locationContent');
+    const timeContent = document.getElementById('timeContent');
+    const scrollBtn = document.getElementById('scrollBtn');
+    const scrollMenu = document.getElementById('scrollMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    // defensive checks
+    if (locationBtn && locationContent) {
+      locationBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        locationContent.classList.toggle('show');
+        timeContent && timeContent.classList.remove('show');
+      });
+    }
+    if (timeBtn && timeContent) {
+      timeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        timeContent.classList.toggle('show');
+        locationContent && locationContent.classList.remove('show');
+      });
+    }
+    if (scrollBtn && scrollMenu) {
+      scrollBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        scrollMenu.classList.toggle('show');
+      });
+    }
+
+    // menuToggle for small screens (if you have CSS for .menu-toggle)
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    window.location.href = 'menu.html';
+  });
+}
+
+
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', () => {
+      locationContent && locationContent.classList.remove('show');
+      timeContent && timeContent.classList.remove('show');
+      scrollMenu && scrollMenu.classList.remove('show');
+      mobileMenu && mobileMenu.classList.remove('open');
+    });
+
+    // Highlight Catering nav-link (makes sure it's visibly active)
+    document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+    const myCatering = document.querySelector('.nav-link.catering');
+    if (myCatering) myCatering.classList.add('active');
+  </script>
+
+  <!-- EmailJS for contact form (keep your keys/service/template) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("ojYPLYxdZfsChs8Dn"); // your public key
+    })();
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        emailjs.sendForm('service_ar57biq', 'template_yeq96rg', this)
+          .then(() => alert('Message sent successfully!'))
+          .catch(error => alert('Failed to send message. Please try again. ' + JSON.stringify(error)));
+      });
+    }
+  </script>
+
+  <!-- Smooth scrolling and FAQ accordion -->
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // FAQ accordion smooth toggle
+    document.querySelectorAll('.accordion-q').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.accordion-item');
+        const answer = item.querySelector('.accordion-a');
+        const icon = button.querySelector('.acc-icon');
+
+        // Close other open items
+        document.querySelectorAll('.accordion-item.open').forEach(openItem => {
+          if (openItem !== item) {
+            openItem.classList.remove('open');
+            const a = openItem.querySelector('.accordion-a');
+            if (a) a.style.maxHeight = null;
+            const ic = openItem.querySelector('.acc-icon');
+            if (ic) ic.textContent = '+';
+          }
+        });
+
+        // Toggle current one
+        item.classList.toggle('open');
+        if (item.classList.contains('open')) {
+          if (answer) answer.style.maxHeight = answer.scrollHeight + "px";
+          if (icon) icon.textContent = '−';
+        } else {
+          if (answer) answer.style.maxHeight = null;
+          if (icon) icon.textContent = '+';
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

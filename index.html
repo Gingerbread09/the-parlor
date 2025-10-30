@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Parlor — Homepage</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="navbar.css" />
+</head>
+
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <!-- Left side (mobile only) -->
+    <div class="left-icons">
+      <div class="location-icon" id="locationBtn"></div>
+      <div class="time-icon" id="timeBtn"></div>
+      <div class="info-content" id="locationContent">
+        <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
+      </div>
+      <div class="info-content" id="timeContent">
+         <strong>Hours:</strong><br>
+      Thursday: 1–9:30 PM<br>
+      Friday: 1–10 PM<br>
+      Saturday: 1–10 PM<br>
+      Sunday: 1–9:30 PM<br>
+      Monday (Labor Day): 1–9:30 PM<br>
+      Tuesday: 1–9:30 PM<br>
+      Wednesday: 1–9:30 PM
+      </div>
+    </div>
+  
+    <!-- Logo (always centered) -->
+    <div class="navbar-logo">
+      <a href="index.html">
+        <img src="Parlor_logo.png" alt="The Parlor Logo" />
+      </a>
+    </div>
+  
+    <div class="right-links">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="highlight">Menu</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="catering.html">Catering</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+      </ul>
+    
+      <a href="menu.html" class="menu-toggle" id="menuToggle"></a>
+    
+      <!-- Scroll button for mobile -->
+      <div class="scroll-button" id="scrollBtn"></div>
+    
+      <!-- Scroll dropdown menu -->
+      <div class="scroll-menu" id="scrollMenu">
+        <a class="scroll-link" href="index.html">HOME</a>
+        <a class="scroll-link" href="aboutus.html">ABOUT US</a>
+        <a class="scroll-link" href="contact.html">CONTACT US</a>
+        <a class="scroll-link" href="catering.html">CATERING</a>
+        <a class="scroll-link" href="jobs.html">JOBS</a>
+      </div>
+    </div>
+  
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="catering.html">Catering</a>
+      <a href="jobs.html">Jobs</a>
+    </div>
+    <script>
+      // Location & Time dropdowns
+      const locationBtn = document.getElementById('locationBtn');
+      const timeBtn = document.getElementById('timeBtn');
+      const locationContent = document.getElementById('locationContent');
+      const timeContent = document.getElementById('timeContent');
+  
+      locationBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        locationContent.classList.toggle('show');
+        timeContent.classList.remove('show');
+      });
+  
+      timeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        timeContent.classList.toggle('show');
+        locationContent.classList.remove('show');
+      });
+  
+      // Scroll dropdown
+      const scrollBtn = document.getElementById('scrollBtn');
+      const scrollMenu = document.getElementById('scrollMenu');
+  
+      scrollBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        scrollMenu.classList.toggle('show');
+      });
+  
+      // Close all dropdowns when clicking outside
+      document.addEventListener('click', () => {
+        locationContent.classList.remove('show');
+        timeContent.classList.remove('show');
+        scrollMenu.classList.remove('show');
+      });
+
+    </script>
+  </nav>   
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero-section">
+  <div class="hero-video-container">
+    <!-- Clickable video on mobile -->
+    <a href="menu.html" class="mobile-hero-link">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto"></video>
+    </a>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const video = document.querySelector('.hero-video');
+    if (!video) return;
+  
+    function pickSrc() {
+      const w = window.innerWidth;
+      let src = 'videos/hero.mp4'; // desktop default
+  
+      if (w <= 767)        src = 'videos/hero_mobile.mp4';
+      else if (w <= 1180)  src = 'videos/hero_tab.mp4';  // widened for iPads
+  
+      if (video.getAttribute('data-active-src') === src) return;
+  
+      video.pause();
+      video.src = src;
+      video.setAttribute('data-active-src', src);
+      video.load();
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+      console.log('Hero video set to:', src, `(width: ${w})`);
+    }
+  
+    pickSrc();
+    window.addEventListener('orientationchange', () => setTimeout(pickSrc, 250));
+  })();
+  </script>
+  
+
+<!-- ================= AWARDS SECTION ================= -->
+<section class="awards-section">
+
+<!-- Animated title -->
+<div class="awards-title">
+  <h2 class="animated-title">
+    <span style="--i:1">A</span><span style="--i:2">s</span>
+    <span style="--i:3"> </span><span style="--i:4">f</span><span style="--i:5">e</span><span style="--i:6">a</span><span style="--i:7">t</span><span style="--i:8">u</span><span style="--i:9">r</span><span style="--i:10">e</span><span style="--i:11">d</span>
+    <span style="--i:12"> </span><span style="--i:13">i</span><span style="--i:14">n</span>
+    <span style="--i:15"> </span><span style="--i:16">t</span><span style="--i:17">o</span><span style="--i:18">p</span>
+    <span style="--i:19"> </span><span style="--i:20">f</span><span style="--i:21">o</span><span style="--i:22">o</span><span style="--i:23">d</span>
+    <span style="--i:24"> </span><span style="--i:25">p</span><span style="--i:26">u</span><span style="--i:27">b</span><span style="--i:28">l</span><span style="--i:29">i</span><span style="--i:30">c</span><span style="--i:31">a</span><span style="--i:32">t</span><span style="--i:33">i</span><span style="--i:34">o</span><span style="--i:35">n</span>
+  </h2>
+</div>
+
+    <!-- Banner 1 -->
+    <div class="banner banner-left">
+      <div class="banner-inner">
+        <img src="awards/F1.jpg" alt="">
+        <img src="awards/F2.png" alt="">
+        <img src="awards/F3.jpeg" alt="">
+        <img src="awards/F4.jpg" alt="">
+        <img src="awards/F5.jpg" alt="">
+        <img src="awards/F1.jpg" alt="">
+        <img src="awards/F2.png" alt="">
+        <img src="awards/F3.jpeg" alt="">
+        <img src="awards/F4.jpg" alt="">
+        <img src="awards/F5.jpg" alt="">
+      </div>
+    </div>
+
+    <!-- Banner 2 -->
+    <div class="banner banner-right">
+      <div class="banner-inner">
+        <img src="awards/F6.png" alt="">
+        <img src="awards/F7.png" alt="">
+        <img src="awards/F8.jpg" alt="">
+        <img src="awards/F9.png" alt="">
+        <img src="awards/F10.jpg" alt="">
+        <img src="awards/F11.png" alt="">
+        <img src="awards/F6.png" alt="">
+        <img src="awards/F7.png" alt="">
+        <img src="awards/F8.jpg" alt="">
+        <img src="awards/F9.png" alt="">
+        <img src="awards/F10.jpg" alt="">
+        <img src="awards/F11.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider before title -->
+  <hr class="awards-divider">
+  <!-- ================= PHOTO GALLERY ================= -->
+  <section class="photo-gallery">
+    <div class="gallery-title">
+      <h2>A Glimpse of Our Creations</h2>
+    </div>
+  
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-caption="Our Signature Ice Cream Puffs" style="--i:1;" >
+        <img src="images/set.png" alt="Our Sugnature Ice Cream Puffs">
+      </div>
+      <div class="gallery-item tall" data-caption="Halo Taro" style="--i:2;">
+        <img src="images/taro.jpg" alt="Halo-Taro">
+      </div>
+      <div class="gallery-item" data-caption="The Works - Our Signature Ice Cream Milkshake" style="--i:3;">
+        <img src="images/works.jpg" alt="Churro Bliss">
+      </div>
+      <div class="gallery-item wide" data-caption="Our Sgnature Scoops" style="--i:4;">
+        <img src="images/photo9.jpg" alt="Matcha Cloud">
+      </div>
+    </div>
+  
+    <div class="view-more-wrap">
+      <button id="viewMoreBtn" class="btn-drip">View More Creations</button>
+    </div>
+  </section>
+  
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+    <span class="nav prev" id="prev">&#10094;</span>
+    <span class="nav next" id="next">&#10095;</span>
+  </div>
+  
+  
+  <!-- Divider before title -->
+  <hr class="awards-divider">
+  <!-- ================= INSTAGRAM FEED SECTION ================= -->
+<section class="instagram-feed">
+  <h2>Discover our weekly deals on our Instagram.</h2>
+  <p>@theparloricecream</p>
+
+  <!-- Elfsight Instagram Feed -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div 
+    class="elfsight-app-3d86d121-519c-4be3-9a4c-8850a3543398" 
+    data-elfsight-app-lazy>
+  </div>
+</section>
+<!-- FOOTER (kept visually same — content preserved) -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="parlor_logo.png" alt="The Parlor Logo" class="footer-logo">
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Explore More</h4>
+        <a href="contact.html">Contact Us |</a>
+        <a href="menu.html">Explore the Menu |</a>
+        <a href="catering.html">Catering Info |</a>
+        <a href="index.html#gallery">Gallery |</a>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Instagram</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Stay Updated</h4>
+        <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <p>© 2025 The Parlor. All rights reserved.</p>
+      <div class="footer-legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const gallery = document.getElementById("galleryGrid");
+    const viewMoreBtn = document.getElementById("viewMoreBtn");
+  
+    const extraPhotos = [
+      { src: "images/lp.jpg", caption: "Catering Display", type: "wide" },
+      { src: "images/stacked.jpg", caption: "Ice Cream", type: "tall" },
+      { src: "images/placeholder.png", caption: "Signature Scoops", type: "" },
+      { src: "images/EG.jpg", caption: "50 Shades of Grey Milkshake", type: "tall" },
+      { src: "images/chris.jpg", caption: "Midnight Swirl", type: "" },
+      { src: "images/biscoff.jpg", caption: "Tiramisu Twist", type: "tall" },
+      { src: "images/stack3.jpg", caption: "Signature Ice Cream Puff with Birthday Cake & Green with Envy", type: " wide" }
+    ];
+  
+    viewMoreBtn.addEventListener("click", () => {
+      extraPhotos.forEach((photo, i) => {
+        const div = document.createElement("div");
+        div.className = `gallery-item new ${photo.type}`;
+        div.setAttribute("data-caption", photo.caption);
+        div.style.animationDelay = `${i * 0.1}s`;
+  
+        const img = document.createElement("img");
+        img.src = photo.src;
+        img.alt = photo.caption;
+  
+        div.appendChild(img);
+        gallery.appendChild(div);
+      });
+  
+      // Hide the button after use
+      viewMoreBtn.style.transition = "opacity 0.6s ease";
+      viewMoreBtn.style.opacity = "0";
+      setTimeout(() => (viewMoreBtn.style.display = "none"), 600);
+    });
+  });
+  </script>
+  
+  
+    <script>
+      // Make hero video clickable on mobile
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.innerWidth <= 767) {
+          const heroContainer = document.querySelector(".hero-video-container");
+          if (heroContainer) {
+            heroContainer.addEventListener("click", () => {
+              window.location.href = "menu.html";
+            });
+          }
+        }
+      });
+    </script>
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const gallery = document.getElementById("galleryGrid");
+    const viewMoreBtn = document.getElementById("viewMoreBtn");
+
+
+    viewMoreBtn.addEventListener("click", () => {
+      extraPhotos.forEach((photo, i) => {
+        const div = document.createElement("div");
+        div.className = "gallery-item new";
+        div.setAttribute("data-caption", photo.caption);
+        div.style.setProperty("--delay", i);
+
+        // Make some random items "wide" or "tall" for a modern mix
+        if (Math.random() > 0.7) div.classList.add("wide");
+        else if (Math.random() < 0.3) div.classList.add("tall");
+
+        const img = document.createElement("img");
+        img.src = photo.src;
+        img.alt = photo.caption;
+
+        div.appendChild(img);
+        gallery.appendChild(div);
+      });
+
+      // Smooth scroll to reveal new photos
+      setTimeout(() => {
+        gallery.lastElementChild.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 300);
+
+      // Hide button after load
+      viewMoreBtn.style.display = "none";
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const gallery = document.getElementById("galleryGrid");
+    const viewMoreBtn = document.getElementById("viewMoreBtn");
+  
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const closeBtn = document.querySelector(".close");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+  
+    let allImages = [];
+    let currentIndex = 0;
+  
+    const extraPhotos = [
+      { src: "images/tea.jpg", caption: "Catering Display", type: "wide" },
+      { src: "images/nice.jpg", caption: "Sprinkled with joy", type: "" },
+      { src: "images/sprinkle.jpg", caption: "Vanilla Sky", type: "tall" },
+      { src: "images/mango.jpg", caption: "Mango Bliss", type: "" },
+      { src: "images/wide.jpg", caption: "Midnight Swirl", type: "wide" },
+      { src: "images/best.jpg", caption: "Our Signature Works" , type: "" },
+      { src: "images/tall.png", caption: "Tiramisu Twist", type: "tall" },
+      { src: "images/cin.jpg", caption: "Sprinkled with joy", type: "wide" },
+      { src: "images/smore.jpg", caption: "Ice Cream with Waffle Cone", type: "tall" },
+    ];
+  
+    // Add new photos when clicking "View More"
+    viewMoreBtn.addEventListener("click", () => {
+      extraPhotos.forEach((photo, i) => {
+        const div = document.createElement("div");
+        div.className = `gallery-item new ${photo.type}`;
+        div.setAttribute("data-caption", photo.caption);
+        div.style.animationDelay = `${i * 0.1}s`;
+  
+        const img = document.createElement("img");
+        img.src = photo.src;
+        img.alt = photo.caption;
+  
+        div.appendChild(img);
+        gallery.appendChild(div);
+      });
+  
+      viewMoreBtn.style.opacity = "0";
+      setTimeout(() => (viewMoreBtn.style.display = "none"), 500);
+  
+      updateGalleryListeners();
+    });
+  
+    // Function to enable lightbox for all images
+    function updateGalleryListeners() {
+      allImages = Array.from(document.querySelectorAll(".gallery-item img"));
+      allImages.forEach((img, index) => {
+        img.onclick = () => openLightbox(index);
+      });
+    }
+  
+    function openLightbox(index) {
+      currentIndex = index;
+      const img = allImages[index];
+      lightboxImg.src = img.src;
+      lightboxCaption.textContent = img.closest(".gallery-item").dataset.caption || "";
+      lightbox.classList.add("show");
+    }
+  
+    function closeLightbox() {
+      lightbox.classList.remove("show");
+    }
+  
+    function showNext() {
+      currentIndex = (currentIndex + 1) % allImages.length;
+      openLightbox(currentIndex);
+    }
+  
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+      openLightbox(currentIndex);
+    }
+  
+    // Event Listeners
+    closeBtn.addEventListener("click", closeLightbox);
+    nextBtn.addEventListener("click", showNext);
+    prevBtn.addEventListener("click", showPrev);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    });
+  
+    // Initialize
+    updateGalleryListeners();
+  });
+  </script>
+  
+</body>
+</html>
