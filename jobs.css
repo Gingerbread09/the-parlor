@@ -27,7 +27,6 @@ body {
   background-size: contain;
 }
 
-/* Left rectangle with icons */
 .left-rectangle {
   position: relative;
   display: flex;
@@ -67,7 +66,6 @@ body {
   z-index: 10;
 }
 
-/* Offset for time dropdown */
 #timeContent { left: 24px; }
 
 .info_content.show {
@@ -80,7 +78,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Right side */
 .right-icons {
   display: flex;
   align-items: center;
@@ -104,7 +101,6 @@ body {
   cursor: pointer;
 }
 
-/* Scroll dropdown */
 .scroll-menu {
   position: absolute;
   top: 70px;
@@ -141,7 +137,6 @@ body {
   background: #f2f2f2;
 }
 
-/* Responsive tweaks */
 @media (max-width: 480px) {
   .parlor-logo {
     width: 65px;
@@ -167,7 +162,7 @@ body {
 }
 
 .hero-overlay {
-  position: absolute; /* sits on top of hero section */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -175,19 +170,18 @@ body {
   
   display: flex;
   flex-direction: column;
-  justify-content: center;  /* vertical center */
-  align-items: center;      /* horizontal center */
+  justify-content: center;  
+  align-items: center;     
   text-align: center;
 
   background: rgba(0, 0, 0, 0.3);
   color: #ffffff;
   padding: 20px;
   box-sizing: border-box;
-  pointer-events: none; /* prevents overlay from blocking clicks */
+  pointer-events: none; 
   z-index: 2;
 }
 
-/* ✨ Animated magenta gradient title */
 .hero-overlay h1 {
   font-size: clamp(32px, 6vw, 72px);
   font-weight: 100;
@@ -195,13 +189,11 @@ body {
   background: linear-gradient(90deg, hwb(351deg 84.8% 0%), #f4e463, #db7083);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
   background-size: 200%;
   animation: text-glaze 4s linear infinite;
   margin-bottom: 10px;
 }
 
-/* Supporting text */
 .hero-overlay p {
   font-size: clamp(16px, 2vw, 20px);
   color: #ffffff;
@@ -210,13 +202,11 @@ body {
   opacity: 0.9;
 }
 
-/* Gradient animation reused globally */
 @keyframes text-glaze {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
 
 .jobs-cta {
   padding: 40px 20px;
@@ -497,10 +487,10 @@ body {
     }
     
     .add-availability:hover {
-      background: #fd62bc
+      background: #fd62bc;
       transform: translateY(-2px);
     }
-    
+
     .remove-row {
       background: #f2cdd5;
       color:  rgb(59, 10, 31);

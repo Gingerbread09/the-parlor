@@ -16,10 +16,6 @@
 </head>
 <body>
 
-  <!-- ===== INLINE NAVBAR (single instance) =====
-       This is the navbar version you said worked.
-       Keep only this navbar in the page to avoid duplicates.
-  -->
   <nav class="navbar">
     <div class="left-icons">
       <div class="location-icon" id="locationBtn"></div>
@@ -244,7 +240,7 @@
 
         <div class="accordion-item">
           <button class="accordion-q">How far in advance should I book?<span class="acc-icon">+</span></button>
-          <div class="accordion-a"><p>We recommend 2–3 weeks for standard events, earlier for larger or custom orders.</p></div>
+          <div class="accordion-a"><p>We recommend 4-5 weeks for standard events, earlier for larger or custom orders.</p></div>
         </div>
 
         <div class="accordion-item">
@@ -254,7 +250,7 @@
 
         <div class="accordion-item">
           <button class="accordion-q">What is your cancellation policy?<span class="acc-icon">+</span></button>
-          <div class="accordion-a"><p>We require at least 72 hours notice for cancellations. For large events, special terms may apply.</p></div>
+          <div class="accordion-a"><p>We require at least 48 hours notice for cancellations. For large events, special terms may apply.</p></div>
         </div>
 
         <div class="accordion-item">
@@ -310,7 +306,7 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script>
-    // Navbar small interactions: location/time/scroll toggles (IDs used above)
+    // Navbar small interactions: location/time/scroll toggles
     const locationBtn = document.getElementById('locationBtn');
     const timeBtn = document.getElementById('timeBtn');
     const locationContent = document.getElementById('locationContent');
@@ -341,15 +337,13 @@
       });
     }
 
-    // menuToggle for small screens (if you have CSS for .menu-toggle)
+    // menuToggle for small screens 
     const menuToggle = document.getElementById('menuToggle');
     if (menuToggle) {
   menuToggle.addEventListener('click', () => {
     window.location.href = 'menu.html';
   });
 }
-
-
 
     // Close dropdowns on outside click
     document.addEventListener('click', () => {
@@ -359,7 +353,7 @@
       mobileMenu && mobileMenu.classList.remove('open');
     });
 
-    // Highlight Catering nav-link (makes sure it's visibly active)
+    // Highlight Catering nav-link 
     document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
     const myCatering = document.querySelector('.nav-link.catering');
     if (myCatering) myCatering.classList.add('active');

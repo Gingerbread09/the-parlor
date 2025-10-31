@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Shared and Page-specific CSS -->
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="contact.css" />
   <link rel="stylesheet" href="navbar.css" />
@@ -18,7 +17,7 @@
 <body>
 
   <!-- ======================== -->
-  <!-- NAVBAR (UNTOUCHED) -->
+  <!-- NAVBAR -->
   <!-- ======================== -->
   <nav class="navbar">
     <div class="left-icons">
@@ -179,8 +178,7 @@
   </div>
 </section>
 
-
-<!-- FOOTER (kept visually same — content preserved) -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-left">
@@ -224,7 +222,7 @@
   <!-- SCRIPTS -->
   <!-- ======================== -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<!-- EmailJS library (must come first) -->
+<!-- EmailJS library-->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
   // Location & Time dropdowns
@@ -254,7 +252,6 @@
     scrollMenu.classList.toggle('show');
   });
 
-  // Close all dropdowns when clicking outside
   document.addEventListener('click', () => {
     locationContent.classList.remove('show');
     timeContent.classList.remove('show');
@@ -262,14 +259,12 @@
   });
 
 </script>
-<!-- Your contact form handler -->
+
 <script>
   (function() {
-    // Initialize EmailJS with your public key
+  
     emailjs.init("ojYPLYxdZfsChs8Dn");
   })();
-
-  // Wait until DOM is loaded to safely find #contactForm
   document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
     if (!form) return;

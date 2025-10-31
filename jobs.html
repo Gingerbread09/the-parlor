@@ -129,7 +129,7 @@
     </div>
   </section>
   
-<!-- FOOTER (kept visually same — content preserved) -->
+<!-- FOOTER-->
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-left">
@@ -243,19 +243,13 @@
       </select>
       <button type="button" class="remove-row">✕</button>
     `;
-
-    // Handle remove button
     div.querySelector('.remove-row').addEventListener('click', () => {
       div.remove();
     });
 
     availabilityContainer.appendChild(div);
   }
-
-  // Add first row by default
   createAvailabilityRow();
-
-  // Add new row on button click
   addAvailabilityBtn.addEventListener('click', createAvailabilityRow);
 </script>
 

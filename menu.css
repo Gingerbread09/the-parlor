@@ -1,20 +1,14 @@
 /* ==========================================================================
    menu.css — The Parlor (complete, comprehensive)
-   - Preserves your hero & menu-button styles exactly where requested.
-   - Adds polished flip-card system, responsive layout, animations, and
-     fallback styles.
-   - Keep this file as the authoritative source for menu page styling.
    ========================================================================== */
 
-  /* ---- GLOBAL RESET: remove all unwanted page margins ---- */
+  /* ---- GLOBAL RESET ---- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-/* ---- REMOVE ANY ACCIDENTAL SPACE FROM NAV OR CANVAS ---- */
 nav, #canvas {
   margin: 0;
   padding: 0;
@@ -22,19 +16,13 @@ nav, #canvas {
 }
 
 #canvas {
-  display: none; /* if it’s empty and causes space */
+  display: none;
 }
 
-/* Optional: if nav is fixed, ensure body padding doesn’t create white band */
 body {
   scroll-behavior: smooth;
 }
 
-  
-
-/* ---------------------------
-   DESIGN TOKENS / VARIABLES
-   --------------------------- */
    :root{
     /* colors */
     --lavender-50: #f6e9ff;
@@ -69,7 +57,7 @@ body {
   body { font-family: var(--font-sans); color: var(--black-900); background: #fff; line-height:1.45; overflow-x:hidden; }
 
   
-/* ---------- HERO VIDEO (unchanged layout, no white space) ---------- */
+/* ---------- HERO VIDEO ---------- */
 .menu-video-container {
   position: relative;
   margin: 0 auto;
@@ -117,7 +105,6 @@ body {
   margin-top: 20px;
 }
 
-/* Remove underline on links */
 .btn-lavender:link,
 .btn-lavender:visited {
   text-decoration: none;
@@ -215,7 +202,6 @@ body {
   margin-bottom: 3rem;
 }
 
-/* Optional: soft fade-in animation */
 .explore-button-container {
   animation: fadeIn 1.2s ease forwards;
   opacity: 0;
@@ -228,7 +214,7 @@ body {
 }
 
 /* =========================
-   MENU FLIP CARD (same as About page)
+   MENU FLIP CARD 
    ========================= */
 .menu-card {
   perspective: 1000px;
@@ -262,7 +248,7 @@ body {
 }
  
   /* ================================================================
-   FLIP CARDS — 3D Door-Style Animation for Menu Items
+   FLIP CARDS 
 ================================================================ */
 .menu-card {
   perspective: 1200px;
@@ -288,7 +274,7 @@ body {
 /* Back face */
 .menu-card-back {
   transform: rotateY(180deg);
-  background: none; /* remove gradient since the image will fill it */
+  background: none; 
   overflow: hidden;
   padding: 0;
 }
@@ -310,11 +296,9 @@ body {
 }
 /* Ice Cream Puff */
 .menu-card.card1 .menu-card-back img {
-  object-position: center top; /* show top of image */
+  object-position: center top; 
   transform: scale(1.1);
 }
-
-
 .menu-card-front,
 .menu-card-back {
   position: absolute;
@@ -343,7 +327,6 @@ body {
   padding: 0;
 }
 
-/* Back slideshow layers */
 .menu-card-back .back-slide {
   position: absolute;
   inset: 0;
@@ -358,7 +341,6 @@ body {
   opacity: 1;
 }
 
-/* Icon + text front styling */
 .menu-card-front img {
   width: 64px;
   height: 64px;
@@ -382,11 +364,9 @@ body {
 }
 
   
-  /* --------------------------------------------------------------------
-     FLAVOR GRID (preserve all flavor cards & positions)
-     We'll provide a responsive replacement that preserves each item
-     visually while eliminating absolute-position chaos.
-     -------------------------------------------------------------------- */
+  /* -------------
+     FLAVOR GRID
+     -------------- */
   .flavors-section {
     position: relative;
     width: 100%;
@@ -395,8 +375,7 @@ body {
     background: transparent;
   }
   
-  /* Title + Subtitle (responsive; we override any absolute)
-     Keep big visual scale but responsive using clamp */
+  /* Title + Subtitle */
   .flavors-title {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 300;
@@ -430,10 +409,6 @@ body {
    FLAVOR GRID — Hover or Tap Descriptions
    ------------------------------ */
 
-  /* =============================
-   FLAVOR GRID — Lavender Theme
-   ============================= */
-
 .flavor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -446,40 +421,36 @@ body {
   box-sizing: border-box;
 }
 
-/* Ensure the flavor card is the containing block for absolute children */
 .flavor-item {
   position: relative;
-  overflow: visible; /* allow badge to sit partly outside if needed */
+  overflow: visible; 
 }
 
 /* Responsive dairy-free badge */
 .flavor-item .diet-badge {
   position: absolute;
-  /* slight offset from the corner using rem so it scales with root font-size */
   top: 0.6rem;
   left: 0.6rem;
 
-  /* responsive size: min 40px, preferred based on viewport, max 72px */
   width: clamp(20px, 6.5vw, 72px);
   height: clamp(20px, 6.5vw, 72px);
 
   display: inline-grid;
-  place-items: center;               /* center the inner icon */
-  padding: clamp(4px, 0.7vw, 8px);   /* inner padding adapts */
+  place-items: center;               
+  padding: clamp(4px, 0.7vw, 8px);  
 
   background: rgba(255,255,255,0.85);
   border-radius: 50%;
   box-shadow: 0 6px 18px rgba(6,10,10,0.08);
   z-index: 999;
-  pointer-events: none;              /* doesn't interfere with clicks */
-  transform: translateZ(0);          /* promote to its own layer for crispness */
+  pointer-events: none;             
+  transform: translateZ(0);        
   will-change: transform, opacity;
   transition: transform .15s ease, opacity .15s ease;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-/* Icon inside the badge — fill the badge cleanly */
 .flavor-item .diet-badge img,
 .flavor-item .diet-badge svg {
   width: 100%;
@@ -489,13 +460,11 @@ body {
   pointer-events: none;
 }
 
-/* Optional: slightly bigger badge on hover (tasteful emphasis) */
 .flavor-item:hover .diet-badge,
 .flavor-item:focus-within .diet-badge {
   transform: translateZ(0) scale(1.06);
 }
 
-/* Ensure exact positioning on very small screens (extra safety) */
 @media (max-width: 420px) {
   .flavor-item .diet-badge {
     top: 0.45rem;
@@ -506,7 +475,6 @@ body {
   }
 }
 
-/* Desktop version: stable, elegant badge */
 @media (min-width: 1024px) {
   .flavor-item .diet-badge {
     position: absolute;
@@ -518,7 +486,7 @@ body {
 
     background: rgba(255, 255, 255, 0.85);
     border-radius: 50%;
-    box-shadow: 0 6px 14px rgba(160, 94, 255, 0.15); /* soft lavender glow */
+    box-shadow: 0 6px 14px rgba(160, 94, 255, 0.15); 
     border: 1px solid rgba(160, 94, 255, 0.25);
     object-fit: contain;
 
@@ -535,14 +503,13 @@ body {
     box-shadow: 0 8px 20px rgba(160, 94, 255, 0.25);
   }
 
-  /* Icon inside badge */
   .flavor-item .diet-badge img {
     width: 85%;
     height: 85%;
     object-fit: contain;
   }
 }
-/* iPad & similar tablets: slightly larger ice cream images */
+
 @media (min-width: 768px) and (max-width: 1366px) {
   .flavor-item img {
     width: 150px;
@@ -550,21 +517,18 @@ body {
   }
 }
 
-
-/* 🌿 Default (non-hover) look for dairy-free card */
 .flavor-item.dairy-free {
   background: linear-gradient(180deg, rgba(230, 255, 230, 0.95), rgba(210, 250, 210, 0.9));
   border: 2px solid rgba(140, 220, 140, 0.5);
   box-shadow: 0 6px 14px rgba(80, 160, 100, 0.12);
 }
 
-/* Keep dairy-free hover cohesive with green tones */
 .flavor-item.dairy-free:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(80, 160, 100, 0.22);
 }
 
-/* Hover overlay itself turns greener */
+/* Hover overlay turns green */
 .flavor-item.dairy-free .flavor-hover {
   background: rgba(210, 255, 210, 0.96);
   color: #174b2b;
@@ -581,7 +545,7 @@ body {
 .flavor-item {
   position: relative;
   width: 100%;
-  max-width: 210px; /* reduced size for desktop */
+  max-width: 210px; 
   aspect-ratio: 1 / 1;
   background: linear-gradient(180deg, #f6e9ff 0%, #fff8ff 100%);
   border: 1.5px solid #d6c2f5;
@@ -596,7 +560,6 @@ body {
   overflow: hidden;
 }
 
-/* Ice Cream Image */
 .flavor-item img {
   width: 80px;
   height: 80px;
@@ -606,7 +569,6 @@ body {
   filter: drop-shadow(0 6px 14px rgba(110, 66, 150, 0.08));
 }
 
-/* Desktop: Make flavor images larger */
 @media (min-width: 1367px) {
   .flavor-item img {
     width: 120px;
@@ -614,8 +576,6 @@ body {
   }
 }
 
-
-/* Flavor Name */
 .flavor-item p {
   font-weight: 500;
   font-size: 0.95rem;
@@ -661,12 +621,11 @@ body {
 
 /* ---------- Responsive Layout ---------- */
 
-/* Mobile: 2 per row — works across all small devices */
 @media (max-width: 768px) {
   .flavor-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* ensures equal split */
-    justify-items: center; /* centers cards in grid */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    justify-items: center; 
     align-items: start;
     gap: 16px;
     padding: 1rem;
@@ -676,7 +635,7 @@ body {
 
   .flavor-item {
     width: 100%;
-    max-width: 160px; /* keeps boxes contained */
+    max-width: 160px;
     height: auto;
     text-align: center;
     margin: 0 auto;
@@ -690,46 +649,26 @@ body {
 }
 
 
-  /* ====================================================================
-     ACCESSIBILITY + INTERACTION ENHANCEMENTS
-     - Focus states, reduced motion, keyboard friendly interactions
-     ==================================================================== */
+  /* ==============
+     ACCESSIBILITY 
+     =============== */
   a:focus, button:focus, .menu-column:focus { outline: 3px solid rgba(160,94,255,0.18); outline-offset: 3px; }
 
-  /* ====================================================================
-     OPTIONAL: small utilities
-     ==================================================================== */
   .container { max-width:1200px; margin:0 auto; padding: 0 16px; }
   .center { display:flex; align-items:center; justify-content:center; }
   
-  /* ====================================================================
-     DEBUG helpers (comment out in production)
-     ==================================================================== */
-  /* .menu-column { outline: 1px dashed rgba(0,0,0,0.04); } */
-  
-  /* ====================================================================
-     LEGACY RULES RETAINED (non-destructive)
-     - If you still load legacy CSS that set absolute card positions,
-       the new approach neutralizes them by making those classes relative.
-     ==================================================================== */
   .card1, .card2, .card3, .card4, .card5, .card6, .card7, .card8, .card9, .card10, .card11, .card12 {
-    /* kept relative to avoid breaking layout if old styles exist */
     left: auto !important;
     top: auto !important;
     position: relative !important;
   }
-  
-  /* ====================================================================
-     FURTHER FINISHES
-     - Gentle entrance animations for cards (subtle)
-     ==================================================================== */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   .menu-column { animation: fadeInUp 0.6s var(--ease) both; }
   
-  /* staggered effect for nice polish (supports up to 12 cards) */
+  /* staggered effect  */
   .menu-column:nth-child(1)  { animation-delay: 0.04s; }
   .menu-column:nth-child(2)  { animation-delay: 0.08s; }
   .menu-column:nth-child(3)  { animation-delay: 0.12s; }
@@ -743,7 +682,7 @@ body {
   .menu-column:nth-child(11) { animation-delay: 0.44s; }
   .menu-column:nth-child(12) { animation-delay: 0.48s; }
 
-/* --------- Footer cleanup (prevent big gap) --------- */
+/* --------- Footer cleanup --------- */
 .site-footer {background: linear-gradient(180deg, #eee6f9 0%, #cdb2e9 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
 .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
 .footer-columns { display:flex; gap:24px; flex:1; justify-content:flex-end; }

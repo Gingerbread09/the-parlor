@@ -1,12 +1,11 @@
 /* ===================================================
    CONTACT PAGE — MODERN RESPONSIVE REDESIGN (2025)
-   Author: The Parlor Revamp
+   Author: The Parlor 
    =================================================== */
 
 /* =========================
    BASE & VARIABLES
 ========================= */
-/* THEME VARIABLES — paste at top of contact.css */
 :root{
   --brand-pastel: #f3fff4;    /* soft matcha pastel used in hero background */
   --card-bg: #f3f4e4;         /* card background for phone/email */
@@ -17,7 +16,6 @@
   --shadow: 0 8px 22px rgba(16, 24, 32, 0.08);
 }
 
-/* Make hero continue to look green but allow other sections to contrast */
 .contact-header { background-color: var(--brand-pastel); }
 .contact-block { background: var(--card-bg); }
 .contact-section { background: var(--form-bg); }
@@ -80,7 +78,8 @@
     padding: 0 20px;
     max-width: 700px;
   }
-/* Animated gradient text for contact header */
+
+
 .contact-title {
   font-size: clamp(36px, 6vw, 72px);
   font-weight: 100;
@@ -95,14 +94,13 @@
   position: relative;
 }
 
-/* Keep the subtle shimmer moving left → right → left */
 @keyframes text-glaze {
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Optional: make sure the containing header doesn’t mask the gradient */
+
 .contact-header-content {
   position: relative;
   z-index: 3;
@@ -111,7 +109,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.25); /* soft overlay for video contrast */
+  background: rgba(0,0,0,0.25);
   z-index: 1;
 }
 
@@ -123,7 +121,7 @@
     margin-bottom: 20px;
   }
   
-/* =============== TRENDSETTER DRIP + BUBBLY BUTTON =============== */
+/* =============== BUBBLY BUTTON =============== */
 .btn-drip {
   --drip-base: #c8ffd0;
   --drip-accent: #e0ffb3;
@@ -161,7 +159,7 @@
   }
 }
 
-/* Remove underline on links */
+/* Removes underline on links */
 .btn-drip:link,
 .btn-drip:visited {
   text-decoration: none;

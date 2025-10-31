@@ -1,4 +1,3 @@
-/* Remove default browser spacing */
 html, body {
   margin: 0;
   padding: 0;
@@ -61,7 +60,7 @@ html, body {
 }
 
 /* =========================
-   MOBILE: HERO CLICKABLE LINK (fixed)
+   MOBILE: HERO CLICKABLE LINK 
    ========================= */
    @media (max-width: 767px) {
 
@@ -136,7 +135,6 @@ html, body {
   
   }
 
-/* Ensure layout consistency */
 .photo-gallery {
   position: relative;
   width: 100%;
@@ -279,7 +277,7 @@ html, body {
     padding: clamp(10px, 3vw, 16px) clamp(24px, 6vw, 40px);
   }
 }
-/* Ensure View More shows on non-desktop */
+
 @media (max-width: 1024px) {
   .photo-gallery #viewMoreBtn {
     display: inline-flex !important;
@@ -292,7 +290,7 @@ html, body {
 .awards-section {
   position: relative;
   padding: 2rem 0rem;
-  background: #faf5ff; /* soft lavender-cream-gray blend */
+  background: #faf5ff;
   background-size: 200% 200%;
   animation: awardsBgShift 12s ease-in-out infinite;
   overflow: hidden;
@@ -300,13 +298,11 @@ html, body {
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Soft gradient shimmer effect */
 @keyframes awardsBgShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
 
-/* Optional light overlay for depth */
 .awards-section::before {
   content: "";
   position: absolute;
@@ -457,7 +453,6 @@ html, body {
   position: relative;
 }
 
-/* missing animation from your CSS */
 @keyframes shimmer {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
@@ -490,7 +485,7 @@ html, body {
     100% { background-position: 200% 50%; }
   }
 /* ============================
-   MODERN PHOTO GALLERY — NO CROPPING, NO GAPS
+   MODERN PHOTO GALLERY 
    ============================ */
 
 .gallery-grid {
@@ -548,8 +543,6 @@ html, body {
   box-sizing: border-box;
 }
 
-  
-  /* Hover zoom */
   .gallery-item:hover img {
     transform: scale(1.08);
     filter: brightness(1.05);
@@ -584,8 +577,7 @@ html, body {
     opacity: 1;
     transform: translateY(0);
   }
-  
-  /* Aspect ratios for variation */
+
   .gallery-item.wide {
     grid-column: span 2;
     aspect-ratio: 16 / 9;
@@ -632,8 +624,7 @@ html, body {
     padding: 0 1.2rem; 
     box-sizing: border-box;
   }
-  
-  /* Animation for new items */
+
   @keyframes fadeInModern {
     0% {
       opacity: 0;
@@ -649,9 +640,9 @@ html, body {
   .gallery-item.new {
     animation: fadeInModern 0.8s ease forwards;
   }
- /* =========================
-   LIGHTBOX (REFINED)
-   ========================= */
+ /* ===========
+   LIGHTBOX 
+   ============ */
 .lightbox {
   display: none;
   position: fixed;
@@ -757,7 +748,7 @@ html, body {
    ========================= */
 @media (max-width: 768px) {
   .lightbox {
-    padding-top: 60px; /* adjust for smaller navbar */
+    padding-top: 60px; 
   }
 
   .lightbox-img {
@@ -778,30 +769,26 @@ html, body {
 }
 
 /* =========================
-   FIX: Prevent Horizontal Overflow
+   Fix for Horizontal Overflow
    ========================= */
 
-/* 1. Prevent scrollbars on gallery expansion */
 html, body {
   overflow-x: hidden;
 }
 
-/* 2. Contains grid expansion */
 .gallery-grid {
-  overflow: hidden;          /* contain any expanding items */
-  max-width: 100%;           /* never exceed viewport width */
-  margin-inline: auto;       /* keep centered */
+  overflow: hidden;          
+  max-width: 100%;           
+  margin-inline: auto;       
   box-sizing: border-box;
 }
 
-
-/* 3. Ensures grid doesn’t stretch too far when new items added */
 .gallery-item {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* 4. Fixs “wide” items overflowing in smaller screens */
+
 @media (max-width: 1024px) {
   .gallery-item.wide {
     grid-column: span 1 !important;
@@ -809,7 +796,6 @@ html, body {
   }
 }
 
-/* 5. Makes sure “View More” animations don’t shift layout */
 .gallery-item.new {
   animation: fadeInModern 0.8s ease forwards;
   will-change: transform, opacity;
@@ -855,7 +841,7 @@ html, body {
   100% { background-position: 200% 50%; }
 }
 
-/* --------- Footer cleanup (to prevent big gap) --------- */
+/* --------- Footer cleanup --------- */
 .site-footer {background: linear-gradient(180deg, #f3e8ff 0%, #f1ffdc 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
 .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
 .footer-columns { display:flex; gap:24px; flex:1; justify-content:flex-end; }
@@ -866,7 +852,7 @@ html, body {
 @media (max-width: 640px) {
   .footer-container { flex-direction:column; align-items:center; text-align:center; }
 }
-/* --------- Mobile Footer Optimization (Phones) --------- */
+/* --------- Mobile Footer --------- */
 @media (max-width: 480px) {
   .site-footer {
     padding: 30px 16px;

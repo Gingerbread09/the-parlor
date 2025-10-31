@@ -10,26 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400&display=swap" rel="stylesheet">
 
-  <!-- Shared CSS (kept external as you requested) -->
-
   <link rel="stylesheet" href="menu.css" />
   <link rel="stylesheet" href="navbar.css" />
 
-  <!-- Small page-specific styles for layout & flip cards that are safe to include inline.
-       You can move these into menu.css later if you prefer. -->
   <style>
-    /* --- Layout safety / reset for this page only --- */
+
     html,body { margin:0; padding:0; font-family: 'Montserrat', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-    #canvas { padding-top: 90px; } /* matches your previous offset */
+    #canvas { padding-top: 90px; } 
 
-    /* ---- KEEP HERO SECTION LAYOUT UNCHANGED (you asked to leave it untouched) ---- */
-    /* no CSS changes for hero/video/menu-button here to respect your request */
-
-    /* ==== Pastel Luxe: Menu area visual theme ==== */
     :root{
-      --pastel-1: #f6e8ff;   /* very light lavender */
-      --pastel-2: #efe9ff;   /* soft lilac */
-      --accent: #6f3aa6;     /* muted purple accent */
+      --pastel-1: #f6e8ff;   
+      --pastel-2: #efe9ff;   
+      --accent: #6f3aa6;   
       --muted: #5a4b6f;
       --card-bg: #fff;
       --glass: rgba(255,255,255,0.6);
@@ -38,7 +30,7 @@
       --ease: cubic-bezier(.2,.9,.3,1);
     }
 
-    /* ---- Menu Section wrapper (modernized) ---- */
+    /* ---- Menu Section wrapper ---- */
     .menu-section {
       background: linear-gradient(180deg, rgba(246,232,255,0.6) 0%, rgba(244,240,255,0.9) 40%);
       padding: 72px 24px;
@@ -52,14 +44,13 @@
 
     .menu-section-title {
   max-width: 720px;
-  margin: 0 auto;           /* centers the block horizontally */
-  text-align: center;       /* centers text inside */
+  margin: 0 auto;           
+  text-align: center;      
   font-family: 'Lily Script One';
   font-size: clamp(32px, 5vw, 64px);
   color: var(--accent-dark);
   line-height: 1.2;
 }
-
 
     .menu-section-title h2 {
       font-family: 'Montserrat Alternates', sans-serif;
@@ -78,7 +69,6 @@
       max-width: 880px;
     }
 
-    /* ---- Grid of flip cards ---- */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -86,7 +76,6 @@
       align-items: stretch;
     }
 
-    /* Make sure 2 columns on tablet and 1 on mobile */
     @media (max-width: 960px) {
       .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
     }
@@ -94,12 +83,8 @@
       .menu-grid { grid-template-columns: 1fr; gap: 14px; padding: 0 8px; }
     }
 
-
-
-    /* Keep the original absolute-positioned script layers intact but ensure they don't break flow:
-       We'll place them inside a wrapper with safe z-index and pointer-events disabled so they won't interfere. */
     .script-background {
-      position: relative; /* flow with document */
+      position: relative; 
       width: 100%;
       box-sizing: border-box;
       padding: 40px 24px 120px;
@@ -107,14 +92,13 @@
       background: transparent;
     }
 
-    /* Small utility */
     .visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
   </style>
 </head>
 <body>
-  <!-- ==========================
-       NAV + HERO (LEFT EXACTLY AS-IS)
-       ========================== -->
+  <!-- ============
+       NAV + HERO 
+       ============-->
        <nav class="navbar">
         <!-- Left side (mobile only) -->
         <div class="left-icons">
@@ -203,8 +187,7 @@
             e.stopPropagation();
             scrollMenu.classList.toggle('show');
           });
-      
-          // Close all dropdowns when clicking outside
+
           document.addEventListener('click', () => {
             locationContent.classList.remove('show');
             timeContent.classList.remove('show');
@@ -216,7 +199,6 @@
 
   <div id="canvas"> </div>
 
- <!-- Heroine Video Block (left exactly as you gave it — untouched) -->
 <div class="menu-video-container">
   <video autoplay muted loop playsinline class="menu-video">
     <source src="videos/heroine.mp4" type="video/mp4">
@@ -224,14 +206,10 @@
   </video>
 </div>
 
-<!-- Explore Button Section -->
 <div class="explore-button-container">
   <a href="#flavors" class="btn-lavender">Explore Our Flavors</a>
 </div>
 
-  <!-- ==========================
-       MODERNIZED MENU SECTION — Pastel Luxe
-       ========================== -->
   <section class="menu-section" aria-labelledby="menuHeading">
     <div class="menu-section-container">
       <div class="menu-section-header">
@@ -243,9 +221,6 @@
         </div>
       </div>
 
-      <!-- Grid of six horizontal-flip (door-like) cards.
-           Each card flips along the Y axis — front has icon/title/desc,
-           back shows full-bleed image. -->
       <div class="menu-grid" aria-live="polite">
         <!-- Card 1 -->
        <article class="menu-card" tabindex="0" aria-labelledby="m1-title">
@@ -256,7 +231,7 @@
     <div class="menu-card-front">
       <img class="menu_icon" src="icons/sweet.png" alt="Ice Cream Icon">
       <h4>ICE CREAM PUFF</h4>
-      <p>Crispy, golden donut - glazed or unglazed, filled with your choice of two premium ice creams, hot-pressed into pure handheld bliss oozing with joy.</p>
+      <p>Crispy, golden donut - glazed or unglazed, filled with a scoop of ice cream or split scoop of two flavors, hot-pressed into pure handheld bliss oozing with joy.</p>
     </div>
 
     <!-- BACK -->
@@ -355,7 +330,7 @@
   </section>
 
   <!-- ==========================
-       FLAVORS — Keep all flavor items (modernized grid)
+       FLAVORS
        ========================== -->
   <section id="flavors" class="flavors-section" aria-labelledby="flavorsHeading">
     <h2 id="flavorsHeading" class="flavors-title">ALL FLAVORS</h2>
@@ -363,7 +338,7 @@
 
     <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
 
-    <!-- Modern responsive flavor grid (keeps all original flavor cards / names & image paths) -->
+    <!-- Flavor Cards -->
     <div class="flavor-grid" id="flavor-grid">
       <div class="flavor-item">
         <img src="menu/M1.png" alt="">
@@ -440,7 +415,6 @@
         <div class="flavor-hover">Vanilla Sweet cream Ice Cream with ribbons of Cinnamon Swirls.</div>
       </div>
     </div>
-    
   </section>
 
 <!-- ==========================
@@ -453,7 +427,6 @@
       <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
     
       <div class="flavor-grid" id="topping-grid">
-        <!-- Example topping items — replace with real images -->
         <div class="flavor-item">
           <img src="toppings/T1.png" alt="Almonds">
           <p>ALMONDS</p>
@@ -519,9 +492,9 @@
       </div>
     </section>
     
-    <!-- ==========================
-         SAUCES — Modern Grid
-         ========================== -->
+    <!-- =======
+         SAUCES
+         ======= -->
     <section id="sauces" class="flavors-section" aria-labelledby="saucesHeading">
       <h2 id="saucesHeading" class="flavors-title">SAUCES</h2>
       <p class="flavors-subtitle">Drizzle your dessert with something extra sweet.</p>
@@ -559,9 +532,9 @@
         </div>
       </div>
     </section>
-<!-- ==========================
-     CONES — Modern Grid
-     ========================== -->
+<!-- =======
+     CONES 
+     ======= -->
      <section id="cones" class="flavors-section" aria-labelledby="conesHeading">
       <h2 id="conesHeading" class="flavors-title">CONES</h2>
       <p class="flavors-subtitle">Choose your favorite base for the perfect scoop.</p>
@@ -583,9 +556,8 @@
         </div>
       </div>
     </section>
-    
-    
-<!-- FOOTER (kept visually same — content preserved) -->
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-left">
@@ -625,18 +597,17 @@
   </div>
 </footer>
 
- <!-- ======= Minimal flip script for menu cards ======= -->
+ <!-- ======= Flip script for menu cards ======= -->
  <script>
   document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".menu-card");
   
     cards.forEach(card => {
-      // Flip on click/tap
+      // Flips on click/tap
       card.addEventListener("click", () => {
         card.classList.toggle("is-flipped");
       });
-  
-      // Keyboard accessibility (Enter or Space flips, Escape resets)
+
       card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -649,6 +620,5 @@
     });
   });
   </script>
-  
 </body>
 </html>

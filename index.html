@@ -37,7 +37,7 @@
       </div>
     </div>
   
-    <!-- Logo (always centered) -->
+    <!-- Logo  -->
     <div class="navbar-logo">
       <a href="index.html">
         <img src="images/parlor_logo.png" alt="The Parlor Logo">
@@ -106,7 +106,6 @@
         scrollMenu.classList.toggle('show');
       });
   
-      // Close all dropdowns when clicking outside
       document.addEventListener('click', () => {
         locationContent.classList.remove('show');
         timeContent.classList.remove('show');
@@ -133,10 +132,10 @@
   
     function pickSrc() {
       const w = window.innerWidth;
-      let src = 'videos/hero.mp4'; // desktop default
+      let src = 'videos/hero.mp4'; 
   
       if (w <= 767)        src = 'videos/hero_mobile.mp4';
-      else if (w <= 1180)  src = 'videos/hero_tab.mp4';  // widened for iPads
+      else if (w <= 1180)  src = 'videos/hero_tab.mp4'; 
   
       if (video.getAttribute('data-active-src') === src) return;
   
@@ -154,7 +153,6 @@
   })();
   </script>
   
-
 <!-- ================= AWARDS SECTION ================= -->
 <section class="awards-section">
 
@@ -242,7 +240,6 @@
     <span class="nav next" id="next">&#10095;</span>
   </div>
   
-  
   <!-- Divider before title -->
   <hr class="awards-divider">
   <!-- ================= INSTAGRAM FEED SECTION ================= -->
@@ -257,7 +254,7 @@
     data-elfsight-app-lazy>
   </div>
 </section>
-<!-- FOOTER (kept visually same — content preserved) -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-left">
@@ -361,7 +358,7 @@
         div.setAttribute("data-caption", photo.caption);
         div.style.setProperty("--delay", i);
 
-        // Make some random items "wide" or "tall" for a modern mix
+
         if (Math.random() > 0.7) div.classList.add("wide");
         else if (Math.random() < 0.3) div.classList.add("tall");
 

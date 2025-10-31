@@ -1,4 +1,3 @@
-/* Force navbar to stay pinned and remove top gap */
 body, html {
   margin: 0;
   padding: 0;
@@ -9,15 +8,15 @@ body, html {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999; /* ensures it stays above the video */
-  background-color: #fff; /* or whatever your navbar bg is */
+  z-index: 999; 
+  background-color: #fff; 
 }
 
-/* Add padding-top to your first section so content isn’t hidden under the navbar */
 header,
 .hero {
-  padding-top: 80px; /* adjust depending on navbar height */
+  padding-top: 80px; 
 }
+
 /* General styles */
 .navbar {
   position: sticky;
@@ -36,17 +35,16 @@ header,
 /* Icon above link text */
 .nav-links li a .nav-icon,
 .mobile-menu a .nav-icon {
-  display: block;        /* Makes it appear above the text */
-  font-size: 18px;      /* Adjust size as needed */
-  margin-bottom: 1px;    /* Space between icon and text */
-  text-align: center;    /* Center above text */
+  display: block;       
+  font-size: 18px;     
+  margin-bottom: 1px;   
+  text-align: center;    
 }
 
 .navbar-logo img {
   height: 90px;
 }
 
-/* Desktop links */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -57,8 +55,8 @@ header,
 
 .nav-links li a {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 20px;    /* keep size */
-  font-weight: 100;   /* lighter */
+  font-size: 20px;    
+  font-weight: 100;   
   color: #000;
   text-decoration: none;
   letter-spacing: 0.5px;
@@ -154,13 +152,13 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   background: url('icons/scroll.png') no-repeat center center;
   background-size: contain;
   cursor: pointer;
-  display: none; /* hidden by default */
+  display: none; 
 }
 
 /* Scroll dropdown menu */
 .scroll-menu {
   position: absolute;
-  top: 500px; /* adjust if needed */
+  top: 500px; 
   right: 206px;
   background: #fff;
   border: 1px solid #ddd;
@@ -194,13 +192,13 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   background: #f2f2f2;
 }
 
-/* Show scroll button only on mobile */
+
 @media (max-width: 1024px) {
   .scroll-button {
     display: block;
   }
   .nav-links {
-    display: none; /* hide desktop links on mobile */
+    display: none; 
   }
 }
 @media (max-width: 1024px) {
@@ -211,31 +209,27 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   }
 
   .nav-links {
-    display: none; /* hide desktop links on mobile */
+    display: none; 
   }
 }
 .scroll-menu {
   position: absolute;
-  top: 50px; /* adjust based on navbar height */
+  top: 50px; 
   right: 0;
-  /* ...other styles... */
 }
-/* ==============================
-   PREMIUM MODERN NAVBAR HOVER
-   ============================== */
+
 
 /* ---------- Desktop nav-links ---------- */
 @media (min-width: 1001px) {
   .nav-links li a {
     position: relative;
-    text-decoration: none; /* remove underline */
+    text-decoration: none; 
     color: #000;
     font-weight: 250;
     padding: 4px 0;
     transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
   }
 
-  /* Gradient underline / glow effect */
   .nav-links li a::after {
     content: '';
     position: absolute;
@@ -270,7 +264,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   .mobile-menu a,
   .scroll-link {
     position: relative;
-    text-decoration: none; /* remove underline */
+    text-decoration: none; /* removes underline */
     color: #000;
     font-family: "montserrat alternates";
     font-weight: 500;
@@ -278,13 +272,13 @@ transition: color 0.3s ease, font-weight 0.3s ease;
     transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
   }
 .nav-left, .nav-right {
-  flex: 1;            /* take equal width */
+  flex: 1;           
   display: flex;
-  justify-content: center; /* or flex-end/start depending on design */
+  justify-content: center;
 }
 
 .navbar-logo {
-  margin: 0 auto;      /* always center */
+  margin: 0 auto;      
 }
 
   .mobile-menu a::after,
@@ -318,7 +312,6 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   }
 }
 
-/* ---------- Icons hover (menu & scroll) ---------- */
 .menu-toggle:hover,
 .scroll-button:hover {
   transform: translateY(-3px) scale(1.05);
@@ -332,20 +325,19 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
 }
 
-/* ---------- Logo hover tooltip deluxe ---------- */
 .navbar-logo {
-  position: relative; /* needed for pseudo-element */
+  position: relative; 
   display: inline-block;
   cursor: pointer;
   overflow: visible;
 }
 
 .navbar-logo::after {
-  content: "The Parlor ICE CREAM PUFFS"; /* text */
+  content: "The Parlor ICE CREAM PUFFS"; 
   position: absolute;
-  bottom: 0;       /* start at bottom of logo */
+  bottom: 0;       
   left: 50%;
-  transform: translateX(-50%) translateY(20px); /* start hidden below */
+  transform: translateX(-50%) translateY(20px); 
   background: linear-gradient(90deg, #f3b0e6, #cbaff3);
   color: #fff;
   font-size: 12px;
@@ -364,10 +356,9 @@ transition: color 0.3s ease, font-weight 0.3s ease;
     box-shadow 0.35s ease;
 }
 
-/* Hover effect: lift + glow + fade in */
 .navbar-logo:hover::after {
   opacity: 1;
-  transform: translateX(-50%) translateY(-10px); /* slide up */
+  transform: translateX(-50%) translateY(-10px); 
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 /* ===============================
@@ -400,7 +391,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
       }
     
       .parlor-logo {
-        justify-content: center; /* ✅ ensures logo dead center */
+        justify-content: center; 
       }
     
       .right-icons {
@@ -494,7 +485,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
     /* Scroll dropdown */
     .scroll-menu {
       position: absolute;
-      top: 50px; /* align with navbar */
+      top: 50px;
       right: 0;
       background: #fff;
       border: 1px solid #ddd;
@@ -682,8 +673,8 @@ transition: color 0.3s ease, font-weight 0.3s ease;
     /* Left icons grouped */
     .left-icons {
       display: flex;
-      gap: 12px; /* space between icons */
-      flex: 1;   /* take equal space like right-links */
+      gap: 12px; 
+      flex: 1;
       justify-content: flex-start;
       align-items: center;
     }
@@ -697,18 +688,16 @@ transition: color 0.3s ease, font-weight 0.3s ease;
     }
   
     .navbar-logo img {
-      max-height: 50px; /* keep it responsive */
+      max-height: 65px;
     }
-  
-    /* Right links or buttons */
+
     .right-links {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      flex: 1;   /* balances left side */
+      flex: 1;  
     }
   
-    /* Hide full nav links on mobile */
     .nav-links {
       display: none;
     }
