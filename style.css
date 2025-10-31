@@ -64,7 +64,7 @@ html, body {
    MOBILE: HERO CLICKABLE LINK (fixed)
    ========================= */
    @media (max-width: 767px) {
-    /* restore section structure so it displays */
+
     .hero-section {
       display: block;
       position: relative;
@@ -90,22 +90,19 @@ html, body {
       object-fit: cover;
     }
   
-    /* transparent overlay that can receive clicks */
     .hero-video-container::after {
       content: "";
       position: absolute;
-      inset: 0; /* covers the whole video area */
+      inset: 0; 
       background: transparent;
       z-index: 5;
       cursor: pointer;
     }
   
-    /* Optional press feedback */
     .hero-video-container:active::after {
       background: rgba(255, 255, 255, 0.1);
     }
-  
-    /* Hide desktop button */
+
     .btn-drip {
       display: none !important;
     }
@@ -115,16 +112,14 @@ html, body {
    MOBILE: HERO CLICKABLE LINK
    ========================= */
    @media (max-width: 767px) {
-    /* Add invisible link overlay on top of video */
     .hero-video-container::after {
       content: "";
       position: absolute;
-      inset: 0; /* covers full container */
-      z-index: 5; /* above video but below everything else */
+      inset: 0; 
+      z-index: 5; 
       background: transparent;
     }
   
-    /* Make the whole hero clickable */
     .hero-video-container {
       position: relative;
     }
@@ -133,15 +128,12 @@ html, body {
       cursor: pointer;
     }
   
-    /* Handle click behavior */
     .hero-video-container:active::after {
-      opacity: 0.2; /* optional feedback when pressed */
+      opacity: 0.2; 
     }
+
+    .hero-section .btn-drip { display: none !important; }
   
-    /* Hide button */
-    .btn-drip {
-      display: none !important;
-    }
   }
 
 /* Ensure layout consistency */
@@ -160,7 +152,43 @@ html, body {
   position: relative;
 }
 
-/* FROSTED GLASS BUTTON */
+/* =========================
+   VIEW MORE BUTTON — MOBILE & TABLET FIX
+   ========================= */
+
+   .view-more-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  #viewMoreBtn {
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .view-more-wrap {
+      margin-top: 1.8rem;
+    }
+  
+    #viewMoreBtn {
+      font-size: 1rem;
+      padding: 12px 32px;
+      border-radius: 999px;
+    }
+  }
+  
+  #viewMoreBtn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  
 .btn-drip {
   --base: rgba(255, 255, 255, 0.35);
   --accent: rgba(255, 255, 255, 0.4);
@@ -190,7 +218,6 @@ html, body {
   z-index: 5;
 }
 
-/* Hover effect (no movement) */
 .btn-drip:hover {
   background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(240,240,240,0.7));
   box-shadow:
@@ -252,6 +279,14 @@ html, body {
     padding: clamp(10px, 3vw, 16px) clamp(24px, 6vw, 40px);
   }
 }
+/* Ensure View More shows on non-desktop */
+@media (max-width: 1024px) {
+  .photo-gallery #viewMoreBtn {
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 /* ================= AWARDS SECTION ================= */
 .awards-section {
@@ -282,7 +317,6 @@ html, body {
   z-index: 0;
 }
 
-/* Keep title + banners above background */
 .awards-section > * {
   position: relative;
   z-index: 1;
@@ -295,8 +329,8 @@ html, body {
   position: relative;
   text-align: center;
   overflow: visible;
-  z-index: 10; /* enough to sit above banners, without overstacking */
-  pointer-events: none; /* optional: ensures no accidental blocking */
+  z-index: 10; 
+  pointer-events: none; 
 }
 
 
@@ -330,13 +364,12 @@ html, body {
   animation: shimmerGallery 7s linear infinite;
 }
 
-/* missing animation from your CSS */
 @keyframes shimmer {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
 }
 
-/* --- Banners (same as before, slightly tuned) --- */
+/* --- Banners) --- */
 .banner {
   position: relative;
   width: 100%;
@@ -460,10 +493,6 @@ html, body {
    MODERN PHOTO GALLERY — NO CROPPING, NO GAPS
    ============================ */
 
-/* ============================
-   MODERN PHOTO GALLERY — FIXED PADDING
-   ============================ */
-
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -473,13 +502,13 @@ html, body {
   justify-items: stretch;
   align-items: stretch;
 
-  /* ✅ Consistent side padding */
+  /* Consistent side padding */
   padding-left: clamp(1rem, 4vw, 2.5rem);
   padding-right: clamp(1rem, 4vw, 2.5rem);
   box-sizing: border-box;
 }
 
-/* Each item stays centered and clean */
+/* item stays centered and clean */
 .gallery-item {
   position: relative;
   overflow: hidden;
@@ -492,7 +521,7 @@ html, body {
   align-items: center;
 }
 
-/* Fix image fit (no whitespace, no zoom cutoffs) */
+/* Fix image */
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -600,10 +629,9 @@ html, body {
     justify-content: center;
     align-items: center;
     margin-top: 2.5rem;
-    padding: 0 1.2rem; /* matches gallery grid’s internal spacing */
+    padding: 0 1.2rem; 
     box-sizing: border-box;
   }
-  
   
   /* Animation for new items */
   @keyframes fadeInModern {
@@ -635,7 +663,7 @@ html, body {
   overflow: hidden;
   backdrop-filter: blur(12px);
   animation: fadeInLightbox 0.4s ease;
-  padding-top: 70px; /* avoids navbar collision */
+  padding-top: 70px; 
 }
 
 @keyframes fadeInLightbox {
@@ -650,7 +678,7 @@ html, body {
 /* Centered image with subtle glow */
 .lightbox-img {
   max-width: 85%;
-  max-height: 78vh; /* smaller so it clears navbar */
+  max-height: 78vh; 
   border-radius: 18px;
   box-shadow: 0 0 40px rgba(0,0,0,0.45);
   object-fit: contain;
@@ -758,7 +786,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* 2. Contain grid expansion */
+/* 2. Contains grid expansion */
 .gallery-grid {
   overflow: hidden;          /* contain any expanding items */
   max-width: 100%;           /* never exceed viewport width */
@@ -767,13 +795,13 @@ html, body {
 }
 
 
-/* 3. Ensure grid doesn’t stretch too far when new items added */
+/* 3. Ensures grid doesn’t stretch too far when new items added */
 .gallery-item {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* 4. Fix “wide” items overflowing in smaller screens */
+/* 4. Fixs “wide” items overflowing in smaller screens */
 @media (max-width: 1024px) {
   .gallery-item.wide {
     grid-column: span 1 !important;
@@ -781,7 +809,7 @@ html, body {
   }
 }
 
-/* 5. Make sure “View More” animations don’t shift layout */
+/* 5. Makes sure “View More” animations don’t shift layout */
 .gallery-item.new {
   animation: fadeInModern 0.8s ease forwards;
   will-change: transform, opacity;
@@ -800,7 +828,7 @@ html, body {
   font-family: "Lily Script One", sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
     background: linear-gradient(90deg, #d6b4fc, #9edff7, #f7b6e6, #c9f6a2);
-  background-size: 200% 200%; /* important: allows the gradient to move */
+  background-size: 200% 200%; 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 8s linear infinite;
@@ -827,7 +855,7 @@ html, body {
   100% { background-position: 200% 50%; }
 }
 
-/* --------- Footer cleanup (prevent big gap) --------- */
+/* --------- Footer cleanup (to prevent big gap) --------- */
 .site-footer {background: linear-gradient(180deg, #f3e8ff 0%, #f1ffdc 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
 .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
 .footer-columns { display:flex; gap:24px; flex:1; justify-content:flex-end; }
