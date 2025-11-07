@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 .hero-section {
@@ -102,38 +103,8 @@ html, body {
       background: rgba(255, 255, 255, 0.1);
     }
 
-    .btn-drip {
-      display: none !important;
-    }
   }
 
-/* =========================
-   MOBILE: HERO CLICKABLE LINK
-   ========================= */
-   @media (max-width: 767px) {
-    .hero-video-container::after {
-      content: "";
-      position: absolute;
-      inset: 0; 
-      z-index: 5; 
-      background: transparent;
-    }
-  
-    .hero-video-container {
-      position: relative;
-    }
-  
-    .hero-video-container::after {
-      cursor: pointer;
-    }
-  
-    .hero-video-container:active::after {
-      opacity: 0.2; 
-    }
-
-    .hero-section .btn-drip { display: none !important; }
-  
-  }
 
 .photo-gallery {
   position: relative;
@@ -187,19 +158,22 @@ html, body {
     opacity: 0.9;
   }
   
+/* ===========================
+   FROSTED GLASS BUBBLE BUTTONS
+=========================== */
 .btn-drip {
   --base: rgba(255, 255, 255, 0.35);
   --accent: rgba(255, 255, 255, 0.4);
   --border: rgba(255, 255, 255, 0.6);
-  --text: #2b2b2b;
+  --text: #000000;
 
   position: relative;
   display: inline-block;
   text-decoration: none;
   color: var(--text);
   font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 600;
-  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-weight: 300;
+  font-size: 18px;
   padding: clamp(12px, 2vw, 18px) clamp(30px, 4vw, 48px);
   border-radius: 999px;
   border: 1px solid var(--border);
@@ -216,6 +190,13 @@ html, body {
   z-index: 5;
 }
 
+/* Primary: solid frosted white tone */
+.btn-primary {
+  background: linear-gradient(145deg, var(--base), var(--accent));
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
 .btn-drip:hover {
   background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(240,240,240,0.7));
   box-shadow:
@@ -223,7 +204,7 @@ html, body {
     inset 0 1px 6px rgba(255, 255, 255, 0.8);
 }
 
-/* Decorative glow */
+/* ------------------- Decorative Bubbles ------------------- */
 .btn-drip::before,
 .btn-drip::after {
   content: "";
@@ -233,6 +214,7 @@ html, body {
   z-index: 0;
 }
 
+/* Default bubbles */
 .btn-drip::before {
   background-image:
     radial-gradient(circle at 20% 25%, rgba(255, 233, 90, 0.4) 12px, transparent 18px),
@@ -245,6 +227,57 @@ html, body {
   filter: blur(2px);
 }
 
+/* Secondary Button Variant — Online (different motion + tint) */
+.btn-online {
+  --base: rgba(255, 245, 255, 0.5);
+  --accent: rgba(243, 230, 255, 0.6);
+  --border: rgba(215, 180, 255, 0.6);
+  --text: #3a2948;
+
+  background: linear-gradient(160deg, var(--base), var(--accent));
+  border: 1px solid var(--border);
+  color: var(--text);
+  box-shadow:
+    inset 0 1px 4px rgba(255, 255, 255, 0.4),
+    0 6px 18px rgba(189, 125, 255, 0.25);
+}
+
+.btn-online::before {
+  background-image:
+    radial-gradient(circle at 25% 40%, rgba(255, 210, 240, 0.4) 12px, transparent 18px),
+    radial-gradient(circle at 70% 70%, rgba(230, 190, 255, 0.3) 14px, transparent 22px),
+    radial-gradient(circle at 50% 80%, rgba(255, 233, 250, 0.35) 10px, transparent 18px),
+    radial-gradient(circle at 80% 30%, rgba(235, 180, 255, 0.3) 9px, transparent 16px);
+  background-size: 260% 260%;
+  animation: bubblesFloatAlt 9s infinite ease-in-out alternate;
+  opacity: 0.7;
+  filter: blur(2px);
+}
+
+/* Alternate bubble motion for .btn-online */
+@keyframes bubblesFloatAlt {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 60%;
+    filter: hue-rotate(25deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+.btn-online:hover {
+  background: linear-gradient(160deg, rgba(255,245,255,0.8), rgba(240,220,255,0.9));
+  box-shadow:
+    0 10px 26px rgba(189, 125, 255, 0.35),
+    inset 0 1px 6px rgba(255, 255, 255, 0.7);
+}
+
+/* Gloss shine */
 .btn-drip::after {
   background: linear-gradient(
     120deg,
@@ -270,21 +303,83 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .btn-drip {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    padding: clamp(10px, 3vw, 16px) clamp(24px, 6vw, 40px);
-  }
+/* ================= HERO BUTTON LAYOUT ================= */
+.hero-buttons {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 20;
 }
 
-@media (max-width: 1024px) {
-  .photo-gallery #viewMoreBtn {
-    display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
+.hero-buttons .btn-drip {
+  z-index: 25;
+}
+.hollow1 {
+  --base: rgba(255, 255, 255, 0.35);
+  --accent: rgba(255, 255, 255, 0.4);
+  --border: rgba(255, 255, 255, 0.6);
+  --text: #2b2b2b;
+  
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  padding: clamp(12px, 2vw, 18px) clamp(30px, 4vw, 48px);
+  color: #000000;
+  background: transparent;
+  border: 0.5px solid rgba(255, 247, 100, 0.7);
+  border-radius: 40px;
+  position: relative;
+
+  cursor: pointer;
+  overflow: hidden;
+  transform-origin: center;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 5;
+}
+
+.hollow1:hover {
+  background: linear-gradient(135deg, rgba(240, 213, 58, 0.15), rgba(230, 253, 255, 0.4));
+  color: #000000;
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(240,240,240,0.7));
+  box-shadow:
+    0 10px 26px rgba(213, 160, 47, 0.35),
+    inset 0 1px 6px rgba(255, 255, 255, 0.8);
+}  
+
+/* Active / tap effect */
+.hollow1:active {
+  transform: scale(0.96);
+  box-shadow: 0 8px 22px rgba(240, 219, 58, 0.25);
+}
+/* Mobile Fix */
+@media (max-width: 767px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+    bottom: 8%;
+  }
+
+  .btn-drip {
+    width: auto;
+    text-align: center;
+    min-width: 150px;
+    padding: 12px 32px;
   }
 }
+.hollow1,
+.hollow:active,
+.hollow:hover {
+  text-decoration: none !important;
+  outline: none;
+}
+
 
 /* ================= AWARDS SECTION ================= */
 .awards-section {
