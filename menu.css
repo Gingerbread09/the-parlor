@@ -363,6 +363,54 @@ body {
   margin-top: 8px;
 }
 
+
+/* ===============================
+   MENU HINT OVERLAY (new class)
+================================== */
+
+.menu-hint {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  padding: 5px 14px;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  animation: menuHintIntro 5s ease-in-out forwards;
+  animation-delay: 0.6s;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  letter-spacing: 0.5px;
+}
+
+/* Smooth fade sequence */
+@keyframes menuHintIntro {
+  0% { opacity: 0; transform: translate(-50%, 8px); }
+  15% { opacity: 1; transform: translate(-50%, 0); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -6px); }
+}
+
+/* Reappear on hover/tap */
+.menu-card:hover .menu-hint,
+.menu-card:active .menu-hint {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+}
+
+/* Optional: only visible on mobile */
+@media (min-width: 768px) {
+  .menu-hint {
+    display: none;
+  }
+}
+
   
   /* -------------
      FLAVOR GRID
