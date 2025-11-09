@@ -452,7 +452,90 @@ body {
     border-radius: 120px;
     z-index: 0;
   }
-  
+/* Responsive premium badge - no background */
+.flavor-item .fire {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+
+  width: clamp(20px, 6.5vw, 72px);
+  height: clamp(20px, 6.5vw, 72px);
+
+  display: inline-grid;
+  place-items: center;               
+  padding: clamp(4px, 0.7vw, 8px);  
+
+  /* removed background, border, and shadow */
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  z-index: 999;
+  pointer-events: none;             
+  transform: translateZ(0);        
+  will-change: transform, opacity;
+  transition: transform .15s ease, opacity .15s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flavor-item .fire img,
+.flavor-item .fire svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.flavor-item:hover .fire,
+.flavor-item:focus-within .fire {
+  transform: translateZ(0) scale(1.06);
+}
+
+@media (max-width: 420px) {
+  .flavor-item .fire {
+    top: 0.45rem;
+    left: 0.45rem;
+    width: clamp(31px, 9vw, 60px);
+    height: clamp(31px, 9vw, 60px);
+    padding: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flavor-item .fire {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 38px;
+    height: 38px;
+    padding: 5px;
+
+    /* removed background, border, and shadow here too */
+    background: none;
+    border: none;
+    box-shadow: none;
+
+    object-fit: contain;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+
+  .flavor-item:hover .fire {
+    transform: scale(1.05);
+  }
+
+  .flavor-item .fire img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+  }
+}
+
 /* ------------------------------
    FLAVOR GRID — Hover or Tap Descriptions
    ------------------------------ */
@@ -474,7 +557,7 @@ body {
   overflow: visible; 
 }
 
-/* Responsive dairy-free badge */
+/* Responsive dairy-free badge - no background */
 .flavor-item .diet-badge {
   position: absolute;
   top: 0.6rem;
@@ -487,9 +570,11 @@ body {
   place-items: center;               
   padding: clamp(4px, 0.7vw, 8px);  
 
-  background: rgba(255,255,255,0.85);
-  border-radius: 50%;
-  box-shadow: 0 6px 18px rgba(6,10,10,0.08);
+  /* removed background, border, shadow */
+  background: none;
+  border: none;
+  box-shadow: none;
+
   z-index: 999;
   pointer-events: none;             
   transform: translateZ(0);        
@@ -532,23 +617,22 @@ body {
     height: 38px;
     padding: 5px;
 
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 50%;
-    box-shadow: 0 6px 14px rgba(160, 94, 255, 0.15); 
-    border: 1px solid rgba(160, 94, 255, 0.25);
-    object-fit: contain;
+    /* removed all decoration for clean flat icon */
+    background: none;
+    border: none;
+    box-shadow: none;
 
+    object-fit: contain;
     z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
   }
 
   .flavor-item:hover .diet-badge {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(160, 94, 255, 0.25);
   }
 
   .flavor-item .diet-badge img {
@@ -557,6 +641,7 @@ body {
     object-fit: contain;
   }
 }
+
 
 @media (min-width: 768px) and (max-width: 1366px) {
   .flavor-item img {
@@ -649,7 +734,7 @@ body {
   text-align: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+
 }
 
 /* Hover Animations */
@@ -659,7 +744,7 @@ body {
 }
 
 .flavor-item:hover .flavor-hover {
-  opacity: 1;
+  opacity: 0.85;
   pointer-events: all;
 }
 
@@ -667,7 +752,54 @@ body {
   opacity: 0;
 }
 
-/* ---------- Responsive Layout ---------- */
+.flavors-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #3b2c09;
+  opacity: 0.9;
+  animation: fadeInPremium 1s ease-in forwards;
+}
+
+.premium-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(255, 200, 0, 0.4));
+  animation: crownShine 3s ease-in-out infinite;
+}
+
+/* Golden shimmer effect for the text */
+.flavors-premium span {
+  background: linear-gradient(90deg, #e4b849, #ffdf6b, #d4a830);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: shimmerGold 6s linear infinite;
+}
+
+@keyframes shimmerGold {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes crownShine {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 200, 0, 0.4)); transform: translateY(0); }
+  50% { filter: drop-shadow(0 0 10px rgba(255, 230, 120, 0.8)); transform: translateY(-2px); }
+}
+
+@keyframes fadeInPremium {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 768px) {
   .flavor-grid {
@@ -696,6 +828,48 @@ body {
   }
 }
 
+/* Fall Pastel Accent Card */
+.flavor-item.pumpkin {
+  background: linear-gradient(145deg, #fff6eb, #fde9d2); /* soft pumpkin cream gradient */
+  border: 1.5px solid rgba(255, 192, 130, 0.6); /* pastel pumpkin border */
+  box-shadow: 0 8px 20px rgba(255, 181, 107, 0.25);
+  border-radius: 18px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title and Text */
+.flavor-item.pumpkin p {
+  color: #4b2a11; /* warm spiced brown */
+  font-weight: 200;
+}
+
+/* Hover effect */
+.flavor-item.pumpkin:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(255, 180, 105, 0.3);
+  background: linear-gradient(145deg, #fff3e3, #ffe0c7);
+}
+
+/* Optional: Subtle decorative sparkles for fall warmth */
+.flavor-item.pumpkin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(255, 208, 155, 0.2) 6px, transparent 10px),
+    radial-gradient(circle at 70% 70%, rgba(255, 170, 100, 0.18) 8px, transparent 12px);
+  background-size: 250% 250%;
+  animation: pumpkinGlow 8s ease-in-out infinite alternate;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes pumpkinGlow {
+  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  100% { background-position: 100% 50%; filter: hue-rotate(20deg); }
+}
 
   /* ==============
      ACCESSIBILITY 
