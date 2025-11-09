@@ -118,8 +118,19 @@
 <!-- ================= HERO SECTION ================= -->
 <section class="hero-section">
   <div class="hero-video-container">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto"></video>
-    </a>
+    <!-- Video no longer wrapped in <a> -->
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      id="heroVideo"
+    >
+      <source src="videos/hero.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </div>
 
   <!-- Hero Buttons -->
@@ -128,6 +139,7 @@
     <a href="#awards" class="hollow1">Explore More</a>
   </div>
 </section>
+
 
 <script>
   (() => {
@@ -481,6 +493,25 @@
     updateGalleryListeners();
   });
   </script>
-  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.getElementById("heroVideo");
+    
+      if (!video) return;
+    
+      const tryPlay = () => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            window.addEventListener("touchstart", tryPlay, { once: true });
+            window.addEventListener("click", tryPlay, { once: true });
+          });
+        }
+      };
+    
+      tryPlay();
+    });
+    </script>
+    
 </body>
 </html>

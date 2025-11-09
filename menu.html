@@ -198,13 +198,21 @@
       </nav>    
 
   <div id="canvas"> </div>
-
-<div class="menu-video-container">
-  <video autoplay muted loop playsinline class="menu-video">
-    <source src="videos/heroine.mp4" type="video/mp4">
+  <div class="menu-video-container">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    class="menu-video"
+    id="menuVideo"
+   >
+    <source src="videos/heroine.mp4" type="video/mp4" />
     Your browser does not support the video tag.
-  </video>
-</div>
+   </video>
+  </div>
+
 
 <div class="explore-button-container">
   <a href="#flavors" class="btn-lavender">Explore Our Flavors</a>
@@ -643,5 +651,35 @@
     });
   });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("menuVideo");
+
+  if (!video) return;
+
+  // Autoplay right away
+  const playPromise = video.play();
+
+  // If autoplay gets blocked (Safari, iOS)
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      //(scroll, touch, click)
+      const tryPlay = () => {
+        video.play().catch(() => {});
+        // remove listeners
+        video.addEventListener("playing", () => {
+          window.removeEventListener("touchstart", tryPlay);
+          window.removeEventListener("click", tryPlay);
+          window.removeEventListener("scroll", tryPlay);
+        });
+      };
+
+      window.addEventListener("touchstart", tryPlay);
+      window.addEventListener("click", tryPlay);
+      window.addEventListener("scroll", tryPlay);
+    });
+  }
+});
+</script>
 </body>
 </html>
