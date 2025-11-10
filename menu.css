@@ -768,18 +768,39 @@ body {
   opacity: 0.9;
   animation: fadeInPremium 1s ease-in forwards;
 }
-
-.premium-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 4px rgba(255, 200, 0, 0.4));
-  animation: crownShine 3s ease-in-out infinite;
+/* Premium Section */
+.flavors-premium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1.2rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  color: #2b0b17; /* neutral deep brown/black text */
 }
+
+/* Gunther’s GIF icon */
+.premium-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+/* Hover motion */
+.premium-link:hover .premium-icon {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(170, 50, 255, 0.25);
+}
+
 
 /* Golden shimmer effect for the text */
 .flavors-premium span {
-  background: linear-gradient(90deg, #e4b849, #ffdf6b, #d4a830);
+  background: linear-gradient(90deg, #7249e4, #a46bff, #a88ef0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
@@ -828,48 +849,118 @@ body {
   }
 }
 
-/* Fall Pastel Accent Card */
+/* ===== Fall Pastel Accent Card: Pumpkin Spice ===== */
 .flavor-item.pumpkin {
-  background: linear-gradient(145deg, #fff6eb, #fde9d2); /* soft pumpkin cream gradient */
-  border: 1.5px solid rgba(255, 192, 130, 0.6); /* pastel pumpkin border */
+  background: linear-gradient(145deg, #fff6eb, #fde9d2); /* creamy pumpkin */
+  border: 1.5px solid rgba(255, 192, 130, 0.6);
   box-shadow: 0 8px 20px rgba(255, 181, 107, 0.25);
   border-radius: 18px;
-  transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
+  transition: all 0.35s ease;
 }
 
-/* Title and Text */
+/* Warm spiced title/text */
 .flavor-item.pumpkin p {
-  color: #4b2a11; /* warm spiced brown */
-  font-weight: 200;
+  color: #3a2310; /* deep cinnamon brown */
+  font-weight: 300;
 }
 
-/* Hover effect */
-.flavor-item.pumpkin:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(255, 180, 105, 0.3);
-  background: linear-gradient(145deg, #fff3e3, #ffe0c7);
+/* Ensure pumpkin hover text stays warm brown */
+.flavor-item.pumpkin .flavor-hover {
+  background: linear-gradient(145deg, #fff2dd, #ffe3c3); /* warm creamy fall tone */
+  color: #3a2310 !important; /* deep brown text overrides purple */
+  border-top: 1px solid rgba(255, 200, 130, 0.5);
+  box-shadow: inset 0 2px 6px rgba(255, 180, 100, 0.25);
+  border-radius: 0 0 18px 18px;
+  transition: all 0.3s ease;
 }
 
-/* Optional: Subtle decorative sparkles for fall warmth */
-.flavor-item.pumpkin::before {
-  content: "";
+/* Keep hover transition smooth and consistent */
+.flavor-item.pumpkin:hover .flavor-hover {
+  color: #3a2310 !important;
+  background: linear-gradient(145deg, #ffe8c4, #ffd9aa);
+  box-shadow: inset 0 4px 10px rgba(255, 160, 90, 0.3);
+}
+
+.flavors-premium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #3a2310; /* deep brown for warmth */
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+
+/* Subtle breathing glow for the GIF */
+.premium-icon {
+  width: clamp(26px, 5vw, 42px);
+  height: clamp(26px, 5vw, 42px);
+  border-radius: 50%;               /* makes it circular */
+  animation: softPulse 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 180, 70, 0.3));
+}
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+/* === Gunther’s Premium Fire Icon (Perfect Circle Fix) === */
+.gunther-flavor .fire {
   position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 25% 30%, rgba(255, 208, 155, 0.2) 6px, transparent 10px),
-    radial-gradient(circle at 70% 70%, rgba(255, 170, 100, 0.18) 8px, transparent 12px);
-  background-size: 250% 250%;
-  animation: pumpkinGlow 8s ease-in-out infinite alternate;
-  opacity: 0.5;
-  pointer-events: none;
+  top: 0.6rem;
+  left: 0.6rem;
+
+  width: clamp(36px, 5.5vw, 56px);
+  height: clamp(36px, 5.5vw, 56px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 40% 40%, #fff7ed 0%, #ffe8c7 100%);
+  border: 1.5px solid rgba(255, 170, 90, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 180, 105, 0.3);
+  z-index: 10;
+  cursor: pointer;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
 }
+
+.gunther-flavor .fire img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* makes it fill evenly */
+  border-radius: 50%;     /* enforces circular mask on the actual image */
+  clip-path: circle(50%); /* absolute guarantee of round shape */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gunther-flavor .fire:hover {
+  transform: scale(1.08);
+  background: radial-gradient(circle at 40% 40%, #fff2e1 0%, #ffd5a3 100%);
+  box-shadow: 0 8px 20px rgba(255, 170, 90, 0.45);
+}
+
+.gunther-flavor .fire:hover img {
+  transform: rotate(6deg) scale(1.05);
+}
+
+
 
 @keyframes pumpkinGlow {
-  0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-  100% { background-position: 100% 50%; filter: hue-rotate(20deg); }
+  0%   { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  100% { background-position: 100% 50%; filter: hue-rotate(15deg); }
 }
+
 
   /* ==============
      ACCESSIBILITY 

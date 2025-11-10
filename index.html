@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The Parlor — Sacramento’s original Hot Pressed Ice Cream Puff shop featuring handcrafted desserts made with Gunther’s Ice Cream. Discover our iconic donut ice cream sandwiches and seasonal creations.">
+  <meta name="keywords" content="The Parlor Ice Cream Puffs, Hot Pressed Ice Cream Puffs, Sacramento Desserts, Sacramento ice cream shop, donut ice cream sandwich, handcrafted desserts, Gunther’s Ice Cream, local dessert shop, best ice cream Sacramento, seasonal ice cream flavors">  
   <title>The Parlor — Homepage</title>
 
   <!-- Fonts -->
@@ -12,7 +13,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="navbar.css">  
 </head>
 
 <body>
@@ -79,40 +80,76 @@
       <a href="jobs.html">Jobs</a>
     </div>
     <script>
-      // Location & Time dropdowns
-      const locationBtn = document.getElementById('locationBtn');
-      const timeBtn = document.getElementById('timeBtn');
-      const locationContent = document.getElementById('locationContent');
-      const timeContent = document.getElementById('timeContent');
-  
-      locationBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        locationContent.classList.toggle('show');
-        timeContent.classList.remove('show');
+      // Sticky navbar & small interactions for index page
+      document.addEventListener("DOMContentLoaded", () => {
+        const locationBtn = document.getElementById('locationBtn');
+        const timeBtn = document.getElementById('timeBtn');
+        const locationContent = document.getElementById('locationContent');
+        const timeContent = document.getElementById('timeContent');
+        const scrollBtn = document.getElementById('scrollBtn');
+        const scrollMenu = document.getElementById('scrollMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navbar = document.querySelector('.navbar');
+    
+        // Sticky navbar on scroll
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('sticky');
+          } else {
+            navbar.classList.remove('sticky');
+          }
+        });
+    
+        // Location & time dropdowns
+        if (locationBtn && locationContent) {
+          locationBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            locationContent.classList.toggle('show');
+            timeContent && timeContent.classList.remove('show');
+          });
+        }
+    
+        if (timeBtn && timeContent) {
+          timeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            timeContent.classList.toggle('show');
+            locationContent && locationContent.classList.remove('show');
+          });
+        }
+    
+        // Scroll dropdown for desktop
+        if (scrollBtn && scrollMenu) {
+          scrollBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            scrollMenu.classList.toggle('show');
+          });
+        }
+    
+        // menuToggle for mobile redirects to menu.html
+        const menuToggle = document.getElementById('menuToggle');
+        if (menuToggle) {
+          menuToggle.addEventListener('click', () => {
+            window.location.href = 'menu.html';
+          });
+        }
+    
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+          locationContent && locationContent.classList.remove('show');
+          timeContent && timeContent.classList.remove('show');
+          scrollMenu && scrollMenu.classList.remove('show');
+          mobileMenu && mobileMenu.classList.remove('open');
+        });
+    
+        // Highlight active nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.classList.remove('highlight');
+        });
+        const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+        if (homeLink) homeLink.classList.add('highlight');
       });
-  
-      timeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        timeContent.classList.toggle('show');
-        locationContent.classList.remove('show');
-      });
-  
-      // Scroll dropdown
-      const scrollBtn = document.getElementById('scrollBtn');
-      const scrollMenu = document.getElementById('scrollMenu');
-  
-      scrollBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        scrollMenu.classList.toggle('show');
-      });
-  
-      document.addEventListener('click', () => {
-        locationContent.classList.remove('show');
-        timeContent.classList.remove('show');
-        scrollMenu.classList.remove('show');
-      });
-
     </script>
+    
   </nav>   
 
 <!-- ================= HERO SECTION ================= -->
@@ -174,14 +211,7 @@
 
 <!-- Animated title -->
 <div class="awards-title">
-  <h2 class="animated-title">
-    <span style="--i:1">A</span><span style="--i:2">s</span>
-    <span style="--i:3"> </span><span style="--i:4">f</span><span style="--i:5">e</span><span style="--i:6">a</span><span style="--i:7">t</span><span style="--i:8">u</span><span style="--i:9">r</span><span style="--i:10">e</span><span style="--i:11">d</span>
-    <span style="--i:12"> </span><span style="--i:13">i</span><span style="--i:14">n</span>
-    <span style="--i:15"> </span><span style="--i:16">t</span><span style="--i:17">o</span><span style="--i:18">p</span>
-    <span style="--i:19"> </span><span style="--i:20">f</span><span style="--i:21">o</span><span style="--i:22">o</span><span style="--i:23">d</span>
-    <span style="--i:24"> </span><span style="--i:25">p</span><span style="--i:26">u</span><span style="--i:27">b</span><span style="--i:28">l</span><span style="--i:29">i</span><span style="--i:30">c</span><span style="--i:31">a</span><span style="--i:32">t</span><span style="--i:33">i</span><span style="--i:34">o</span><span style="--i:35">n</span>
-  </h2>
+  <h2 class="animated-title">As featured in top food publications</h2>
 </div>
 
     <!-- Banner 1 -->
@@ -346,21 +376,6 @@
     });
   });
   </script>
-  
-  
-    <script>
-      // Make hero video clickable on mobile
-      document.addEventListener("DOMContentLoaded", () => {
-        if (window.innerWidth <= 767) {
-          const heroContainer = document.querySelector(".hero-video-container");
-          if (heroContainer) {
-            heroContainer.addEventListener("click", () => {
-              window.location.href = "menu.html";
-            });
-          }
-        }
-      });
-    </script>
  <script>
   document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.getElementById("galleryGrid");
@@ -423,9 +438,14 @@
       { src: "images/smore.jpg", caption: "Ice Cream with Waffle Cone", type: "tall" },
     ];
   
-    // Add new photos when clicking "View More"
-    viewMoreBtn.addEventListener("click", () => {
-      extraPhotos.forEach((photo, i) => {
+    // how many to load per click
+    const batch = window.innerWidth <= 768 ? 3 : 6;
+    let loadedCount = 0;
+  
+    // Function to add a batch of photos
+    function addNextBatch() {
+      const nextPhotos = extraPhotos.slice(loadedCount, loadedCount + batch);
+      nextPhotos.forEach((photo, i) => {
         const div = document.createElement("div");
         div.className = `gallery-item new ${photo.type}`;
         div.setAttribute("data-caption", photo.caption);
@@ -439,11 +459,18 @@
         gallery.appendChild(div);
       });
   
-      viewMoreBtn.style.opacity = "0";
-      setTimeout(() => (viewMoreBtn.style.display = "none"), 500);
+      loadedCount += nextPhotos.length;
+  
+      if (loadedCount >= extraPhotos.length) {
+        viewMoreBtn.style.opacity = "0";
+        setTimeout(() => (viewMoreBtn.style.display = "none"), 500);
+      }
   
       updateGalleryListeners();
-    });
+    }
+  
+    // When clicking "View More"
+    viewMoreBtn.addEventListener("click", addNextBatch);
   
     // Function to enable lightbox for all images
     function updateGalleryListeners() {
@@ -493,6 +520,7 @@
     updateGalleryListeners();
   });
   </script>
+  
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("heroVideo");
@@ -512,6 +540,25 @@
       tryPlay();
     });
     </script>
-    
+   <script>
+    (function () {
+      const nav = document.querySelector('.navbar');
+      if (!nav) return;
+  
+      // keep body spacing accurate if nav height changes on breakpoints
+      const setPad = () => document.body.style.paddingTop = nav.offsetHeight + 'px';
+      setPad();
+      window.addEventListener('resize', setPad);
+  
+      // shadow on scroll for feedback
+      const onScroll = () => {
+        if (window.scrollY > 2) nav.classList.add('is-scrolled');
+        else nav.classList.remove('is-scrolled');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
+   
 </body>
 </html>

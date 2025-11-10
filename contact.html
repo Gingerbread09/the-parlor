@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="contact.css" />
   <link rel="stylesheet" href="navbar.css" />
 </head>
@@ -23,10 +22,11 @@
     <div class="left-icons">
       <div class="location-icon" id="locationBtn"></div>
       <div class="time-icon" id="timeBtn"></div>
-      <div class="info-content" id="locationContent">
+
+      <div class="info-content" id="locationContent" aria-hidden="true">
         <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
       </div>
-      <div class="info-content" id="timeContent">
+      <div class="info-content" id="timeContent" aria-hidden="true">
         <strong>Hours:</strong><br>
         Thursday: 1–9:30 PM (Thanksgiving:Closed)<br>
         Friday: 1–10 PM<br>
@@ -38,28 +38,27 @@
       </div>
     </div>
 
-    <!-- Logo -->
     <div class="navbar-logo">
       <a href="index.html">
         <img src="/images/parlor_logo.png" alt="The Parlor Logo">
       </a>
     </div>
 
-    <!-- Right links -->
     <div class="right-links">
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html" class="highlight">Menu</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="catering.html">Catering</a></li>
-        <li><a href="jobs.html">Jobs</a></li>
+        <li><a class="nav-link home" href="index.html">Home</a></li>
+        <li><a class="nav-link menu" href="menu.html">Menu</a></li>
+        <li><a class="nav-link about" href="aboutus.html">About Us</a></li>
+        <li><a class="nav-link contact" href="contact.html">Contact Us</a></li>
+        <li><a class="nav-link catering" href="catering.html">Catering</a></li>
+        <li><a class="nav-link jobs" href="jobs.html">Jobs</a></li>
       </ul>
 
-      <a href="menu.html" class="menu-toggle" id="menuToggle"></a>
-      <div class="scroll-button" id="scrollBtn"></div>
+      <a href="menu.html" class="menu-toggle" id="menuToggle" aria-label="Open menu"></a>
 
-      <div class="scroll-menu" id="scrollMenu">
+      <div class="scroll-button" id="scrollBtn" aria-hidden="true"></div>
+
+      <div class="scroll-menu" id="scrollMenu" aria-hidden="true">
         <a class="scroll-link" href="index.html">HOME</a>
         <a class="scroll-link" href="aboutus.html">ABOUT US</a>
         <a class="scroll-link" href="contact.html">CONTACT US</a>
@@ -68,7 +67,7 @@
       </div>
     </div>
 
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <a href="index.html">Home</a>
       <a href="menu.html">Menu</a>
       <a href="aboutus.html">About Us</a>
@@ -252,6 +251,7 @@
     scrollMenu.classList.toggle('show');
   });
 
+  // Close all dropdowns when clicking outside
   document.addEventListener('click', () => {
     locationContent.classList.remove('show');
     timeContent.classList.remove('show');
@@ -259,7 +259,6 @@
   });
 
 </script>
-
 <script>
   (function() {
   
