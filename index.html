@@ -114,19 +114,18 @@
 
     </script>
   </nav>   
-
 <!-- ================= HERO SECTION ================= -->
 <section class="hero-section">
   <div class="hero-video-container">
-    <!-- Video no longer wrapped in <a> -->
     <video
+      id="heroVideo"
       class="hero-video"
       autoplay
       muted
       loop
       playsinline
       preload="auto"
-      id="heroVideo"
+      tabindex="-1"
     >
       <source src="videos/hero.mp4" type="video/mp4" />
       Your browser does not support the video tag.
@@ -139,6 +138,50 @@
     <a href="#awards" class="hollow1">Explore More</a>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("heroVideo");
+
+  // Ensure autoplay works even on mobile browsers that block it
+  const tryPlay = () => {
+    const promise = video.play();
+    if (promise !== undefined) {
+      promise.catch(() => {
+        // user interaction fallback
+        const resume = () => {
+          video.play().catch(()=>{});
+          window.removeEventListener("touchstart", resume);
+          window.removeEventListener("click", resume);
+        };
+        window.addEventListener("touchstart", resume, { once: true });
+        window.addEventListener("click", resume, { once: true });
+      });
+    }
+  };
+
+  // Pick responsive video source (desktop / tab / mobile)
+  const setSource = () => {
+    const w = window.innerWidth;
+    let src = "videos/hero.mp4";
+    if (w <= 767) src = "videos/hero_mobile.mp4";
+    else if (w <= 1180) src = "videos/hero_tab.mp4";
+
+    if (video.getAttribute("data-active-src") !== src) {
+      video.pause();
+      video.src = src;
+      video.setAttribute("data-active-src", src);
+      video.load();
+      tryPlay();
+    }
+  };
+
+  setSource();
+  window.addEventListener("resize", () => setTimeout(setSource, 250));
+  tryPlay();
+});
+</script>
+
 
 
 <script>
@@ -349,19 +392,7 @@
   
   
     <script>
-      // Make hero video clickable on mobile
-      document.addEventListener("DOMContentLoaded", () => {
-        if (window.innerWidth <= 767) {
-          const heroContainer = document.querySelector(".hero-video-container");
-          if (heroContainer) {
-            heroContainer.addEventListener("click", () => {
-              window.location.href = "menu.html";
-            });
-          }
-        }
-      });
-    </script>
- <script>
+      
   document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.getElementById("galleryGrid");
     const viewMoreBtn = document.getElementById("viewMoreBtn");
