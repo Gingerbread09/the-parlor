@@ -2,23 +2,36 @@ body, html {
   margin: 0;
   padding: 0;
 }
+
 .navbar {
-  position: fixed; /* was sticky */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 999; 
+  background-color: #fff; 
+}
+
+header,
+.hero {
+  padding-top: 80px; 
+}
+
+/* General styles */
+.navbar {
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.75);
   border-bottom: 1px solid #ddd;
   padding: 0 20px;
-  height: 120px;
+  height: 90px;
   backdrop-filter: blur(6px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   z-index: 1000;
 }
-
 /* Icon above link text */
 .nav-links li a .nav-icon,
 .mobile-menu a .nav-icon {
@@ -352,25 +365,17 @@ transition: color 0.3s ease, font-weight 0.3s ease;
      MOBILE FLEX STRUCTURE
      =============================== */
      @media (max-width: 1000px) {
-      .navbar {
+      .mobile-navbar {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 0 12px;
-        position: fixed;      /* always fixed */
+        justify-content: space-between;
+        padding: 0 16px;
+        height: 70px;
+        background: #fff;
+        position: sticky;
         top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;        /* ensures it’s above everything else */
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        z-index: 1000;
       }
-    
-      body {
-        padding-top: 80px; /* adjust based on navbar height so content isn’t hidden */
-      }
-      
     
       .left-icons,
       .parlor-logo,
@@ -697,4 +702,65 @@ transition: color 0.3s ease, font-weight 0.3s ease;
       display: none;
     }
   }
+/* =============================
+   Prevent hero from cutting off on small screens
+   ============================= */
+   @media (max-width: 480px) {
+    body.menu-page .hero-section {
+      margin-top: 120px !important; /* equal to navbar height */
+    }
+  
+    body.menu-page .hero-video,
+    body.menu-page .hero-videoo {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: calc(100vh - 120px); /* full viewport under navbar */
+      object-fit: cover;
+      object-position: center top;
+    }
+  
+    body.menu-page .hero-video-container {
+      position: relative;
+      overflow: hidden;
+      height: auto;
+    }
+  }
+  
+ /* =============================
+   Sticky (Fixed) Navbar — Menu Page Mobile Only
+   ============================= */
+@media (max-width: 768px) {
+  body.menu-page .navbar {
+    position: fixed;              /* force fixed instead of sticky */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Prevent hero from being hidden */
+  body.menu-page {
+    padding-top: 120px; /* matches navbar height */
+  }
+
+  /* Hero layout correction */
+  body.menu-page .hero-section,
+  body.menu-page .hero,
+  body.menu-page .hero-video-container {
+    margin-top: 0 !important;
+  }
+
+  body.menu-page .hero-video,
+  body.menu-page .hero-videoo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+}
 

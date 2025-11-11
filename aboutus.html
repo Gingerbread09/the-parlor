@@ -758,6 +758,30 @@
       .hero-sub{ font-size:14px; top:-230px; }
       .btn-drip{ padding:10px 16px }
     }
+/* =============================
+   Sticky Navbar Fix — About Us page only
+   ============================= */
+   body.aboutus-page .navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Make sure content doesn’t hide under it */
+body.aboutus-page {
+  padding-top: 120px; /* same as navbar height */
+}
+
+/* Keep hero fully visible */
+body.aboutus-page .hero {
+  margin-top: 0 !important;
+  overflow: visible;
+}
 
     /* Accessibility focus */
     a:focus, button:focus { outline:3px solid rgba(224,107,220,0.18); outline-offset:3px; border-radius:8px; }
