@@ -334,6 +334,12 @@
     <!-- BACK 6 -->
    <div class="menu-card-back">
    <img src="images/CW.jpg" alt="puff" />
+
+   <!-- Mobile Flip Prompt -->
+<div class="mobile-flip-hint">
+  <p>💡 Tap a card to view its back!</p>
+</div>
+
 </div>
 </div>
 </div>
@@ -350,11 +356,17 @@
         <!--  Premium indicator -->
 
         <div class="flavors-premium">
-          <a href="https://gunthersicecream.com" target="_blank" rel="noopener noreferrer" class="premium-link">
+          <a href="https://gunthersicecream.com"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="premium-link">
             <img src="icons/fire1.gif" alt="Gunther’s Premium Icon" class="premium-icon">
+            <span class="newtab-icon" aria-hidden="true">↗</span>
           </a>
           <span>Exclusively made by Gunther’s for The Parlor.</span>
         </div>
+        
+        
         
         <div class="flavors-bg" aria-hidden="true" style="display:none;"></div>
 
@@ -703,5 +715,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hint = document.querySelector(".mobile-flip-hint");
+    const cards = document.querySelectorAll(".menu-card");
+  
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        if (hint) {
+          hint.style.opacity = "0";
+          setTimeout(() => hint.remove(), 500);
+        }
+      }, { once: true });
+    });
+  });
+  </script>
+  
 </body>
 </html>

@@ -79,8 +79,18 @@
 
   <!-- ---------------- HERO SECTION ---------------- -->
   <header class="hero hero--sky">
-    <video class="hero-video hero-videoo" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="videos/catering-preview.mp4" type="video/mp4" />
+    <video 
+      class="hero-video hero-videoo" 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      preload="auto" 
+      aria-hidden="true" 
+      id="cateringVideo"
+    >
+      <source src="videos/catering-preview.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
 
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -276,16 +286,16 @@
       <div class="footer-columns">
         <div class="footer-column">
           <h4>Explore More</h4>
-          <a href="contact.html">Contact Us</a>
-          <a href="menu.html">Explore the Menu</a>
-          <a href="catering.html">Catering Info</a>
-          <a href="index.html#gallery">Gallery</a>
+          <a href="contact.html">Contact Us |</a>
+          <a href="menu.html">Explore the Menu |</a>
+          <a href="catering.html">Catering Info </a>
+          <a href="index.html#gallery">Gallery |</a>
           <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
         </div>
 
         <div class="footer-column">
           <h4>Connect With Us</h4>
-          <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook |</a>
           <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Instagram</a>
         </div>
 
@@ -424,6 +434,35 @@
         }
       });
     });
+  </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("video[autoplay]");
+    
+    const tryPlayAll = () => {
+      videos.forEach(video => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const resume = () => {
+              video.play();
+              document.removeEventListener("touchstart", resume);
+              document.removeEventListener("click", resume);
+            };
+            document.addEventListener("touchstart", resume, { once: true });
+            document.addEventListener("click", resume, { once: true });
+          });
+        }
+      });
+    };
+  
+    tryPlayAll();
+  
+    window.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") tryPlayAll();
+    });
+    window.addEventListener("orientationchange", () => setTimeout(tryPlayAll, 300));
+  });
   </script>
   
 </body>

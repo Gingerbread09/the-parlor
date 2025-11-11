@@ -362,6 +362,36 @@ body {
   line-height: 1.5;
   margin-top: 8px;
 }
+/* Mobile Flip Hint — Safe floating element, no layout shift */
+.mobile-flip-hint {
+  display: none;
+  position: fixed;
+  bottom: 5vh; /* slightly above bottom for visibility */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  color: #333;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 9999;
+  animation: fadeInHint 0.8s ease-out;
+}
+
+@keyframes fadeInHint {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Only show on mobile screens */
+@media (max-width: 768px) {
+  .mobile-flip-hint {
+    display: block;
+  }
+}
 
 
 /* ===============================
@@ -752,34 +782,6 @@ body {
   opacity: 0;
 }
 
-.flavors-premium {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
-  font-family: "Montserrat Alternates", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #3b2c09;
-  opacity: 0.9;
-  animation: fadeInPremium 1s ease-in forwards;
-}
-/* Premium Section */
-.flavors-premium {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 1.2rem;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
-  color: #2b0b17; /* neutral deep brown/black text */
-}
-
 /* Gunther’s GIF icon */
 .premium-icon {
   width: 42px;
@@ -795,6 +797,19 @@ body {
 .premium-link:hover .premium-icon {
   transform: scale(1.08);
   box-shadow: 0 6px 18px rgba(170, 50, 255, 0.25);
+}
+
+
+.newtab-icon {
+  font-size: 0.9em;
+  color: #a36ad6; /* matches your purple accent */
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.premium-link:hover .newtab-icon {
+  transform: translateY(-2px);
+  opacity: 1;
 }
 
 
@@ -897,6 +912,15 @@ body {
   letter-spacing: 0.4px;
 }
 
+
+.premium-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+
 /* Subtle breathing glow for the GIF */
 .premium-icon {
   width: clamp(26px, 5vw, 42px);
@@ -959,6 +983,28 @@ body {
 @keyframes pumpkinGlow {
   0%   { background-position: 0% 50%; filter: hue-rotate(0deg); }
   100% { background-position: 100% 50%; filter: hue-rotate(15deg); }
+}
+@media (max-width: 768px) {
+  .flavors-premium {
+    flex-direction: column;       /* stack icon/text vertically */
+    text-align: center;           /* center text under the icon */
+    gap: 4px;
+  }
+
+  .premium-link {
+    justify-content: center;      /* center the icon within its flex box */
+    margin-bottom: 4px;           /* small spacing above the text */
+  }
+
+  .premium-icon {
+    width: 30px;                  /* scale the gif down slightly */
+    height: 30px;
+  }
+
+  .flavors-premium span {
+    font-size: 0.9em;             /* make text slightly smaller */
+    max-width: 80%;               /* keep text nicely centered */
+  }
 }
 
 
