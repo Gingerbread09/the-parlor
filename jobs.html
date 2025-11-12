@@ -106,24 +106,29 @@
         </div>
   
         <div class="form-group">
-          <label>Preferred Role</label>
-          <select name="role" required>
+          <label for="role">Preferred Role</label>
+          <select id="role" name="role" required>
             <option value="">Select a Role</option>
             <option value="cashier">Cashier</option>
             <option value="manager">Manager</option>
             <option value="other">Other</option>
           </select>
         </div>
-  
+        
         <div class="form-group availability-section">
-          <label>Availability</label>
+          <label for="availability">Availability</label>
+          <select id="availability" name="availability" required>
+            <option value="">Select Availability</option>
+            <option value="weekday">Weekdays</option>
+            <option value="weekend">Weekends</option>
+            <option value="flexible">Flexible</option>
+          </select>
           <div id="availability-container" class="availability-container"></div>
           <button type="button" class="add-availability">+ Add Availability</button>
         </div>
-  
+        
         <button type="submit" class="btn-drip">Submit Application</button>
-      </form>
-    </div>
+        
   </section>
   
 <!-- FOOTER-->
@@ -135,7 +140,7 @@
 
     <div class="footer-columns">
       <div class="footer-column">
-        <h4>Explore More</h4>
+        <h3>Explore More</h3>
         <a href="contact.html">Contact Us |</a>
         <a href="menu.html">Explore the Menu |</a>
         <a href="catering.html">Catering Info </a>
@@ -144,13 +149,13 @@
       </div>
 
       <div class="footer-column">
-        <h4>Connect With Us</h4>
+        <h3>Connect With Us</h3>
         <a href="https://www.facebook.com/theparloricecream" target="_blank" rel="noopener">Facebook |</a>
         <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Instagram</a>
       </div>
 
       <div class="footer-column">
-        <h4>Stay Updated</h4>
+        <h3>Stay Updated</h3>
         <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Follow on Instagram</a>
       </div>
     </div>
