@@ -1,3 +1,14 @@
+@import url('../assets/fonts/fonts.css');
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, .hero-heading {
+font-family: 'Lust Script', cursive;
+}
+h2, h3, h4 {
+font-family: 'Montserrat Alternates', sans-serif;
+}
 /* --------- Footer cleanup--------- */
 .site-footer {background: linear-gradient(180deg, #f3e8ff 0%, #f1ffdc 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
 .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }

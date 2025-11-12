@@ -1,3 +1,41 @@
+@import url('../assets/fonts/fonts.css');
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, .hero-heading {
+font-family: 'Lily Script One', cursive;
+}
+h2, h3, h4 {
+font-family: 'Montserrat Alternates', sans-serif;
+}
+
+/* Montserrat Regular */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat Alternates */
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Lily Script */
+@font-face {
+  font-family: 'Lily Script One';
+  src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 /* ==========================================================================
    menu.css — The Parlor (complete, comprehensive)
    ========================================================================== */
