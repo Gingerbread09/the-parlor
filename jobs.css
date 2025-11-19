@@ -62,7 +62,7 @@ body {
   transform: translateX(-50%);
   width: 75px;
   height: 62px;
-  background: url('Parlor_logo.png') no-repeat center center;
+  background: url('Parlor_logo.webp') no-repeat center center;
   background-size: contain;
 }
 
