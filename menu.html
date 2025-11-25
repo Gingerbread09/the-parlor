@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+  <link rel="preload" href="assets/fonts/MontserratAlternates-ExtraLight.woff" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/MontserratAlternates-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/MontserratAlternates-Medium.woff" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/MontserratAlternates-Regular.woff" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
 <head>
@@ -12,7 +16,6 @@
 
   <link rel="stylesheet" href="navbar.css" />
   <link rel="stylesheet" href="menu.css" />
-
 
   <style>
 
@@ -56,7 +59,7 @@
     .menu-section-title h2 {
       font-family: 'Montserrat Alternates', sans-serif;
       font-weight: 300;
-      color: var(--accent);
+      color: #280856;
       font-size: clamp(28px, 4vw, 40px);
       margin: 0 0 8px 0;
       letter-spacing: -0.01em;
@@ -64,8 +67,9 @@
 
     .menu-section-title p {
       margin: 0 0 28px 0;
-      color: var(--muted);
+      color: #996cb9;
       font-size: clamp(14px, 1.2vw, 16px);
+      font-family: 'Montserrat light';
       line-height: 1.6;
       max-width: 880px;
     }
@@ -99,19 +103,16 @@
 <body>
   <body class="menu-page">
 
-  <!-- ============
-       NAV + HERO 
-       ============-->
-       <nav class="navbar">
-        <!-- Left side (mobile only) -->
-        <div class="left-icons">
-          <div class="location-icon" id="locationBtn"></div>
-          <div class="time-icon" id="timeBtn"></div>
-          <div class="info-content" id="locationContent">
-            <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
-          </div>
-          <div class="info-content" id="timeContent">
-             <strong>Hours:</strong><br>
+    <nav class="navbar">
+      <!-- Left side (mobile only) -->
+      <div class="left-icons">
+        <div class="location-icon" id="locationBtn"></div>
+        <div class="time-icon" id="timeBtn"></div>
+        <div class="info-content" id="locationContent">
+          <strong>Location:</strong> 2620 Fair Oaks Blvd, Sacramento, CA
+        </div>
+        <div class="info-content" id="timeContent">
+          <strong>Hours:</strong><br>
           Thursday: 1–9:30 PM (Thanksgiving:Closed)<br>
           Friday: 1–10 PM<br>
           Saturday: 1–10 PM<br>
@@ -119,16 +120,18 @@
           Monday: 1–9:30 PM<br>
           Tuesday: 1–9:30 PM<br>
           Wednesday: 1–9:30 PM
-          </div>
         </div>
-      
-        <!-- Logo (always centered) -->
-        <div class="navbar-logo">
-          <a href="index.html">
-            <img src="/images/parlor_logo.webp" alt="The Parlor Logo">
-          </a>
-        </div>
-      
+      </div>
+    
+      <!-- Logo -->
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img src="/images/parlor_logo.webp" alt="The Parlor Logo">
+        </a>
+      </div>
+    
+      <!-- Right links -->
+      <div class="right-links">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="menu.html" class="highlight">Menu</a></li>
@@ -137,78 +140,33 @@
           <li><a href="catering.html">Catering</a></li>
           <li><a href="jobs.html">Jobs</a></li>
         </ul>
-        
-        <!-- Mobile menu toggle -->
-        <button 
-          id="menuToggle" 
-          class="menu-toggle" 
-          aria-label="Open navigation menu" 
-          aria-expanded="false" 
-          aria-controls="nav-links">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        
-        <!-- Scroll button for mobile -->
+    
+        <a href="menu.html" class="menu-toggle" id="menuToggle"></a>
+    
+        <!-- Scroll button -->
         <div class="scroll-button" id="scrollBtn"></div>
-        
-        
-          <!-- Scroll dropdown menu -->
-          <div class="scroll-menu" id="scrollMenu">
-            <a class="scroll-link" href="index.html">HOME</a>
-            <a class="scroll-link" href="aboutus.html">ABOUT US</a>
-            <a class="scroll-link" href="contact.html">CONTACT US</a>
-            <a class="scroll-link" href="catering.html">CATERING</a>
-            <a class="scroll-link" href="jobs.html">JOBS</a>
-          </div>
+    
+        <!-- Scroll dropdown -->
+        <div class="scroll-menu" id="scrollMenu">
+          <a class="scroll-link" href="index.html">HOME</a>
+          <a class="scroll-link" href="aboutus.html">ABOUT US</a>
+          <a class="scroll-link" href="contact.html">CONTACT US</a>
+          <a class="scroll-link" href="catering.html">CATERING</a>
+          <a class="scroll-link" href="jobs.html">JOBS</a>
         </div>
-      
-        <!-- Mobile dropdown -->
-        <div class="mobile-menu" id="mobileMenu">
-          <a href="index.html">Home</a>
-          <a href="menu.html">Menu</a>
-          <a href="aboutus.html">About Us</a>
-          <a href="contact.html">Contact Us</a>
-          <a href="catering.html">Catering</a>
-          <a href="jobs.html">Jobs</a>
-        </div>
-        <script>
-          // Location & Time dropdowns
-          const locationBtn = document.getElementById('locationBtn');
-          const timeBtn = document.getElementById('timeBtn');
-          const locationContent = document.getElementById('locationContent');
-          const timeContent = document.getElementById('timeContent');
-      
-          locationBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            locationContent.classList.toggle('show');
-            timeContent.classList.remove('show');
-          });
-      
-          timeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            timeContent.classList.toggle('show');
-            locationContent.classList.remove('show');
-          });
-      
-          // Scroll dropdown
-          const scrollBtn = document.getElementById('scrollBtn');
-          const scrollMenu = document.getElementById('scrollMenu');
-      
-          scrollBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            scrollMenu.classList.toggle('show');
-          });
-
-          document.addEventListener('click', () => {
-            locationContent.classList.remove('show');
-            timeContent.classList.remove('show');
-            scrollMenu.classList.remove('show');
-          });
-  
-        </script>
-      </nav>    
+      </div>
+    
+      <!-- Mobile dropdown -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="catering.html">Catering</a>
+        <a href="jobs.html">Jobs</a>
+      </div>
+    </nav>    
+    
 
   <div id="canvas"> </div>
   <div class="menu-video-container">
@@ -370,7 +328,7 @@
              target="_blank"
              rel="noopener noreferrer"
              class="premium-link">
-            <img src="icons/fire1.gif" alt="Gunther’s Premium Icon" class="premium-icon">
+            <img src="icons/fire.png" alt="Gunther’s Premium Icon" class="premium-icon">
             <span class="newtab-icon" aria-hidden="true">↗</span>
           </a>
           <span>Exclusively made by Gunther’s for The Parlor.</span>
@@ -385,54 +343,54 @@
       <div class="flavor-item">
         <img src="menu/M1.png" alt="">
         <p>BLACK RASPBERRY CHIP</p>
-        <div class="flavor-hover">Tangy Black Raspberries swirled with rich Dark Chocolate Chips.</div>
+        <div class="flavor-hover">Tangy Black Raspberries swirled with rich Dark Chocolate Chips</div>
       </div>
     
       <div class="flavor-item">
         <img src="menu/M2.png" alt="">
         <p>CAKE BATTER</p>
-        <div class="flavor-hover">Sweet and buttery, just like licking the spoon of Birthday Cake Batter.</div>
+        <div class="flavor-hover">Sweet and buttery, just like licking the spoon of Birthday Cake Batter</div>
       </div>
     
       <div class="flavor-item ">
         <img src="icons/fire.png" alt="Gunther's" class="fire">
         <img src="menu/M3.png" alt="">
         <p>COCOA BUTTER KISSES</p>
-        <div class="flavor-hover">Silky Chocolate Cookie Butter with Graham Cracker.</div>
+        <div class="flavor-hover">Silky Chocolate Cookie Butter with Graham Cracker</div>
       </div>
          
 
       <div class="flavor-item">
         <img src="menu/M13.png" alt="">
         <p>COCONUT</p>
-        <div class="flavor-hover">A tropical classic; coconut ice cream made with real coconut milk.</div>
+        <div class="flavor-hover">Tropical Ice Cream made with real Coconut Milk</div>
       </div>
     
       <div class="flavor-item ">
         <img src="icons/fire.png" alt="Gunther's" class="fire">
         <img src="menu/M5.png" alt="">
         <p>ELMO'S REVENGE</p>
-        <div class="flavor-hover">Vanilla Ice Cream with Oreo, Cookie Dough and Chocolate Chips.</div>
+        <div class="flavor-hover">Vanilla Ice Cream with oreo, cookie dough and chocolate chips</div>
       </div>
           
       <div class="flavor-item">
         <img src="icons/fire.png" alt="Gunther's" class="fire">
         <img src="menu/M4.png" alt="">
         <p>FIFTY SHADES OF EARL GREY</p>
-        <div class="flavor-hover">Black Tea with notes of Bergamot and soft Vanilla undertones.</div>
+        <div class="flavor-hover">Black Tea with notes of Bergamot and vanilla undertones</div>
       </div>
     
       <div class="flavor-item">
         <img src="menu/M6.png" alt="">
         <p>GREEN WITH ENVY</p>
-        <div class="flavor-hover">Creamy Matcha Green Tea sweetened with Vanilla.</div>
+        <div class="flavor-hover">Creamy Matcha Green Tea sweetened with Vanilla</div>
       </div>
     
       <div class="flavor-item">
         <img src="icons/fire.png" alt="Gunther's" class="fire">
         <img src="menu/M7.png" alt="">
         <p>HELLO KALO</p>
-        <div class="flavor-hover">Taro Coconut Ice Cream with Condensed Milk.</div>
+        <div class="flavor-hover">Taro Coconut Ice Cream with Condensed Milk</div>
       </div>
     
       <div class="flavor-item dairy-free">
@@ -440,7 +398,7 @@
         <img src="menu/M8.png" alt="">
         <p>MAIN-GO</p>
         <div class="flavor-hover">
-          Our only Dairy-Free Option. Juicy Mango Sorbet.
+          Our only Dairy-Free Option. Juicy Mango Sorbet
         </div>
       </div>    
 
@@ -448,19 +406,19 @@
                 <img src="icons/fire.png" alt="Gunther's" class="fire">
         <img src="menu/M9.png" alt="">
         <p>MIDNIGHT IN PARIS</p>
-        <div class="flavor-hover">Hazelnut Dark Chocolate with Espresso.</div>
+        <div class="flavor-hover">Hazelnut Dark Chocolate with Espresso</div>
       </div>
     
       <div class="flavor-item">
         <img src="menu/M15.png" alt="">
         <p>MINT OREO</p>
-        <div class="flavor-hover">Cool mint ice cream blended with crunchy Oreo cookie pieces for a refreshing twist.</div>
+        <div class="flavor-hover">Cool mint ice cream blended with crunchy Oreo Bits</div>
       </div> 
       
       <div class="flavor-item">
         <img src="menu/M10.png" alt="">
         <p>PECAN PRALINE</p>
-        <div class="flavor-hover">Toasted Pecans wrapped in ribbons of Buttery Caramel Goodness.</div>
+        <div class="flavor-hover">Toasted Pecans wrapped in ribbons of Buttery Caramel</div>
       </div>
 
       <div class="flavor-item pumpkin">
@@ -481,13 +439,13 @@
       <div class="flavor-item">
         <img src="menu/M16.png" alt="">
         <p>VANILLA</p>
-        <div class="flavor-hover">Smooth, classic, and creamy; made with rich vanilla bean for timeless flavor.</div>
+        <div class="flavor-hover">Smooth & Classic,Vanilla bean for a timeless flavor.</div>
       </div>      
     
       <div class="flavor-item">
         <img src="menu/M12.png" alt="">
         <p>WENDELL</p>
-        <div class="flavor-hover">Vanilla Sweet cream Ice Cream with ribbons of Cinnamon Swirls.</div>
+        <div class="flavor-hover">Vanilla Sweet cream with ribbons of Cinnamon Swirls.</div>
       </div>
     </div>
   </section>
@@ -636,7 +594,7 @@
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-left">
-      <img src="parlor_logo.webp" alt="The Parlor Logo" class="footer-logo">
+      <img src="../images/parlor_logo.webp" alt="The Parlor Logo" class="footer-logo">
     </div>
 
     <div class="footer-columns">
@@ -644,7 +602,7 @@
         <h4>Explore More</h4>
         <a href="contact.html">Contact Us |</a>
         <a href="menu.html">Explore the Menu |</a>
-        <a href="catering.html">Catering Info |</a>
+        <a href="catering.html">Catering Info </a>
         <a href="index.html#gallery">Gallery |</a>
         <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
       </div>
@@ -662,7 +620,7 @@
     </div>
 
     <div class="footer-legal">
-      <p>© 2025 The Parlor. All rights reserved.</p>
+      <h4>© 2025 The Parlor. All rights reserved.</h4>
       <div class="footer-legal-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms</a>
@@ -671,7 +629,42 @@
     </div>
   </div>
 </footer>
+<script>
+  // Location & Time dropdowns
+  const locationBtn = document.getElementById('locationBtn');
+  const timeBtn = document.getElementById('timeBtn');
+  const locationContent = document.getElementById('locationContent');
+  const timeContent = document.getElementById('timeContent');
 
+  locationBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    locationContent.classList.toggle('show');
+    timeContent.classList.remove('show');
+  });
+
+  timeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    timeContent.classList.toggle('show');
+    locationContent.classList.remove('show');
+  });
+
+  // Scroll dropdown
+  const scrollBtn = document.getElementById('scrollBtn');
+  const scrollMenu = document.getElementById('scrollMenu');
+
+  scrollBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    scrollMenu.classList.toggle('show');
+  });
+
+  // Close all dropdowns when clicking outside
+  document.addEventListener('click', () => {
+    locationContent.classList.remove('show');
+    timeContent.classList.remove('show');
+    scrollMenu.classList.remove('show');
+  });
+
+</script>
  <!-- ======= Flip script for menu cards ======= -->
  <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -740,6 +733,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   </script>
-  
 </body>
 </html>

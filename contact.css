@@ -1,37 +1,55 @@
 @import url('../assets/fonts/fonts.css');
-body {
-  font-family: 'Montserrat', sans-serif;
-}
 
-h1, .hero-heading {
+h1 {
 font-family: 'Lily Script One', cursive;
 }
-h2, h3, h4 {
-font-family: 'Montserrat Alternates', sans-serif;
+.hero-topline {
+font-family: 'Montserrat Medium';
 }
 
-/* Montserrat Regular */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Montserrat Alternates */
-@font-face {
-  font-family: 'Montserrat Alternates';
-  src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Lily Script */
 @font-face {
   font-family: 'Lily Script One';
   src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat regular';
+  src: url('../assets/fonts/MontserratAlternates-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat bold';
+  src: url('../assets/fonts/MontserratAlternates-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Montserrat light';
+  src: url('../assets/fonts/MontserratAlternates-Light.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Medium';
+  src: url('../assets/fonts/MontserratAlternates-SemiBold.woff') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -170,7 +188,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   border: none;
   color: #000000;
   cursor: pointer;
-  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  border: 0.5px solid rgba(110, 187, 50, 0.4);
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--drip-base), var(--drip-accent));
@@ -287,7 +305,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   }
   
   .section-title h2 {
-    font-family: 'Montserrat Alternates' ,sans-serif; 
+    font-family: 'Montserrat regular' ,sans-serif; 
     font-weight: 375; 
     font-size: 68px; 
     line-height: 120%; 
@@ -341,7 +359,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   
   .contact-text h3 {
     font-size: clamp(2rem, 4vw, 3.5rem);
-    font-family: 'Montserrat Alternates' ,sans-serif; 
+    font-family: 'Montserrat regular' ,sans-serif; 
     font-weight: 375; 
     font-size: 68px; 
     line-height: 120%; 
@@ -464,7 +482,7 @@ font-family: 'Montserrat Alternates', sans-serif;
 }
 
 label {
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: 'Montserrat regular' ,sans-serif; 
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--muted);
@@ -493,80 +511,40 @@ textarea {
   resize: vertical;
 }
   
-/* --------- Footer cleanup (prevent big gap) --------- */
-.site-footer {background: linear-gradient(180deg, #e0ffe4 0%, #fdffe1 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
-.footer-container { max-width:1200px; margin:0 auto; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
-.footer-columns { display:flex; gap:24px; flex:1; justify-content:flex-end; }
-.footer-column { min-width:160px; }
-.footer-logo { width:88px; height:auto; display:block; }
-
-/* --------- Small screen adjustments --------- */
-@media (max-width: 640px) {
-  .footer-container { flex-direction:column; align-items:center; text-align:center; }
-}
-/* --------- Mobile Footer Optimization (Phones) --------- */
-@media (max-width: 480px) {
-  .site-footer {
-    padding: 30px 16px;
-    text-align: center;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-  }
-
-  .footer-logo {
-    width: 65px;
-    margin-bottom: 10px;
-  }
-
-  .footer-columns {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-  }
-
-  .footer-column {
-    width: 100%;
-    min-width: unset;
-  }
-
-  .footer-heading {
-    font-size: 0.95rem;
-    margin-bottom: 6px;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .footer-link {
-    font-size: 0.85rem;
-  }
-
-  .footer-text {
-    font-size: 0.8rem;
-    margin-top: 18px;
-    line-height: 1.4;
-  }
-
-  .footer-legal-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-    font-size: 0.75rem;
-  }
-
-  .footer-legal-links a {
-    text-decoration: none;
-  }
+/* -------------------------
+        FOOTER
+        ------------------------- */
+        .site-footer {background: linear-gradient(180deg, #e2facc 0%, #fbffe4 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
+     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items:start; flex-wrap:wrap; justify-content:space-between; }
+     .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
+     .footer-column { min-width:160px; }
+     .footer-logo { width:88px; height:auto; display:block; }
+     
+     @media (max-width: 640px) {
+       .footer-container { flex-direction:column; align-items:center; text-align:center; }
+     }
+     
+     @media (max-width: 480px) {
+       .footer-columns { flex-direction:column; gap:12px; align-items:center; }
+       .footer-column { min-width: unset; text-align:center; }
+       .footer-logo { margin-bottom: 12px; }
+     }
+    /* =====================================================
+   REMOVES ALL UNDERLINES SITEWIDE — FINAL OVERRIDE
+   ===================================================== */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+.nav-links a,
+.mobile-menu a,
+.scroll-link,
+.footer-links a,
+.footer-column a,
+.footer-legal-links a {
+  text-decoration: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }

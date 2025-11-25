@@ -1,32 +1,25 @@
 @import url('../assets/fonts/fonts.css');
-
-/* Montserrat Regular */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+body, html {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Montserrat Alternates */
+.nav-links li a,
+.mobile-menu a,
+.scroll-link,
+.navbar-logo::after,
+h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
 @font-face {
-  font-family: 'Montserrat Alternates';
+  font-family: 'Montserrat';
   src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
-/* Lust Script */
-@font-face {
-  font-family: 'Lust Script';
-  src: url('../fonts/LustScript-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 
 body, html {
   margin: 0;
@@ -84,7 +77,7 @@ header,
 }
 
 .nav-links li a {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;    
   font-weight: 100;   
   color: #000;
@@ -124,6 +117,40 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   padding: 8px 12px;
   font-size: 12px;
   z-index: 10;
+}
+/* Remove all browser focus outlines, tap rings, and borders */
+.menu-toggle {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent; /* removes blue tap highlight on mobile */
+  -webkit-focus-ring-color: transparent;    /* Safari iOS focus ring */
+}
+
+/* Remove focus outline in all states */
+.menu-toggle:focus,
+.menu-toggle:active,
+.menu-toggle:focus-visible,
+.menu-toggle:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-focus-ring-color: transparent !important;
+}
+
+/* Firefox-specific fix (removes inner dotted focus ring) */
+.menu-toggle::-moz-focus-inner {
+  border: 0 !important;
+}
+
+/* Optional: remove focus only on mobile; keep accessible on desktop */
+@media (max-width: 768px) {
+  .menu-toggle:focus,
+  .menu-toggle:focus-visible,
+  .menu-toggle:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 }
 
 .info-content.show { display: block; }
@@ -296,7 +323,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
     position: relative;
     text-decoration: none; /* removes underline */
     color: #000;
-    font-family: "montserrat alternates";
+    font-family: "Montserrat Alternates";
     font-weight: 500;
     padding: 8px 16px;
     transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
@@ -372,7 +399,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  font-family: "montserrat alternates";
+  font-family: "Montserrat Alternates";
   padding: 6px 10px;
   border-radius: 8px;
   white-space: nowrap;
@@ -600,7 +627,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
       .scroll-link {
         position: relative;
         color: #000;
-        font-family: "montserrat alternates";
+        font-family: "Montserrat Alternates";
         font-weight: 500;
         padding: 8px 16px;
         transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
@@ -669,7 +696,7 @@ transition: color 0.3s ease, font-weight 0.3s ease;
       color: #fff;
       font-size: 12px;
       font-weight: 500;
-      font-family: "montserrat alternates";
+      font-family: "Montserrat Alternates";
       padding: 6px 10px;
       border-radius: 8px;
       white-space: nowrap;
@@ -794,3 +821,63 @@ transition: color 0.3s ease, font-weight 0.3s ease;
   }
 }
 
+/* ============================
+   CLEAN MOBILE NAV ALIGNMENT
+   ============================ */
+   @media (max-width: 1024px) {
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      height: 80px;
+    }
+  
+    /* Left section */
+    .left-icons {
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px; /* even spacing between your 2 icons */
+    }
+  
+    /* Center logo */
+    .navbar-logo {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+  
+    /* Right section (hamburger + scroll button) */
+    .right-links {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px; /* controls spacing between the two icons */
+      position: relative;
+    }
+  
+    /* Remove the hidden <ul> from affecting spacing */
+    .right-links .nav-links {
+      display: none !important;
+    }
+  
+    /* Scroll button + menu both same size for symmetry */
+    .menu-toggle, 
+    .scroll-button {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      margin: 0;
+    }
+  
+    /* Ensure equal distance from edges */
+    .navbar > .left-icons,
+    .navbar > .navbar-logo,
+    .navbar > .right-links {
+      flex: 1;
+    }
+  }
+  

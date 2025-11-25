@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
 <head>
@@ -14,39 +15,68 @@
 
   <style>
 @import url('../assets/fonts/fonts.css');
-body {
-  font-family: 'Montserrat', sans-serif;
-}
 
-h1, .hero-heading {
+h1 {
 font-family: 'Lily Script One', cursive;
 }
-h2, h3, h4 {
-font-family: 'Montserrat Alternates', sans-serif;
+h4 {
+font-family: 'Montserrat Medium';
+}
+body {
+  font-family: 'Montserrat light';
+}
+html {
+  overflow-x: hidden;
 }
 
-/* Montserrat Regular */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+body {
+  overflow-x: clip; /* IMPORTANT: does NOT break sticky */
 }
 
-/* Montserrat Alternates */
-@font-face {
-  font-family: 'Montserrat Alternates';
-  src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
-/* Lily Script */
 @font-face {
   font-family: 'Lily Script One';
   src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat regular';
+  src: url('../assets/fonts/MontserratAlternates-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat bold';
+  src: url('../assets/fonts/MontserratAlternates-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Montserrat light';
+  src: url('../assets/fonts/MontserratAlternates-Light.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Medium';
+  src: url('../assets/fonts/MontserratAlternates-SemiBold.woff') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -258,7 +288,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   gap: 8px;
   padding: clamp(10px, 1.8vw, 16px) clamp(24px, 3.2vw, 36px);
   border-radius: 999px;
-  border: none;
+  border: 0.5px solid rgba(203, 47, 94, 0.4);
   cursor: pointer;
   font-weight: 500;
   font-family: 'Montserrat Alternates', sans-serif;
@@ -407,7 +437,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   font-size: 1.2rem;
   color: #4a2d35;
   line-height: 1.7;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   max-width: 500px;
   margin-bottom: 28px;
   position: relative;
@@ -754,24 +784,6 @@ font-family: 'Montserrat Alternates', sans-serif;
   width: 100%;
   max-width: 1000px;
 }
-/* -------------------------
-        FOOTER
-        ------------------------- */
-        .site-footer {background: linear-gradient(180deg, #ffe3f2 50%, #f0b5cb 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
-     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
-     .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
-     .footer-column { min-width:160px; }
-     .footer-logo { width:88px; height:auto; display:block; }
-     
-     @media (max-width: 640px) {
-       .footer-container { flex-direction:column; align-items:center; text-align:center; }
-     }
-     
-     @media (max-width: 480px) {
-       .footer-columns { flex-direction:column; gap:12px; align-items:center; }
-       .footer-column { min-width: unset; text-align:center; }
-       .footer-logo { margin-bottom: 12px; }
-     }
      
 @media (max-width: 768px) {
   .reviews-section {
@@ -782,7 +794,6 @@ font-family: 'Montserrat Alternates', sans-serif;
     gap: 40px;
   }
 }
-
 
     /* =========================
        Responsive: stack on small screens
@@ -799,6 +810,45 @@ font-family: 'Montserrat Alternates', sans-serif;
       .hero-sub{ font-size:14px; top:-230px; }
       .btn-drip{ padding:10px 16px }
     }
+
+/* -------------------------
+        FOOTER
+        ------------------------- */
+        .site-footer {background: linear-gradient(180deg, #faccde 0%, #edffe4 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
+     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items: start; flex-wrap:wrap; justify-content:space-between; }
+     .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
+     .footer-column { min-width:160px; }
+     .footer-logo { width:88px; height:auto; display:block; }
+     
+     @media (max-width: 640px) {
+       .footer-container { flex-direction:column; align-items:center; text-align:center; }
+     }
+     
+     @media (max-width: 480px) {
+       .footer-columns { flex-direction:column; gap:12px; align-items:center; }
+       .footer-column { min-width: unset; text-align:center; }
+       .footer-logo { margin-bottom: 12px; }
+     }
+    /* =====================================================
+   REMOVES ALL UNDERLINES SITEWIDE — FINAL OVERRIDE
+   ===================================================== */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+.nav-links a,
+.mobile-menu a,
+.scroll-link,
+.footer-links a,
+.footer-column a,
+.footer-legal-links a {
+  text-decoration: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* =============================
    Sticky Navbar Fix — About Us page only
    ============================= */
@@ -811,17 +861,6 @@ font-family: 'Montserrat Alternates', sans-serif;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Make sure content doesn’t hide under it */
-body.aboutus-page {
-  padding-top: 120px; /* same as navbar height */
-}
-
-/* Keep hero fully visible */
-body.aboutus-page .hero {
-  margin-top: 0 !important;
-  overflow: visible;
 }
 
     /* Accessibility focus */
@@ -854,7 +893,7 @@ body.aboutus-page .hero {
       <!-- Logo (always centered) -->
       <div class="navbar-logo">
         <a href="index.html">
-          <img src="/images/parlor_logo.webp" alt="The Parlor Logo">
+          <img src="images/parlor_logo.webp" alt="The Parlor Logo">
         </a>
       </div>
     
@@ -1073,16 +1112,16 @@ body.aboutus-page .hero {
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-left">
-      <img src="parlor_logo.webp" alt="The Parlor Logo" class="footer-logo">
-    </div>
+      <img src="../images/parlor_logo.webp" alt="The Parlor Logo" class="footer-logo">
+</div>
 
     <div class="footer-columns">
       <div class="footer-column">
-        <h3>Explore More |</h3>
+        <h3>Explore More </h3>
         <a href="contact.html">Contact Us |</a>
-        <a href="menu.html">Explore the Menu </a>
+        <a href="menu.html">Explore the Menu |</a>
         <a href="catering.html">Catering Info |</a>
-        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#gallery">Gallery |</a>
         <a href="https://www.instagram.com/theparloricecream/?hl=en" target="_blank" rel="noopener">Monthly Flavors</a>
       </div>
 

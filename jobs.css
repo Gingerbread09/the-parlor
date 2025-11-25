@@ -3,35 +3,43 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1, .hero-heading {
+h1 , h2 {
 font-family: 'Lily Script One', cursive;
 }
-h2, h3 {
-font-family: 'Montserrat Alternates', sans-serif;
+label  {
+font-family: 'Montserrat Medium';
+}
+body, .hero-overlay {
+font-family: 'Montserrat', sans-serif;
 }
 
-/* Montserrat Regular */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Montserrat Alternates */
-@font-face {
-  font-family: 'Montserrat Alternates';
-  src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Lily Script */
 @font-face {
   font-family: 'Lily Script One';
   src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat light';
+  src: url('../assets/fonts/MontserratAlternates-Light.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Medium';
+  src: url('../assets/fonts/MontserratAlternates-SemiBold.woff') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -276,8 +284,8 @@ body {
   text-decoration: none;
   padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 36px);
   border-radius: 40px;
-  border: 0.5px solid rgba(0, 0, 0, 0.4);
-  color: #000000;
+  border: 0.5px solid rgba(175, 89, 138, 0.4);
+  color: #120101;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -301,7 +309,7 @@ body {
   }
 }
 
-/* Remove underline on links */
+/* Removes underline on links */
 .btn-drip:link,
 .btn-drip:visited {
   text-decoration: none;
@@ -383,26 +391,6 @@ body {
     transform: scale(0.96);
   }
 }
-
-/* -------------------------
-        FOOTER
-        ------------------------- */
-        .site-footer {background: linear-gradient(180deg, #f5dfe3 0%, #edbec7 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
-     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
-     .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
-     .footer-column { min-width:160px; }
-     .footer-logo { width:88px; height:auto; display:block; }
-     
-     @media (max-width: 640px) {
-       .footer-container { flex-direction:column; align-items:center; text-align:center; }
-     }
-     
-     @media (max-width: 480px) {
-       .footer-columns { flex-direction:column; gap:12px; align-items:center; }
-       .footer-column { min-width: unset; text-align:center; }
-       .footer-logo { margin-bottom: 12px; }
-     }
-     
      :root {
       --drip-base: #ffc8e4;
       --drip-accent: hwb(351 74% 8%);
@@ -563,5 +551,40 @@ body {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
-
-    
+    /* -------------------------
+        FOOTER
+        ------------------------- */
+        .site-footer {background: linear-gradient(180deg, #f2cdd5 0%, #fdfbe3 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
+     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items: start; flex-wrap:wrap; justify-content:space-between; }
+     .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
+     .footer-column { min-width:160px; }
+     .footer-logo { width:88px; height:auto; display:block; }
+     
+     @media (max-width: 640px) {
+       .footer-container { flex-direction:column; align-items:center; text-align:center; }
+     }
+     
+     @media (max-width: 480px) {
+       .footer-columns { flex-direction:column; gap:12px; align-items:center; }
+       .footer-column { min-width: unset; text-align:center; }
+       .footer-logo { margin-bottom: 12px; }
+     }
+    /* =====================================================
+   REMOVES ALL UNDERLINES SITEWIDE — FINAL OVERRIDE
+   ===================================================== */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+.nav-links a,
+.mobile-menu a,
+.scroll-link,
+.footer-links a,
+.footer-column a,
+.footer-legal-links a {
+  text-decoration: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

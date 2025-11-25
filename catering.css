@@ -1,34 +1,15 @@
 @import url('../assets/fonts/fonts.css');
-body {
-  font-family: 'Montserrat', sans-serif;
-}
 
-h1, .hero-heading {
+h1 {
 font-family: 'Lily Script One', cursive;
 }
-h2, h3, h4 {
-font-family: 'Montserrat Alternates', sans-serif;
+.hero-topline {
+font-family: 'Montserrat Medium';
+}
+label {
+  font-family: 'Montserrat regular';
 }
 
-/* Montserrat Regular */
-@font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Montserrat Alternates */
-@font-face {
-  font-family: 'Montserrat Alternates';
-  src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Lily Script */
 @font-face {
   font-family: 'Lily Script One';
   src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff2');
@@ -36,6 +17,48 @@ font-family: 'Montserrat Alternates', sans-serif;
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Montserrat regular';
+  src: url('../assets/fonts/MontserratAlternates-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat bold';
+  src: url('../assets/fonts/MontserratAlternates-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Montserrat light';
+  src: url('../assets/fonts/MontserratAlternates-Light.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Medium';
+  src: url('../assets/fonts/MontserratAlternates-SemiBold.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* -------------------------
    GLOBAL THEME & RESET
    ------------------------- */
@@ -465,7 +488,7 @@ font-family: 'Montserrat Alternates', sans-serif;
    DRIPPING BUTTON
 ---------------------------- */
 .cat-btn-drip {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat light', sans-serif;
   font-weight: 300;
   font-size: 18px;
   padding: 16px 40px;
@@ -640,7 +663,7 @@ font-family: 'Montserrat Alternates', sans-serif;
      .feature-card { background:#fff; padding:20px; border-radius:14px; box-shadow:var(--shadow-soft); transition: transform 260ms var(--ease), box-shadow 260ms var(--ease); text-align:left; }
      .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-strong); }
      .feature-icon { width:52px; height:52px; background-size:contain; background-repeat:no-repeat; margin-bottom:12px; }
-     .feature-card h3 { margin:0 0 8px 0; color:var(--dark-choco); font-weight:400; font-size:1.02rem; }
+     .feature-card h3 {font-family: 'Montserrat bold'; margin:0 0 8px 0; color:var(--dark-choco); font-weight:400; font-size:1.02rem; }
      .feature-card p { margin:0 0 12px 0; color:var(--muted); font-size:.96rem; }
      .card-actions { text-align:left; }
      .action-pill { display:inline-flex; align-items:center; gap:8px; background: linear-gradient(180deg,#fff,var(--beige)); border:1px solid rgba(64,40,4,0.06); padding:8px 12px; border-radius:999px; cursor:pointer; }
@@ -682,7 +705,7 @@ font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .contact-heading {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat Medium', sans-serif;
   font-weight: 500;
   font-size: clamp(1.8rem, 2.6vw, 2.4rem);
   color: #000;
@@ -772,6 +795,7 @@ font-family: 'Montserrat Alternates', sans-serif;
   padding: 14px 44px 14px 12px;    
   background: transparent;
   border: 0;
+  font-family: 'Montserrat regular';
   font-weight: 555;
   display: block;
   cursor: pointer;
@@ -846,7 +870,7 @@ font-family: 'Montserrat Alternates', sans-serif;
         FOOTER
         ------------------------- */
         .site-footer {background: linear-gradient(180deg, #D9FEF8 0%, #DFE5FF 100%); padding: 40px 20px; border-top:1px solid rgba(0,0,0,0.03); }
-     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
+     .footer-container { max-width:1200px; margin:0 auto; display:flex; gap:20px; align-items: start; flex-wrap:wrap; justify-content:space-between; }
      .footer-columns { display:flex; gap:20px; flex:1; justify-content:flex-end; }
      .footer-column { min-width:160px; }
      .footer-logo { width:88px; height:auto; display:block; }

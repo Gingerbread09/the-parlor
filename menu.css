@@ -3,35 +3,57 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1, .hero-heading {
+h2 {
 font-family: 'Lily Script One', cursive;
 }
-h2, h3, h4 {
-font-family: 'Montserrat Alternates', sans-serif;
+label  {
+font-family: 'Montserrat Medium';
+}
+body, .hero-overlay {
+font-family: 'Montserrat', sans-serif;
 }
 
-/* Montserrat Regular */
 @font-face {
-  font-family: 'Montserrat';
-  src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
+  font-family: 'Montserrat regular';
+  src: url('../assets/fonts/MontserratAlternates-Regular.woff') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
-/* Montserrat Alternates */
-@font-face {
-  font-family: 'Montserrat Alternates';
-  src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Lily Script */
 @font-face {
   font-family: 'Lily Script One';
   src: url('../assets/fonts/LilyScriptOne-Regular.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/MontserratAlternates-ExtraLight.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat bold';
+  src: url('../assets/fonts/MontserratAlternates-Bold.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat light';
+  src: url('../assets/fonts/MontserratAlternates-Light.woff') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Medium';
+  src: url('../assets/fonts/MontserratAlternates-SemiBold.woff') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -122,13 +144,13 @@ body {
   --drip-accent: #d4bfff; /* pastel lilac */
   --drip-highlight: rgba(255, 255, 255, 0.8);
 
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Montserrat medium', sans-serif;
   font-weight: 300;
   display: inline-block;
   text-decoration: none;
   padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 36px);
   border-radius: 40px;
-  border: none;
+  border: 0.5px solid rgba(175, 89, 138, 0.4);
   color: #3c1f57; /* deep purple text for contrast */
   cursor: pointer;
   border: 0.5px solid rgba(60, 31, 87, 0.3);
@@ -389,18 +411,21 @@ body {
 
 .menu-card-front h4 {
   margin: 10px 0 8px;
+  font-family: 'Montserrat bold';
   font-weight: 500;
-  color: var(--accent-dark);
+  color: #280856;
   text-align: center;
 }
 
 .menu-card-front p {
-  color: var(--muted-ink);
+  color: #996cb9;
   font-size: 0.95rem;
   text-align: center;
+  font-family: 'Montserrat Alternates';
   line-height: 1.5;
   margin-top: 8px;
 }
+
 /* Mobile Flip Hint — Safe floating element, no layout shift */
 .mobile-flip-hint {
   display: none;
@@ -507,6 +532,7 @@ body {
     font-weight: 300;
     font-size: clamp(1rem, 2.2vw, 1.9rem);
     text-align:center;
+    color: #280856;
     margin: 1rem auto 2rem auto;
     max-width:980px;
   }
@@ -742,6 +768,11 @@ body {
   background: linear-gradient(180deg, rgba(190, 250, 190, 0.95), rgba(220, 255, 220, 0.9));
   box-shadow: 0 8px 20px rgba(100, 220, 130, 0.25);
 }
+/* Make MAIN-GO text green only for dairy-free card */
+.flavor-item.dairy-free p {
+  color: #1f6d3d !important;   /* deep natural green */
+  font-weight: 600;
+}
 
 /* Flavor Item */
 .flavor-item {
@@ -781,6 +812,7 @@ body {
 .flavor-item p {
   font-weight: 500;
   font-size: 0.95rem;
+  font-family: 'Montserrat regular';
   color: #4a2d6f;
   letter-spacing: 0.02em;
   transition: opacity 0.3s ease;
@@ -818,7 +850,7 @@ body {
 }
 
 .flavor-item:hover p {
-  opacity: 0;
+  opacity: 10;
 }
 
 /* Gunther’s GIF icon */
@@ -1158,3 +1190,23 @@ body {
   }
 }
 
+    /* =====================================================
+   REMOVES ALL UNDERLINES SITEWIDE — FINAL OVERRIDE
+   ===================================================== */
+   a,
+   a:link,
+   a:visited,
+   a:hover,
+   a:active,
+   .nav-links a,
+   .mobile-menu a,
+   .scroll-link,
+   .footer-links a,
+   .footer-column a,
+   .footer-legal-links a {
+     text-decoration: none !important;
+     border: none !important;
+     outline: none !important;
+     box-shadow: none !important;
+   }
+   
